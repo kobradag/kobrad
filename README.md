@@ -28,7 +28,7 @@ Go 1.18 or later.
 $ go version
 ```
 
-- Run the following commands to obtain and install pyipad including all dependencies:
+- Run the following commands to obtain and install kobrad including all dependencies:
 
 ```bash
 $ git clone https://github.com/kobradag/kobrad
@@ -36,7 +36,7 @@ $ cd kobrad
 $ go install . ./cmd/...
 ```
 
-- pyipad (and utilities) should now be installed in `$(go env GOPATH)/bin`. If you did
+- kobrad (and utilities) should now be installed in `$(go env GOPATH)/bin`. If you did
   not already add the bin directory to your system path during Go installation,
   you are encouraged to do so now.
 
