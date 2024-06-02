@@ -25,7 +25,7 @@ const (
 )
 
 const (
-	defaultListen    = "localhost:8882"
+	defaultListen    = "localhost:8082"
 	defaultRPCServer = "localhost"
 )
 
@@ -116,7 +116,7 @@ type startDaemonConfig struct {
 	KeysFile  string `long:"keys-file" short:"f" description:"Keys file location (default: ~/.kobrawallet/keys.json (*nix), %USERPROFILE%\\AppData\\Local\\Caswallet\\key.json (Windows))"`
 	Password  string `long:"password" short:"p" description:"Wallet password"`
 	RPCServer string `long:"rpcserver" short:"s" description:"RPC server to connect to"`
-	Listen    string `long:"listen" short:"l" description:"Address to listen on (default: 0.0.0.0:8882)"`
+	Listen    string `long:"listen" short:"l" description:"Address to listen on (default: 0.0.0.0:8082)"`
 	Timeout   uint32 `long:"wait-timeout" short:"w" description:"Waiting timeout for RPC calls, seconds (default: 30 s)"`
 	Profile   string `long:"profile" description:"Enable HTTP profiling on given port -- NOTE port must be between 1024 and 65536"`
 	config.NetworkFlags
