@@ -214,7 +214,7 @@ var MainnetParams = Params{
 	DefaultPort: "44447",
 	DNSSeeds: []string{
 		"kobradag.online",
-		"kobradag1.online.",
+		"kobradag1.online",
 		"kobradag2.online",
 		
 	},
