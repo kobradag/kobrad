@@ -216,7 +216,7 @@ var MainnetParams = Params{
 		"kobradag.online",
 		"kobradag1.online",
 		"kobradag2.online",
-		"kobradag3.online",		
+		
 	},
 
 	// DAG parameters
