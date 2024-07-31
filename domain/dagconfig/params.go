@@ -216,6 +216,13 @@ var MainnetParams = Params{
 		"kobradag.online",
 		"kobradag1.online",
 		"kobradag2.online",
+	        "kobradag3.online",
+		"kobradag.cloud",
+		"kobraman.online",
+		"kobra.icu",
+		"kobradag.top",
+		"kobra.click",
+		"k0bradag.com",
 		
 	},
 
