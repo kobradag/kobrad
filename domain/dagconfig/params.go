@@ -213,16 +213,10 @@ var MainnetParams = Params{
 	RPCPort:     "44448",
 	DefaultPort: "44447",
 	DNSSeeds: []string{
-		"kobradag.online",
-		"kobradag1.online",
-		"kobradag2.online",
-	        "kobradag3.online",
-		"kobradag.cloud",
-		"kobraman.online",
-		"kobra.icu",
-		"kobradag.top",
-		"kobra.click",
-		"k0bradag.com",
+		"n.koda-seed-1.k0bradag.com",
+		"n.koda-seed-2.k0bradag.com",
+		"n.koda-seed-3.k0bradag.com",
+	        "n.koda-seed-4.k0bradag.com",
 		
 	},
 
