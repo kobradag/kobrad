@@ -213,10 +213,7 @@ var MainnetParams = Params{
 	RPCPort:     "44448",
 	DefaultPort: "44447",
 	DNSSeeds: []string{
-		"koda-seed-1.k0bradag.com",
-		"koda-seed-2.k0bradag.com",
-		"koda-seed-3.k0bradag.com",
-	        "koda-seed-4.k0bradag.com",
+		"mainnet-seeds.k0bradag.com",
 		
 	},
 
