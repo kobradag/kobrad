@@ -64,29 +64,32 @@ func (mat *matrix) computeRank() int {
 }
 
 func (mat *matrix) HeavyHash(hash *externalapi.DomainHash) *externalapi.DomainHash {
-	hashBytes := hash.ByteArray()
-	var vector [64]uint16
-	var product [64]uint16
-	for i := 0; i < 32; i++ {
-		vector[2*i] = uint16(hashBytes[i] >> 4)
-		vector[2*i+1] = uint16(hashBytes[i] & 0x0F)
-	}
-	// Matrix-vector multiplication, and convert to 4 bits.
-	for i := 0; i < 64; i++ {
-		var sum uint16
-		for j := 0; j < 64; j++ {
-			sum += mat[i][j] * vector[j]
-		}
-		product[i] = sum >> 10
-	}
+    hashBytes := hash.ByteArray()
+    var vector [64]uint16
+    var product [64]uint16
+    for i := 0; i < 32; i++ {
+        vector[2*i] = uint16(hashBytes[i] >> 4)
+        vector[2*i+1] = uint16(hashBytes[i] & 0x0F)
+    }
 
-	// Concatenate 4 LSBs back to 8 bit xor with sum1
-	var res [32]byte
-	for i := range res {
-		res[i] = hashBytes[i] ^ (byte(product[2*i]<<4) | byte(product[2*i+1]))
-	}
-	// Hash again
-	writer := hashes.HeavyHashWriter()
-	writer.InfallibleWrite(res[:])
-	return writer.Finalize()
+    // Matrix-vector multiplication, and perform the XOR operations.
+    for i := 0; i < 64; i++ {
+        var sum uint16
+        for j := 0; j < 64; j++ {
+            sum += mat[i][j] * vector[j]
+        }
+        // XOR the 4-bit segments of the sum as in the second code
+        product[i] = (sum & 0xF) ^ ((sum >> 4) & 0xF) ^ ((sum >> 8) & 0xF)
+    }
+
+    // Concatenate 4 LSBs back to 8 bit xor with sum1
+    var res [32]byte
+    for i := range res {
+        res[i] = hashBytes[i] ^ (byte(product[2*i]<<4) | byte(product[2*i+1]))
+    }
+
+    // Hash again
+    writer := hashes.HeavyHashWriter()
+    writer.InfallibleWrite(res[:])
+    return writer.Finalize()
 }
