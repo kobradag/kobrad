@@ -276,7 +276,7 @@ var MainnetParams = Params{
 // TestnetParams defines the network parameters for the test Pyrin network.
 var TestnetParams = Params{
 	K:           defaultGHOSTDAGK,
-	Name:        "kobra-testnet-10",
+	Name:        "kobra-testnet",
 	Net:         appmessage.Testnet,
 	RPCPort:     "16210",
 	DefaultPort: "16211",
