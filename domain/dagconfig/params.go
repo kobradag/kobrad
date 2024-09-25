@@ -281,7 +281,7 @@ var TestnetParams = Params{
 	RPCPort:     "16210",
 	DefaultPort: "16211",
 	DNSSeeds: []string{
-		"seeder1.kobratestnet.network",
+		"seeder1.k0bradag.com",
 	},
 
 	// DAG parameters
