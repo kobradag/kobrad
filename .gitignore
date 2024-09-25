@@ -22,7 +22,7 @@ kobrad.db
 kobrad
 cmd/gencerts/gencerts
 cmd/kobractl/kobractl
-cmd/kasminer/kobraminer
+cmd/kobraminer/kobraminer
 *.exe
 *.exe~
 
