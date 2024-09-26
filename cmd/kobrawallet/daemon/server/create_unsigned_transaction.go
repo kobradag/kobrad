@@ -105,6 +105,11 @@ func (s *server) selectUTXOs(spendAmount uint64, isSendAll bool, feePerInput uin
 	if err != nil {
 		return nil, 0, 0, err
 	}
+
+	if dagInfo.VirtualDAAScore > s.params.HFActivationDAAScore {
+		s.params.BlockCoinbaseMaturity = 1000
+	}
+
 	coinbaseMaturity := s.params.BlockCoinbaseMaturity
 	if dagInfo.NetworkName == "kobra-testnet" {
 		coinbaseMaturity = 1000
