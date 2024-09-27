@@ -89,8 +89,8 @@ func (f ServiceFlag) String() string {
 	return s
 }
 
-// PyrinpyiNet represents which kobra network a message belongs to.
-type PyrinpyiNet uint32
+// KobraNet represents which kobra network a message belongs to.
+type KobraNet uint32
 
 // Constants used to indicate the message kobra network. They can also be
 // used to seek to the next message when a stream's state is unknown, but
@@ -98,32 +98,32 @@ type PyrinpyiNet uint32
 // better idea to simply disconnect clients that are misbehaving over TCP.
 const (
 	// Mainnet represents the main kobra network.
-	Mainnet PyrinpyiNet = 0x3ddcf71d
+	Mainnet KobraNet = 0x3ddcf71d
 
 	// Testnet represents the test network.
-	Testnet PyrinpyiNet = 0xddb8af8f
+	Testnet KobraNet = 0xddb8af8f
 
 	// Simnet represents the simulation test network.
-	Simnet PyrinpyiNet = 0x374dcf1c
+	Simnet KobraNet = 0x374dcf1c
 
 	// Devnet represents the development test network.
-	Devnet PyrinpyiNet = 0x732d87e1
+	Devnet KobraNet = 0x732d87e1
 )
 
 // bnStrings is a map of kobra networks back to their constant names for
 // pretty printing.
-var bnStrings = map[PyrinpyiNet]string{
+var bnStrings = map[KobraNet]string{
 	Mainnet: "Mainnet",
 	Testnet: "Testnet",
 	Simnet:  "Simnet",
 	Devnet:  "Devnet",
 }
 
-// String returns the PyrinpyiNet in human-readable form.
-func (n PyrinpyiNet) String() string {
+// String returns the KobraNet in human-readable form.
+func (n KobraNet) String() string {
 	if s, ok := bnStrings[n]; ok {
 		return s
 	}
 
-	return fmt.Sprintf("Unknown PyrinpyiNet (%d)", uint32(n))
+	return fmt.Sprintf("Unknown KobraNet (%d)", uint32(n))
 }

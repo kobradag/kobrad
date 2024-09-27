@@ -35,7 +35,7 @@ func mustParseShortForm(script string, version uint16) []byte {
 // as a helper since the only way it can fail is if there is an error in the
 // test source code.
 func newAddressPublicKey(publicKey []byte) util.Address {
-	addr, err := util.NewAddressPublicKey(publicKey, util.Bech32PrefixPyrin)
+	addr, err := util.NewAddressPublicKey(publicKey, util.Bech32PrefixKobra)
 	if err != nil {
 		panic("invalid public key in test source")
 	}
@@ -48,7 +48,7 @@ func newAddressPublicKey(publicKey []byte) util.Address {
 // as a helper since the only way it can fail is if there is an error in the
 // test source code.
 func newAddressPublicKeyECDSA(publicKey []byte) util.Address {
-	addr, err := util.NewAddressPublicKeyECDSA(publicKey, util.Bech32PrefixPyrin)
+	addr, err := util.NewAddressPublicKeyECDSA(publicKey, util.Bech32PrefixKobra)
 	if err != nil {
 		panic("invalid public key in test source")
 	}
@@ -62,7 +62,7 @@ func newAddressPublicKeyECDSA(publicKey []byte) util.Address {
 // test source code.
 func newAddressScriptHash(scriptHash []byte) util.Address {
 	addr, err := util.NewAddressScriptHashFromHash(scriptHash,
-		util.Bech32PrefixPyrin)
+		util.Bech32PrefixKobra)
 	if err != nil {
 		panic("invalid script hash in test source")
 	}
@@ -330,13 +330,13 @@ func TestPayToAddrScript(t *testing.T) {
 	t.Parallel()
 
 	p2pkMain, err := util.NewAddressPublicKey(hexToBytes("e34cce70c86"+
-		"373273efcc54ce7d2a491bb4a0e84e34cce70c86373273efcc54c"), util.Bech32PrefixPyrin)
+		"373273efcc54ce7d2a491bb4a0e84e34cce70c86373273efcc54c"), util.Bech32PrefixKobra)
 	if err != nil {
 		t.Fatalf("Unable to create public key address: %v", err)
 	}
 
 	p2shMain, err := util.NewAddressScriptHashFromHash(hexToBytes("e8c300"+
-		"c87986efa84c37c0519929019ef86eb5b4e34cce70c86373273efcc54c"), util.Bech32PrefixPyrin)
+		"c87986efa84c37c0519929019ef86eb5b4e34cce70c86373273efcc54c"), util.Bech32PrefixKobra)
 	if err != nil {
 		t.Fatalf("Unable to create script hash address: %v", err)
 	}
@@ -449,7 +449,7 @@ var scriptClassTests = []struct {
 	},
 
 	{
-		// Nulldata. It is standard in Bitcoin but not in Pyrin
+		// Nulldata. It is standard in Bitcoin but not in Kobra
 		name:   "nulldata",
 		script: "RETURN 0",
 		class:  NonStandardTy,

@@ -26,7 +26,7 @@ types.
 To decode/encode an address:
 
 	addrString := "kobra:qqj9fg59mptxkr9j0y53j5mwurcmda5mtza9n6v9pm9uj8h0wgk6uma5pvumr"
-	defaultPrefix := util.Bech32PrefixPyrin
+	defaultPrefix := util.Bech32PrefixKobra
 	addr, err := util.DecodeAddress(addrString, defaultPrefix)
 	if err != nil {
 		fmt.Println(err)

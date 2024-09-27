@@ -13,7 +13,7 @@ import (
 )
 
 // Connect connects to the kobrawalletd server, and returns the client instance
-func Connect(address string) (pb.PyrinwalletdClient, func(), error) {
+func Connect(address string) (pb.KobrawalletdClient, func(), error) {
 	// Connection is local, so 1 second timeout is sufficient
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
@@ -26,7 +26,7 @@ func Connect(address string) (pb.PyrinwalletdClient, func(), error) {
 		return nil, nil, err
 	}
 
-	return pb.NewPyrinwalletdClient(conn), func() {
+	return pb.NewKobrawalletdClient(conn), func() {
 		conn.Close()
 	}, nil
 }

@@ -54,13 +54,13 @@ func TestUTXOIndex(t *testing.T) {
 		t.Fatalf("Error Retriving Coin supply: %s", err)
 	}
 
-	rewardsMinedLeor := uint64(blockAmountToMine * constants.LeorPerPyrin * 17)
+	rewardsMinedLeor := uint64(blockAmountToMine * constants.LeorPerKobra * 17)
 	getBlockCountResponse, err := kobrad.rpcClient.GetBlockCount()
 	if err != nil {
 		t.Fatalf("Error Retriving BlockCount: %s", err)
 	}
 	rewardsMinedViaBlockCountLeor := uint64(
-		(getBlockCountResponse.BlockCount - 2) * constants.LeorPerPyrin * 17, // -2 because of genesis and virtual.
+		(getBlockCountResponse.BlockCount - 2) * constants.LeorPerKobra * 17, // -2 because of genesis and virtual.
 	)
 
 	if getCoinSupplyResponse.CirculatingLeor != rewardsMinedLeor {
@@ -183,7 +183,7 @@ func buildTransactionForUTXOIndexTest(t *testing.T, entry *appmessage.UTXOsByAdd
 	txIns := make([]*appmessage.TxIn, 1)
 	txIns[0] = appmessage.NewTxIn(appmessage.NewOutpoint(transactionID, entry.Outpoint.Index), []byte{}, 0, 1)
 
-	payeeAddress, err := util.DecodeAddress(miningAddress1, util.Bech32PrefixPyrinSim)
+	payeeAddress, err := util.DecodeAddress(miningAddress1, util.Bech32PrefixKobraSim)
 	if err != nil {
 		t.Fatalf("Error decoding payeeAddress: %+v", err)
 	}

@@ -68,7 +68,7 @@ func (v *transactionValidator) checkTransactionAmountRanges(tx *externalapi.Doma
 	// transaction. Also, the total of all outputs must abide by the same
 	// restrictions. All amounts in a transaction are in a unit value known
 	// as a leor. One kobra is a quantity of leor as defined by the
-	// LeorPerPyrin constant.
+	// LeorPerKobra constant.
 	var totalLeor uint64
 	for _, txOut := range tx.Outputs {
 		leor := txOut.Value
@@ -82,7 +82,7 @@ func (v *transactionValidator) checkTransactionAmountRanges(tx *externalapi.Doma
 		}
 
 		// Binary arithmetic guarantees that any overflow is detected and reported.
-		// This is impossible for Pyrin, but perhaps possible if an alt increases
+		// This is impossible for Kobra, but perhaps possible if an alt increases
 		// the total money supply.
 		newTotalLeor := totalLeor + leor
 		if newTotalLeor < totalLeor {

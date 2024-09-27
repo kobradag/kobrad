@@ -93,7 +93,7 @@ func TestValidateTransactionInIsolationAndPopulateMass(t *testing.T) {
 				&txSubnetworkData{subnetworks.SubnetworkIDCoinbase, 0, make([]byte, consensusConfig.MaxCoinbasePayloadLength+1)},
 				nil,
 				ruleerrors.ErrBadCoinbasePayloadLen, 0},
-			{"non-zero gas in Pyrin", 1, 1, 1,
+			{"non-zero gas in Kobra", 1, 1, 1,
 				subnetworks.SubnetworkIDNative,
 				nil,
 				func(tx *externalapi.DomainTransaction) {
@@ -105,7 +105,7 @@ func TestValidateTransactionInIsolationAndPopulateMass(t *testing.T) {
 				&txSubnetworkData{subnetworks.SubnetworkIDRegistry, 1, []byte{}},
 				nil,
 				ruleerrors.ErrInvalidGas, 0},
-			{"non-zero payload in Pyrin", 1, 1, 1,
+			{"non-zero payload in Kobra", 1, 1, 1,
 				subnetworks.SubnetworkIDNative,
 				nil,
 				func(tx *externalapi.DomainTransaction) {
