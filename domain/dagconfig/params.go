@@ -9,15 +9,17 @@ import (
 	"time"
 
 	"github.com/kobradag/kobrad/domain/consensus/model/externalapi"
-
 	"github.com/kobradag/kobrad/app/appmessage"
 	"github.com/kobradag/kobrad/util/network"
-
 	"github.com/pkg/errors"
-
 	"github.com/kobradag/kobrad/util"
 )
-
+// Version constants for blocking old versions
+const (
+	VersionOld        = "1.0.5"   // Old version (to be blocked)
+	VersionNew        = "1.1.1"   // New version (allowed version)
+	DAASwitchThreshold = 11_000_000 // DAA Score threshold to switch to the new version
+)
 // These variables are the DAG proof-of-work limit parameters for each default
 // network.
 var (
@@ -53,6 +55,9 @@ type Params struct {
 	// K defines the K parameter for GHOSTDAG consensus algorithm.
 	// See ghostdag.go for further details.
 	K externalapi.KType
+
+	// NetworkVersion is used to track the version of the network
+	NetworkVersion string
 
 	// Name defines a human-readable identifier for the network.
 	Name string
@@ -208,6 +213,22 @@ func (p *Params) PruningDepth() uint64 {
 	return 2*p.FinalityDepth() + 4*p.MergeSetSizeLimit*uint64(p.K) + 2*uint64(p.K) + 2
 }
 
+// EnforceVersionRestriction enforces the version restrictions based on the block's DAA Score and current network version
+func (p *Params) EnforceVersionRestriction(blockVersion string, blockDAAScore uint64) error {
+	// Switch to the new version if DAAScore exceeds the threshold
+	if blockDAAScore >= DAASwitchThreshold {
+		p.NetworkVersion = VersionNew
+	}
+
+	// Check if the block version is below the current version, if so - block it
+	if blockVersion < p.NetworkVersion {
+		return errors.New("block rejected: unsupported version. Please upgrade to version " + VersionNew)
+	}
+
+	// If version is valid
+	return nil
+}
+
 // MainnetParams defines the network parameters for the main Kobra network.
 var MainnetParams = Params{
 	K:           defaultGHOSTDAGK,
@@ -219,7 +240,6 @@ var MainnetParams = Params{
 		"mainnet-seeds.k0bradag.com",
 		
 	},
-
 	// DAG parameters
 	GenesisBlock:                    &genesisBlock,
 	GenesisHash:                     genesisHash,
@@ -232,32 +252,14 @@ var MainnetParams = Params{
 	FinalityDuration:                defaultFinalityDuration,
 	DifficultyAdjustmentWindowSize:  defaultDifficultyAdjustmentWindowSize,
 	TimestampDeviationTolerance:     defaultTimestampDeviationTolerance,
-
-	// Consensus rule change deployments.
-	//
-	// The miner confirmation window is defined as:
-	//   target proof of work timespan / target proof of work spacing
 	RuleChangeActivationThreshold: 1916, // 95% of MinerConfirmationWindow
 	MinerConfirmationWindow:       2016, //
-
-	// Mempool parameters
 	RelayNonStdTxs: false,
-
-	// AcceptUnroutable specifies whether this network accepts unroutable
-	// IP addresses, such as 10.0.0.0/8
 	AcceptUnroutable: false,
-
-	// Human-readable part for Bech32 encoded addresses
 	Prefix: util.Bech32PrefixKobra,
-
-	// Address encoding magics
 	PrivateKeyID: 0x80, // starts with 5 (uncompressed) or K (compressed)
-
-	// EnableNonNativeSubnetworks enables non-native/coinbase transactions
 	EnableNonNativeSubnetworks: false,
-
 	DisableDifficultyAdjustment: false,
-
 	MaxCoinbasePayloadLength:                defaultMaxCoinbasePayloadLength,
 	MaxBlockMass:                            defaultMaxBlockMass,
 	MaxBlockParents:                         defaultMaxBlockParents,
@@ -269,14 +271,10 @@ var MainnetParams = Params{
 	PruningProofM:                           defaultPruningProofM,
 	DeflationaryPhaseDaaScore:               defaultDeflationaryPhaseDaaScore,
 	DisallowDirectBlocksOnTopOfGenesis:      true,
-
-	// This is technically 255, but we clamped it at 256 - block level of mainnet genesis
-	// This means that any block that has a level lower or equal to genesis will be level 0.
-	MaxBlockLevel: 225,
-	MergeDepth:    defaultMergeDepth,
-
-	HFActivationDAAScore: 10_450_000,
-
+	MaxBlockLevel:                           225,
+	MergeDepth:                              defaultMergeDepth,
+	HFActivationDAAScore:                    10_750_000,
+	NetworkVersion:                          VersionOld, // Start with the old version
 
 }
 
