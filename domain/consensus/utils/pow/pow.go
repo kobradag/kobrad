@@ -6,9 +6,7 @@ import (
 	"github.com/kobradag/kobrad/domain/consensus/utils/hashes"
 	"github.com/kobradag/kobrad/domain/consensus/utils/serialization"
 	"github.com/kobradag/kobrad/util/difficulty"
-
 	"math/big"
-
 	"github.com/pkg/errors"
 )
 
@@ -42,7 +40,18 @@ func NewState(header externalapi.MutableBlockHeader) *State {
 	}
 }
 
+// Add HeavyHashWithTransition function to the matrix type
+func (mat *matrix) HeavyHashWithTransition(hash *externalapi.DomainHash, blockDAAScore uint64) *externalapi.DomainHash {
+    // If blockDAAScore is greater than or equal to the transition threshold, use the new method
+    if blockDAAScore >= transitionDAAScore {
+        return mat.newHeavyHash(hash)
+    }
+    // Otherwise, use the old method
+    return mat.oldHeavyHash(hash)
+}
+
 // CalculateProofOfWorkValue hashes the internal header and returns its big.Int value
+// This function now checks the DAA score to determine whether to use the old or new HeavyHash method
 func (state *State) CalculateProofOfWorkValue() *big.Int {
 	// PRE_POW_HASH || TIME || 32 zero byte padding || NONCE
 	writer := hashes.PoWHashWriter()
@@ -58,17 +67,23 @@ func (state *State) CalculateProofOfWorkValue() *big.Int {
 		panic(errors.Wrap(err, "this should never happen. Hash digest should never return an error"))
 	}
 	powHash := writer.Finalize()
-	heavyHash := state.mat.HeavyHash(powHash)
+
+	// Set DAA Score using getDAAScore method
+	blockDAAScore := state.getDAAScore()
+
+	// Call the transition-based HeavyHash function.
+	heavyHash := state.mat.HeavyHashWithTransition(powHash, blockDAAScore)
+
 	return toBig(heavyHash)
 }
 
-// IncrementNonce the nonce in State by 1
+// IncrementNonce increments the nonce in State by 1
 func (state *State) IncrementNonce() {
 	state.Nonce++
 }
 
-// CheckProofOfWork check's if the block has a valid PoW according to the provided target
-// it does not check if the difficulty itself is valid or less than the maximum for the appropriate network
+// CheckProofOfWork checks if the block has a valid PoW according to the provided target
+// It does not check if the difficulty itself is valid or less than the maximum for the appropriate network
 func (state *State) CheckProofOfWork() bool {
 	// The block pow must be less than the claimed target
 	powNum := state.CalculateProofOfWorkValue()
@@ -77,8 +92,8 @@ func (state *State) CheckProofOfWork() bool {
 	return powNum.Cmp(&state.Target) <= 0
 }
 
-// CheckProofOfWorkByBits check's if the block has a valid PoW according to its Bits field
-// it does not check if the difficulty itself is valid or less than the maximum for the appropriate network
+// CheckProofOfWorkByBits checks if the block has a valid PoW according to its Bits field
+// It does not check if the difficulty itself is valid or less than the maximum for the appropriate network
 func CheckProofOfWorkByBits(header externalapi.MutableBlockHeader) bool {
 	return NewState(header).CheckProofOfWork()
 }
@@ -110,4 +125,10 @@ func BlockLevel(header externalapi.BlockHeader, maxBlockLevel int) int {
 		level = 0
 	}
 	return level
+}
+
+// Manually set DAA Score for now, replace this with real logic
+func (state *State) getDAAScore() uint64 {
+	// Placeholder: Replace this with actual logic to retrieve DAA score from the header.
+	return transitionDAAScore - 1 // Example: Set below the threshold for now
 }
