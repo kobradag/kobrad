@@ -13,7 +13,7 @@ type matrix [64][64]uint16
 
 // Define the DAA Score threshold for switching to the new method
 // The value of 10,860,000 marks the transition point to the new HeavyHash method.
-const transitionDAAScore uint64 = 100
+const transitionDAAScore uint64 = 10_860_000
 
 // Function that chooses the appropriate hashing algorithm based on DAA Score
 // If the DAA Score is above the transition threshold, it uses the new HeavyHash method.
