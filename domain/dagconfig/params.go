@@ -16,9 +16,9 @@ import (
 )
 // Version constants for blocking old versions
 const (
-	VersionOld        = "1.0.5"   // Old version (to be blocked)
-	VersionNew        = "1.1.1"   // New version (allowed version)
-	DAASwitchThreshold = 10_860_000 // DAA Score threshold to switch to the new version
+	VersionOld        = "1.0.4"   // Old version (to be blocked)
+	VersionNew        = "1.1.3"   // New version (allowed version)
+	DAASwitchThreshold = 10_862_000 // DAA Score threshold to switch to the new version
 )
 // These variables are the DAG proof-of-work limit parameters for each default
 // network.
@@ -273,7 +273,7 @@ var MainnetParams = Params{
 	DisallowDirectBlocksOnTopOfGenesis:      true,
 	MaxBlockLevel:                           225,
 	MergeDepth:                              defaultMergeDepth,
-	HFActivationDAAScore:                    10_860_000,
+	HFActivationDAAScore:                    10_862_000,
 	NetworkVersion:                          VersionOld, // Start with the old version
 
 }

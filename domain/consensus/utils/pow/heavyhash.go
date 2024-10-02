@@ -13,7 +13,11 @@ type matrix [64][64]uint16
 
 // Define the DAA Score threshold for switching to the new method
 // The value of 10,860,000 marks the transition point to the new HeavyHash method.
+<<<<<<< HEAD
 const transitionDAAScore uint64 = 10_860_000
+=======
+const transitionDAAScore uint64 = 10_862_000
+>>>>>>> bb66233 (update)
 
 // Function that chooses the appropriate hashing algorithm based on DAA Score
 // If the DAA Score is above the transition threshold, it uses the new HeavyHash method.
@@ -80,9 +84,13 @@ func (mat *matrix) newHeavyHash(hash *externalapi.DomainHash) *externalapi.Domai
     for i := 0; i < 64; i++ {
         var sum uint16
         for j := 0; j < 64; j++ {
+<<<<<<< HEAD
             // Dynamic bit shift based on the vector element
             dynamicShift := (vector[j] % 7) + 1  // Shift from 1 to 7 bits
             // Condition determines whether to shift left or right
+=======
+            dynamicShift := (vector[j] % 7) + 1  // Сдвиг от 1 до 7 бит
+>>>>>>> bb66233 (update)
             condition := (vector[j] + mat[i][j]) % 2 == 0
 
             if condition {
@@ -221,4 +229,9 @@ func (mat *matrix) HeavyHash(hash *externalapi.DomainHash) *externalapi.DomainHa
 	writer := hashes.HeavyHashWriter()
 	writer.InfallibleWrite(res[:])
 	return writer.Finalize()
+<<<<<<< HEAD
 }
+=======
+
+}
+>>>>>>> bb66233 (update)
