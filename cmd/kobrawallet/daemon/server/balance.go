@@ -2,7 +2,7 @@ package server
 
 import (
 	"context"
-	"github.com/pkg/errors"
+
 	"github.com/kobradag/kobrad/cmd/kobrawallet/daemon/pb"
 	"github.com/kobradag/kobrad/cmd/kobrawallet/libkobrawallet"
 )
@@ -14,15 +14,18 @@ func (s *server) GetBalance(_ context.Context, _ *pb.GetBalanceRequest) (*pb.Get
 	s.lock.RLock()
 	defer s.lock.RUnlock()
 
-	if !s.isSynced() {
-		return nil, errors.Errorf("wallet daemon is not synced yet, %s", s.formatSyncStateReport())
-	}
-
 	dagInfo, err := s.rpcClient.GetBlockDAGInfo()
 	if err != nil {
 		return nil, err
 	}
 	daaScore := dagInfo.VirtualDAAScore
+
+	if daaScore > s.params.HFActivationDAAScore {
+		s.params.BlockCoinbaseMaturity = 1000
+	}
+
+	maturity := s.params.BlockCoinbaseMaturity
+
 	balancesMap := make(balancesMapType, 0)
 	for _, entry := range s.utxosSortedByAmount {
 		amount := entry.UTXOEntry.Amount()
@@ -32,7 +35,7 @@ func (s *server) GetBalance(_ context.Context, _ *pb.GetBalanceRequest) (*pb.Get
 			balances = new(balancesType)
 			balancesMap[address] = balances
 		}
-		if s.isUTXOSpendable(entry, daaScore) {
+		if isUTXOSpendable(entry, daaScore, maturity) {
 			balances.available += amount
 		} else {
 			balances.pending += amount
@@ -65,9 +68,9 @@ func (s *server) GetBalance(_ context.Context, _ *pb.GetBalanceRequest) (*pb.Get
 	}, nil
 }
 
-func (s *server) isUTXOSpendable(entry *walletUTXO, virtualDAAScore uint64) bool {
+func isUTXOSpendable(entry *walletUTXO, virtualDAAScore uint64, coinbaseMaturity uint64) bool {
 	if !entry.UTXOEntry.IsCoinbase() {
 		return true
 	}
-	return entry.UTXOEntry.BlockDAAScore()+s.coinbaseMaturity < virtualDAAScore
+	return entry.UTXOEntry.BlockDAAScore()+coinbaseMaturity < virtualDAAScore
 }

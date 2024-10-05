@@ -8,6 +8,8 @@ import (
 	"github.com/kobradag/kobrad/domain/consensus/utils/constants"
 	"github.com/kobradag/kobrad/util"
 	"github.com/pkg/errors"
+	"golang.org/x/exp/slices"
+	"time"
 )
 
 // TODO: Implement a better fee estimation mechanism
@@ -35,12 +37,17 @@ func (s *server) CreateUnsignedTransactions(_ context.Context, request *pb.Creat
 
 func (s *server) createUnsignedTransactions(address string, amount uint64, isSendAll bool, fromAddressesString []string, useExistingChangeAddress bool) ([][]byte, error) {
 	if !s.isSynced() {
-//my-add		return nil, errors.Errorf("wallet daemon is not synced yet, %s", s.formatSyncStateReport())
+		//my-add		return nil, errors.Errorf("wallet daemon is not synced yet, %s", s.formatSyncStateReport())
 	}
 
 	// make sure address string is correct before proceeding to a
 	// potentially long UTXO refreshment operation
 	toAddress, err := util.DecodeAddress(address, s.params.Prefix)
+	if err != nil {
+		return nil, err
+	}
+
+	err = s.refreshUTXOs()
 	if err != nil {
 		return nil, err
 	}
@@ -103,15 +110,18 @@ func (s *server) selectUTXOs(spendAmount uint64, isSendAll bool, feePerInput uin
 		return nil, 0, 0, err
 
 	}
+	if dagInfo.VirtualDAAScore > s.params.HFActivationDAAScore {
+		s.params.BlockCoinbaseMaturity = 1000
+	}
 
 	for _, utxo := range s.utxosSortedByAmount {
-		if (fromAddresses != nil && !walletAddressesContain(fromAddresses, utxo.address)) ||
-			!s.isUTXOSpendable(utxo, dagInfo.VirtualDAAScore) {
+		if (fromAddresses != nil && !slices.Contains(fromAddresses, utxo.address)) ||
+			!isUTXOSpendable(utxo, dagInfo.VirtualDAAScore, 1000) {
 			continue
 		}
 
 		if broadcastTime, ok := s.usedOutpoints[*utxo.Outpoint]; ok {
-		if s.usedOutpointHasExpired(broadcastTime) {
+			if time.Since(broadcastTime) > time.Minute {
 				delete(s.usedOutpoints, *utxo.Outpoint)
 			} else {
 				continue
@@ -128,12 +138,7 @@ func (s *server) selectUTXOs(spendAmount uint64, isSendAll bool, feePerInput uin
 
 		fee := feePerInput * uint64(len(selectedUTXOs))
 		totalSpend := spendAmount + fee
-		// Two break cases (if not send all):
-		// 		1. totalValue == totalSpend, so there's no change needed -> number of outputs = 1, so a single input is sufficient
-		// 		2. totalValue > totalSpend, so there will be change and 2 outputs, therefor in order to not struggle with --
-		//		   2.1 go-nodes dust patch we try and find at least 2 inputs (even though the next one is not necessary in terms of spend value)
-		// 		   2.2 KIP9 we try and make sure that the change amount is not too small
-		if !isSendAll && (totalValue == totalSpend || (totalValue >= totalSpend+minChangeTarget && len(selectedUTXOs) > 1)) {
+		if !isSendAll && totalValue >= totalSpend {
 			break
 		}
 	}
