@@ -3,22 +3,18 @@ package server
 import (
 	"context"
 	"fmt"
+	"time"
+
 	"github.com/kobradag/kobrad/cmd/kobrawallet/daemon/pb"
 	"github.com/kobradag/kobrad/cmd/kobrawallet/libkobrawallet"
 	"github.com/kobradag/kobrad/domain/consensus/utils/constants"
 	"github.com/kobradag/kobrad/util"
 	"github.com/pkg/errors"
 	"golang.org/x/exp/slices"
-	"time"
 )
 
 // TODO: Implement a better fee estimation mechanism
 const feePerInput = 10000
-
-// The minimal change amount to target in order to avoid large storage mass (see KIP9 for more details).
-// By having at least 0.2KAS in the change output we make sure that every transaction with send value >= 0.2KAS
-// should succeed (at most 50K storage mass for each output, thus overall lower than standard mass upper bound which is 100K gram)
-const minChangeTarget = constants.LeorPerKobra / 5
 
 func (s *server) CreateUnsignedTransactions(_ context.Context, request *pb.CreateUnsignedTransactionsRequest) (
 	*pb.CreateUnsignedTransactionsResponse, error,
@@ -37,7 +33,7 @@ func (s *server) CreateUnsignedTransactions(_ context.Context, request *pb.Creat
 
 func (s *server) createUnsignedTransactions(address string, amount uint64, isSendAll bool, fromAddressesString []string, useExistingChangeAddress bool) ([][]byte, error) {
 	if !s.isSynced() {
-		//my-add		return nil, errors.Errorf("wallet daemon is not synced yet, %s", s.formatSyncStateReport())
+//my-add		return nil, errors.Errorf("wallet daemon is not synced yet, %s", s.formatSyncStateReport())
 	}
 
 	// make sure address string is correct before proceeding to a
@@ -108,15 +104,15 @@ func (s *server) selectUTXOs(spendAmount uint64, isSendAll bool, feePerInput uin
 	dagInfo, err := s.rpcClient.GetBlockDAGInfo()
 	if err != nil {
 		return nil, 0, 0, err
-
 	}
-	if dagInfo.VirtualDAAScore > s.params.HFActivationDAAScore {
-		s.params.BlockCoinbaseMaturity = 1000
+	coinbaseMaturity := s.params.BlockCoinbaseMaturity
+	if dagInfo.NetworkName == "kobra-testnet" {
+		coinbaseMaturity = 1000
 	}
 
 	for _, utxo := range s.utxosSortedByAmount {
 		if (fromAddresses != nil && !slices.Contains(fromAddresses, utxo.address)) ||
-			!isUTXOSpendable(utxo, dagInfo.VirtualDAAScore, 1000) {
+			!isUTXOSpendable(utxo, dagInfo.VirtualDAAScore, coinbaseMaturity) {
 			continue
 		}
 
@@ -154,16 +150,8 @@ func (s *server) selectUTXOs(spendAmount uint64, isSendAll bool, feePerInput uin
 	}
 	if totalValue < totalSpend {
 		return nil, 0, 0, errors.Errorf("Insufficient funds for send: %f required, while only %f available",
-			float64(totalSpend)/constants.LeorPerKobra, float64(totalValue)/constants.LeorPerKobra)
+			float64(totalSpend)/constants.LeorPerPyrin, float64(totalValue)/constants.LeorPerPyrin)
 	}
 
 	return selectedUTXOs, totalReceived, totalValue - totalSpend, nil
-}
-func walletAddressesContain(addresses []*walletAddress, contain *walletAddress) bool {
-	for _, address := range addresses {
-		if *address == *contain {
-			return true
-		}
-	}
-	return false
 }

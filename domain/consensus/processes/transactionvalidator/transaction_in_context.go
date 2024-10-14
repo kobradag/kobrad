@@ -151,7 +151,7 @@ func (v *transactionValidator) checkTransactionInputAmounts(tx *externalapi.Doma
 		// or more than the max allowed per transaction. All amounts in
 		// a transaction are in a unit value known as a leor. One
 		// kobra is a quantity of leor as defined by the
-		// LeorPerKobra constant.
+		// LeorPerPyrin constant.
 		totalLeorIn, err = v.checkEntryAmounts(utxoEntry, totalLeorIn)
 		if err != nil {
 			return 0, err

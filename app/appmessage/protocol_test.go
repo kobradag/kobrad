@@ -33,16 +33,16 @@ func TestServiceFlagStringer(t *testing.T) {
 	}
 }
 
-// TestKobraNetStringer tests the stringized output for Kobra net types.
-func TestKobraStringer(t *testing.T) {
+// TestPyrinpyiNetStringer tests the stringized output for Pyrinpyi net types.
+func TestPyrinpyiStringer(t *testing.T) {
 	tests := []struct {
-		in   KobraNet
+		in   PyrinpyiNet
 		want string
 	}{
 		{Mainnet, "Mainnet"},
 		{Testnet, "Testnet"},
 		{Simnet, "Simnet"},
-		{0xffffffff, "Unknown KobraNet (4294967295)"},
+		{0xffffffff, "Unknown PyrinpyiNet (4294967295)"},
 	}
 
 	t.Logf("Running %d tests", len(tests))

@@ -63,7 +63,7 @@ func (mat *matrix) computeRank() int {
 	return rank
 }
 
-func (mat *matrix) HeavyHash(hash *externalapi.DomainHash, isFork bool) *externalapi.DomainHash {
+func (mat *matrix) HeavyHash(hash *externalapi.DomainHash) *externalapi.DomainHash {
 	hashBytes := hash.ByteArray()
 	var vector [64]uint16
 	var product [64]uint16
@@ -77,11 +77,7 @@ func (mat *matrix) HeavyHash(hash *externalapi.DomainHash, isFork bool) *externa
 		for j := 0; j < 64; j++ {
 			sum += mat[i][j] * vector[j]
 		}
-		if isFork {
-			product[i] = (sum & 0xF) ^ ((sum >> 4) & 0xF) ^ ((sum >> 8) & 0xF)
-		} else {
-			product[i] = sum >> 10
-		}
+		product[i] = sum >> 10
 	}
 
 	// Concatenate 4 LSBs back to 8 bit xor with sum1

@@ -1,6 +1,6 @@
 # kobraminer
 
-Kobraminer is a CPU-based miner for kobrad
+Pyrinminer is a CPU-based miner for kobrad
 
 ## Requirements
 

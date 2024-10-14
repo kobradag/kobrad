@@ -2,7 +2,7 @@ kobrad
 ====
 
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](https://choosealicense.com/licenses/isc/)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/Kobra/pyipad)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/Pyrinpyi/pyipad)
 
 kobrad is the reference full node kobra implementation written in Go (golang).
 (Fork of https://github.com/kaspanet/kaspad)

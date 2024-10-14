@@ -7,7 +7,6 @@ import (
 	"github.com/kobradag/kobrad/cmd/kobrawallet/libkobrawallet"
 	"github.com/kobradag/kobrad/cmd/kobrawallet/libkobrawallet/serialization"
 	"github.com/kobradag/kobrad/domain/consensus/model/externalapi"
-	"github.com/kobradag/kobrad/domain/consensus/utils/consensushashing"
 	"github.com/kobradag/kobrad/infrastructure/network/rpcclient"
 	"github.com/pkg/errors"
 	"time"
@@ -55,12 +54,16 @@ func (s *server) broadcast(transactions [][]byte, isDomain bool) ([]string, erro
 		}
 	}
 
-	s.forceSync()
+	err = s.refreshUTXOs()
+	if err != nil {
+		return nil, err
+	}
+
 	return txIDs, nil
 }
 
 func sendTransaction(client *rpcclient.RPCClient, tx *externalapi.DomainTransaction) (string, error) {
-	submitTransactionResponse, err := client.SubmitTransaction(appmessage.DomainTransactionToRPCTransaction(tx), consensushashing.TransactionID(tx).String(), false)
+	submitTransactionResponse, err := client.SubmitTransaction(appmessage.DomainTransactionToRPCTransaction(tx), false)
 	if err != nil {
 		return "", errors.Wrapf(err, "error submitting transaction")
 	}

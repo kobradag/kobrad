@@ -22,7 +22,7 @@ import (
 	"github.com/kobradag/kobrad/domain/dagconfig"
 )
 
-var testnet = flag.Bool("testnet", false, "operate on the testnet Kobra network")
+var testnet = flag.Bool("testnet", false, "operate on the testnet Pyrin network")
 
 // By default (without --testnet), use mainnet.
 var dagParams = &dagconfig.MainnetParams

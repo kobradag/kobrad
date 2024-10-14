@@ -24,7 +24,7 @@ func ExamplePayToAddrScript() {
 	// the address type. It is also required for the upcoming call to
 	// PayToAddrScript.
 	addressStr := "kobra:qqj9fg59mptxkr9j0y53j5mwurcmda5mtza9n6v9pm9uj8h0wgk6u9aj94505"
-	address, err := util.DecodeAddress(addressStr, util.Bech32PrefixKobra)
+	address, err := util.DecodeAddress(addressStr, util.Bech32PrefixPyrin)
 	if err != nil {
 		fmt.Println(err)
 		return

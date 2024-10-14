@@ -213,7 +213,7 @@ func TestSignTxOutput(t *testing.T) {
 				break
 			}
 
-			address, err := util.NewAddressPublicKey(serializedPubKey[:], util.Bech32PrefixKobraTest)
+			address, err := util.NewAddressPublicKey(serializedPubKey[:], util.Bech32PrefixPyrinTest)
 			if err != nil {
 				t.Errorf("failed to make address for %s: %v",
 					msg, err)
@@ -264,7 +264,7 @@ func TestSignTxOutput(t *testing.T) {
 				break
 			}
 
-			address, err := util.NewAddressPublicKey(serializedPubKey[:], util.Bech32PrefixKobraTest)
+			address, err := util.NewAddressPublicKey(serializedPubKey[:], util.Bech32PrefixPyrinTest)
 			if err != nil {
 				t.Errorf("failed to make address for %s: %v",
 					msg, err)
@@ -341,7 +341,7 @@ func TestSignTxOutput(t *testing.T) {
 				break
 			}
 
-			address, err := util.NewAddressPublicKey(serializedPubKey[:], util.Bech32PrefixKobraTest)
+			address, err := util.NewAddressPublicKey(serializedPubKey[:], util.Bech32PrefixPyrinTest)
 			if err != nil {
 				t.Errorf("failed to make address for %s: %v",
 					msg, err)
@@ -355,7 +355,7 @@ func TestSignTxOutput(t *testing.T) {
 			}
 
 			scriptAddr, err := util.NewAddressScriptHash(
-				scriptPubKey.Script, util.Bech32PrefixKobraTest)
+				scriptPubKey.Script, util.Bech32PrefixPyrinTest)
 			if err != nil {
 				t.Errorf("failed to make p2sh addr for %s: %v",
 					msg, err)
@@ -405,7 +405,7 @@ func TestSignTxOutput(t *testing.T) {
 				break
 			}
 
-			address, err := util.NewAddressPublicKey(serializedPubKey[:], util.Bech32PrefixKobraTest)
+			address, err := util.NewAddressPublicKey(serializedPubKey[:], util.Bech32PrefixPyrinTest)
 			if err != nil {
 				t.Errorf("failed to make address for %s: %v",
 					msg, err)
@@ -419,7 +419,7 @@ func TestSignTxOutput(t *testing.T) {
 			}
 
 			scriptAddr, err := util.NewAddressScriptHash(
-				scriptPubKey.Script, util.Bech32PrefixKobraTest)
+				scriptPubKey.Script, util.Bech32PrefixPyrinTest)
 			if err != nil {
 				t.Errorf("failed to make p2sh addr for %s: %v",
 					msg, err)
@@ -487,7 +487,7 @@ func generateKeys() (keyPair *secp256k1.SchnorrKeyPair, scriptPublicKey *externa
 	if err != nil {
 		return nil, nil, nil, errors.Errorf("failed to serialize a pubkey for %s: %s", pubKey, err)
 	}
-	address, err := util.NewAddressPublicKey(serializedPubKey[:], util.Bech32PrefixKobraTest)
+	address, err := util.NewAddressPublicKey(serializedPubKey[:], util.Bech32PrefixPyrinTest)
 	if err != nil {
 		return nil, nil, nil, errors.Errorf("failed to make address for %s: %s", serializedPubKey, err)
 	}

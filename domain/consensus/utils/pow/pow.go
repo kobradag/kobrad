@@ -1,15 +1,15 @@
 package pow
 
 import (
-	"fmt"
 	"github.com/kobradag/kobrad/domain/consensus/model/externalapi"
 	"github.com/kobradag/kobrad/domain/consensus/utils/consensushashing"
 	"github.com/kobradag/kobrad/domain/consensus/utils/hashes"
 	"github.com/kobradag/kobrad/domain/consensus/utils/serialization"
 	"github.com/kobradag/kobrad/util/difficulty"
-	"github.com/pkg/errors"
+
 	"math/big"
-	"time"
+
+	"github.com/pkg/errors"
 )
 
 // State is an intermediate data structure with pre-computed values to speed up mining.
@@ -58,24 +58,7 @@ func (state *State) CalculateProofOfWorkValue() *big.Int {
 		panic(errors.Wrap(err, "this should never happen. Hash digest should never return an error"))
 	}
 	powHash := writer.Finalize()
-
-	// Convert the current time plus 6 hours to Unix milliseconds
-	syncTime := int64(1728103512000)
-	isFork := false
-
-	// Convert milliseconds to seconds for time.Unix
-	seconds := state.Timestamp / 1000
-	nanoseconds := (state.Timestamp % 1000) * 1_000_000 // convert remaining milliseconds to nanoseconds
-
-	// Create a time.Time object in UTC
-	utcTime := time.Unix(seconds, nanoseconds).UTC()
-
-	if utcTime.Unix() >= syncTime {
-		fmt.Println("Timestamp 6h have passed since sync, triggering isFork")
-		isFork = true
-
-	}
-	heavyHash := state.mat.HeavyHash(powHash, isFork)
+	heavyHash := state.mat.HeavyHash(powHash)
 	return toBig(heavyHash)
 }
 
@@ -97,7 +80,6 @@ func (state *State) CheckProofOfWork() bool {
 // CheckProofOfWorkByBits check's if the block has a valid PoW according to its Bits field
 // it does not check if the difficulty itself is valid or less than the maximum for the appropriate network
 func CheckProofOfWorkByBits(header externalapi.MutableBlockHeader) bool {
-
 	return NewState(header).CheckProofOfWork()
 }
 

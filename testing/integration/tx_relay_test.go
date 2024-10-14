@@ -53,7 +53,7 @@ func TestTxRelay(t *testing.T) {
 	msgTx := generateTx(t, secondBlock.Transactions[transactionhelper.CoinbaseTransactionIndex], payer, payee)
 	domainTransaction := appmessage.MsgTxToDomainTransaction(msgTx)
 	rpcTransaction := appmessage.DomainTransactionToRPCTransaction(domainTransaction)
-	response, err := payer.rpcClient.SubmitTransaction(rpcTransaction, consensushashing.TransactionID(domainTransaction).String(), false)
+	response, err := payer.rpcClient.SubmitTransaction(rpcTransaction, false)
 	if err != nil {
 		t.Fatalf("Error submitting transaction: %+v", err)
 	}
@@ -139,7 +139,7 @@ func generateTx(t *testing.T, firstBlockCoinbase *externalapi.DomainTransaction,
 	txIns := make([]*appmessage.TxIn, 1)
 	txIns[0] = appmessage.NewTxIn(appmessage.NewOutpoint(consensushashing.TransactionID(firstBlockCoinbase), 0), []byte{}, 0, 1)
 
-	payeeAddress, err := util.DecodeAddress(payee.miningAddress, util.Bech32PrefixKobraSim)
+	payeeAddress, err := util.DecodeAddress(payee.miningAddress, util.Bech32PrefixPyrinSim)
 	if err != nil {
 		t.Fatalf("Error decoding payeeAddress: %+v", err)
 	}

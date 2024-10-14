@@ -7,7 +7,7 @@ wire
 
 Package wire implements the kobra wire protocol.
 
-## Kobra Message Overview
+## Pyrin Message Overview
 
 The kobra protocol consists of exchanging messages between peers. Each message
 is preceded by a header which identifies information about it such as which
@@ -32,13 +32,13 @@ to a remote node running a kobra peer. Example syntax is:
 	// Use the most recent protocol version supported by the package and the
 	// main kobra network.
 	pver := wire.ProtocolVersion
-	Kobra := wire.Mainnet
+	Pyrinpyi := wire.Mainnet
 
 	// Reads and validates the next kobra message from conn using the
-	// protocol version pver and the kobra network Kobra. The returns
+	// protocol version pver and the kobra network Pyrinpyi. The returns
 	// are a appmessage.Message, a []byte which contains the unmarshalled
 	// raw payload, and a possible error.
-	msg, rawPayload, err := wire.ReadMessage(conn, pver, Kobra)
+	msg, rawPayload, err := wire.ReadMessage(conn, pver, Pyrinpyi)
 	if err != nil {
 		// Log and handle the error
 	}
@@ -57,15 +57,15 @@ from a remote peer is:
 	// Use the most recent protocol version supported by the package and the
 	// main bitcoin network.
 	pver := wire.ProtocolVersion
-	Kobra := wire.Mainnet
+	Pyrinpyi := wire.Mainnet
 
 	// Create a new getaddr kobra message.
 	msg := wire.NewMsgGetAddr()
 
 	// Writes a kobra message msg to conn using the protocol version
-	// pver, and the kobra network Kobra. The return is a possible
+	// pver, and the kobra network Pyrinpyi. The return is a possible
 	// error.
-	err := wire.WriteMessage(conn, msg, pver, Kobra)
+	err := wire.WriteMessage(conn, msg, pver, Pyrinpyi)
 	if err != nil {
 		// Log and handle the error
 	}

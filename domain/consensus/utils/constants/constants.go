@@ -12,11 +12,11 @@ const (
 	// MaxScriptPublicKeyVersion is the current latest supported public key script version.
 	MaxScriptPublicKeyVersion uint16 = 0
 
-	// LeorPerKobra is the number of leor in one kobra (1 KODA).
-	LeorPerKobra = 100_000_000
+	// LeorPerPyrin is the number of leor in one kobra (1 KODA).
+	LeorPerPyrin = 100_000_000
 
 	// MaxLeor is the maximum transaction amount allowed in leor.
-	MaxLeor = uint64(1_000_000_000 * LeorPerKobra)
+	MaxLeor = uint64(1_000_000_000 * LeorPerPyrin)
 
 	// MaxTxInSequenceNum is the maximum sequence number the sequence field
 	// of a transaction input can be.

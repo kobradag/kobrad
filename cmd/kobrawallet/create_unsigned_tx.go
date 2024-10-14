@@ -3,10 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/kobradag/kobrad/cmd/kobrawallet/utils"
 	"os"
+
 	"github.com/kobradag/kobrad/cmd/kobrawallet/daemon/client"
 	"github.com/kobradag/kobrad/cmd/kobrawallet/daemon/pb"
+	"github.com/kobradag/kobrad/domain/consensus/utils/constants"
 )
 
 func createUnsignedTransaction(conf *createUnsignedTransactionConfig) error {
@@ -19,11 +20,7 @@ func createUnsignedTransaction(conf *createUnsignedTransactionConfig) error {
 	ctx, cancel := context.WithTimeout(context.Background(), daemonTimeout)
 	defer cancel()
 
-	sendAmountLeor, err := utils.KobraToLeor(conf.SendAmount)
-	if err != nil {
-		return err
-	}
-	
+	sendAmountLeor := uint64(conf.SendAmount * constants.LeorPerPyrin)
 	response, err := daemonClient.CreateUnsignedTransactions(ctx, &pb.CreateUnsignedTransactionsRequest{
 		From:                     conf.FromAddresses,
 		Address:                  conf.ToAddress,

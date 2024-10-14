@@ -64,7 +64,7 @@ func sweep(conf *sweepConfig) error {
 		return err
 	}
 
-	UTXOs, err := libkobrawallet.KobrawalletdUTXOsTolibkobrawalletUTXOs(getExternalSpendableUTXOsResponse.Entries)
+	UTXOs, err := libkobrawallet.PyrinwalletdUTXOsTolibkobrawalletUTXOs(getExternalSpendableUTXOsResponse.Entries)
 	if err != nil {
 		return err
 	}
@@ -116,12 +116,12 @@ func sweep(conf *sweepConfig) error {
 	fmt.Println("\nTransaction ID(s):")
 	for i, txID := range response.TxIDs {
 		fmt.Printf("\t%s\n", txID)
-		fmt.Println("\tSwept:\t", utils.FormatKobra(splitTransactions[i].Outputs[0].Value), " KODA")
+		fmt.Println("\tSwept:\t", utils.FormatKas(splitTransactions[i].Outputs[0].Value), " KODA")
 		totalExtracted = totalExtracted + splitTransactions[i].Outputs[0].Value
 	}
 
 	fmt.Println("\nTotal Funds swept (including transaction fees):")
-	fmt.Println("\t", utils.FormatKobra(totalExtracted), " KODA")
+	fmt.Println("\t", utils.FormatKas(totalExtracted), " KODA")
 
 	return nil
 }

@@ -46,8 +46,8 @@ var (
 // KType defines the size of GHOSTDAG consensus algorithm K parameter.
 type KType uint8
 
-// Params defines a Kobra network by its parameters. These parameters may be
-// used by Kobra applications to differentiate networks as well as addresses
+// Params defines a Pyrin network by its parameters. These parameters may be
+// used by Pyrin applications to differentiate networks as well as addresses
 // and keys for one network from those intended for use on another network.
 type Params struct {
 	// K defines the K parameter for GHOSTDAG consensus algorithm.
@@ -58,7 +58,7 @@ type Params struct {
 	Name string
 
 	// Net defines the magic bytes used to identify the network.
-	Net appmessage.KobraNet
+	Net appmessage.PyrinpyiNet
 
 	// RPCPort defines the rpc server port
 	RPCPort string
@@ -174,7 +174,7 @@ type Params struct {
 	// CoinbasePayloadScriptPublicKeyMaxLength is the maximum allowed script public key in the coinbase's payload
 	CoinbasePayloadScriptPublicKeyMaxLength uint8
 
-	// PruningProofM is the 'm' constant in the pruning proof. For more details see: https://github.com/Kobra/research/issues/3
+	// PruningProofM is the 'm' constant in the pruning proof. For more details see: https://github.com/Pyrinpyi/research/issues/3
 	PruningProofM uint64
 
 	// DeflationaryPhaseDaaScore is the DAA score after which the monetary policy switches
@@ -187,8 +187,6 @@ type Params struct {
 	MaxBlockLevel int
 
 	MergeDepth uint64
-
-	HFActivationDAAScore uint64
 }
 
 // NormalizeRPCServerAddress returns addr with the current network default
@@ -207,7 +205,7 @@ func (p *Params) PruningDepth() uint64 {
 	return 2*p.FinalityDepth() + 4*p.MergeSetSizeLimit*uint64(p.K) + 2*uint64(p.K) + 2
 }
 
-// MainnetParams defines the network parameters for the main Kobra network.
+// MainnetParams defines the network parameters for the main Pyrin network.
 var MainnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "kobra-mainnet",
@@ -215,7 +213,8 @@ var MainnetParams = Params{
 	RPCPort:     "44448",
 	DefaultPort: "44447",
 	DNSSeeds: []string{
-		"new-seeds.k0bradag.com",
+		"mainnet-seeds.k0bradag.com",
+		
 	},
 
 	// DAG parameters
@@ -246,7 +245,7 @@ var MainnetParams = Params{
 	AcceptUnroutable: false,
 
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixKobra,
+	Prefix: util.Bech32PrefixPyrin,
 
 	// Address encoding magics
 	PrivateKeyID: 0x80, // starts with 5 (uncompressed) or K (compressed)
@@ -272,11 +271,9 @@ var MainnetParams = Params{
 	// This means that any block that has a level lower or equal to genesis will be level 0.
 	MaxBlockLevel: 225,
 	MergeDepth:    defaultMergeDepth,
-
-	HFActivationDAAScore: 11_055_000,
 }
 
-// TestnetParams defines the network parameters for the test Kobra network.
+// TestnetParams defines the network parameters for the test Pyrin network.
 var TestnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "kobra-testnet-10",
@@ -284,7 +281,7 @@ var TestnetParams = Params{
 	RPCPort:     "16210",
 	DefaultPort: "16211",
 	DNSSeeds: []string{
-		"seeder1.k0bradag.com",
+		"seeder1.kobratestnet.network",
 	},
 
 	// DAG parameters
@@ -315,7 +312,7 @@ var TestnetParams = Params{
 	AcceptUnroutable: false,
 
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixKobraTest,
+	Prefix: util.Bech32PrefixPyrinTest,
 
 	// Address encoding magics
 	PrivateKeyID: 0xef, // starts with 9 (uncompressed) or c (compressed)
@@ -338,11 +335,9 @@ var TestnetParams = Params{
 
 	MaxBlockLevel: 250,
 	MergeDepth:    defaultMergeDepth,
-
-	HFActivationDAAScore: 11_040_000,
 }
 
-// SimnetParams defines the network parameters for the simulation test Kobra
+// SimnetParams defines the network parameters for the simulation test Pyrin
 // network. This network is similar to the normal test network except it is
 // intended for private use within a group of individuals doing simulation
 // testing. The functionality is intended to differ in that the only nodes
@@ -386,7 +381,7 @@ var SimnetParams = Params{
 
 	PrivateKeyID: 0x64, // starts with 4 (uncompressed) or F (compressed)
 	// Human-readable part for Bech32 encoded addresses
-	Prefix: util.Bech32PrefixKobraSim,
+	Prefix: util.Bech32PrefixPyrinSim,
 
 	// EnableNonNativeSubnetworks enables non-native/coinbase transactions
 	EnableNonNativeSubnetworks: false,
@@ -406,11 +401,9 @@ var SimnetParams = Params{
 
 	MaxBlockLevel: 250,
 	MergeDepth:    defaultMergeDepth,
-
-	HFActivationDAAScore: 11_050_844,
 }
 
-// DevnetParams defines the network parameters for the development Kobra network.
+// DevnetParams defines the network parameters for the development Pyrin network.
 var DevnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "kobra-devnet",
@@ -472,14 +465,14 @@ var DevnetParams = Params{
 	MergeDepth:    defaultMergeDepth,
 }
 
-// ErrDuplicateNet describes an error where the parameters for a Kobra
+// ErrDuplicateNet describes an error where the parameters for a Pyrin
 // network could not be set due to the network already being a standard
 // network or previously-registered into this package.
-var ErrDuplicateNet = errors.New("duplicate Kobra network")
+var ErrDuplicateNet = errors.New("duplicate Pyrin network")
 
-var registeredNets = make(map[appmessage.KobraNet]struct{})
+var registeredNets = make(map[appmessage.PyrinpyiNet]struct{})
 
-// Register registers the network parameters for a Kobra network. This may
+// Register registers the network parameters for a Pyrin network. This may
 // error with ErrDuplicateNet if the network is already registered (either
 // due to a previous Register call, or the network being one of the default
 // networks).

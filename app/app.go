@@ -33,7 +33,7 @@ var desiredLimits = &limits.DesiredLimits{
 var serviceDescription = &winservice.ServiceDescription{
 	Name:        "kobradsvc",
 	DisplayName: "kobrad Service",
-	Description: "Downloads and stays synchronized with the Kobra blockDAG and " +
+	Description: "Downloads and stays synchronized with the Pyrin blockDAG and " +
 		"provides DAG services to applications.",
 }
 

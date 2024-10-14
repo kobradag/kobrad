@@ -46,7 +46,7 @@ func (s *server) selectExternalSpendableUTXOs(externalUTXOs *appmessage.GetUTXOs
 		if !isExternalUTXOSpendable(entry, daaScore, maturity) {
 			continue
 		}
-		selectedExternalUtxos = append(selectedExternalUtxos, libkobrawallet.AppMessageUTXOToKobrawalletdUTXO(entry))
+		selectedExternalUtxos = append(selectedExternalUtxos, libkobrawallet.AppMessageUTXOToPyrinwalletdUTXO(entry))
 	}
 
 	return selectedExternalUtxos, nil

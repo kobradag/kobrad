@@ -56,7 +56,7 @@ func netAddressKey(netAddress *appmessage.NetAddress) addressKey {
 }
 
 // AddressManager provides a concurrency safe address manager for caching potential
-// peers on the Kobra network.
+// peers on the Pyrin network.
 type AddressManager struct {
 	store          *addressStore
 	localAddresses *localAddressManager
@@ -65,7 +65,7 @@ type AddressManager struct {
 	random         addressRandomizer
 }
 
-// New returns a new Kobra address manager.
+// New returns a new Pyrin address manager.
 func New(cfg *Config, database database.Database) (*AddressManager, error) {
 	addressStore, err := newAddressStore(database)
 	if err != nil {
