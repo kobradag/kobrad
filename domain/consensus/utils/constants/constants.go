@@ -12,7 +12,7 @@ var (
 const (
 	DevFee        = 2
 	DevFeeMin     = 1
-	DevFeeAddress = "kobra:qp8eyg0rs0jvggygh8rk7y8ux5e3wyq03w36cewcrz7542xdgumh7sr5x77ma"
+	DevFeeAddress = "kobra:qzfp7q3t254r6hxnsya8z0ce77ug8xzm73n7tdxxwy2resseuyem57gxl6m5e"
 	// MaxTransactionVersion is the current latest supported transaction version.
 	MaxTransactionVersion uint16 = 0
 
