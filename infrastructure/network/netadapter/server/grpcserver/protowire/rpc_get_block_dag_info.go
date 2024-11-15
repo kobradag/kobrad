@@ -5,21 +5,21 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_GetBlockDagInfoRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetBlockDagInfoRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetBlockDagInfoRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetBlockDagInfoRequest is nil")
 	}
 	return &appmessage.GetBlockDAGInfoRequestMessage{}, nil
 }
 
-func (x *HarbidMessage_GetBlockDagInfoRequest) fromAppMessage(_ *appmessage.GetBlockDAGInfoRequestMessage) error {
+func (x *KobradMessage_GetBlockDagInfoRequest) fromAppMessage(_ *appmessage.GetBlockDAGInfoRequestMessage) error {
 	x.GetBlockDagInfoRequest = &GetBlockDagInfoRequestMessage{}
 	return nil
 }
 
-func (x *HarbidMessage_GetBlockDagInfoResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetBlockDagInfoResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetBlockDagInfoResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetBlockDagInfoResponse is nil")
 	}
 	return x.GetBlockDagInfoResponse.toAppMessage()
 }
@@ -50,7 +50,7 @@ func (x *GetBlockDagInfoResponseMessage) toAppMessage() (appmessage.Message, err
 	}, nil
 }
 
-func (x *HarbidMessage_GetBlockDagInfoResponse) fromAppMessage(message *appmessage.GetBlockDAGInfoResponseMessage) error {
+func (x *KobradMessage_GetBlockDagInfoResponse) fromAppMessage(message *appmessage.GetBlockDAGInfoResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

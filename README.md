@@ -2,7 +2,7 @@ kobrad
 ====
 
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](https://choosealicense.com/licenses/isc/)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/Pyrinpyi/pyipad)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/Kobra/pyipad)
 
 kobrad is the reference full node kobra implementation written in Go (golang).
 (Fork of https://github.com/kaspanet/kaspad)
@@ -51,7 +51,7 @@ $ kobrad
 ```
 
 ## Discord
-Join our discord server using the following link : https://discord.gg/me5Hv8DFY5
+Join our discord server using the following link : https://discord.gg/ahnm5zENqg
 
 ## Issue Tracker
 
@@ -64,6 +64,6 @@ The [documentation](https://github.com/kobradag/docs) is a work-in-progress
 
 ## License
 
-kobrad is licensed under the copyfree [ISC License](https://choosealicense.com/licenses/isc/).
+pyipad is licensed under the copyfree [ISC License](https://choosealicense.com/licenses/isc/).
 # kobrad
  

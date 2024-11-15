@@ -5,22 +5,22 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_GetSelectedTipHashRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetSelectedTipHashRequest) toAppMessage() (appmessage.Message, error) {
 	return &appmessage.GetSelectedTipHashRequestMessage{}, nil
 }
 
-func (x *HarbidMessage_GetSelectedTipHashRequest) fromAppMessage(_ *appmessage.GetSelectedTipHashRequestMessage) error {
+func (x *KobradMessage_GetSelectedTipHashRequest) fromAppMessage(_ *appmessage.GetSelectedTipHashRequestMessage) error {
 	return nil
 }
 
-func (x *HarbidMessage_GetSelectedTipHashResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetSelectedTipHashResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetSelectedTipHashResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetSelectedTipHashResponse is nil")
 	}
 	return x.GetSelectedTipHashResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_GetSelectedTipHashResponse) fromAppMessage(message *appmessage.GetSelectedTipHashResponseMessage) error {
+func (x *KobradMessage_GetSelectedTipHashResponse) fromAppMessage(message *appmessage.GetSelectedTipHashResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

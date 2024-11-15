@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 
@@ -35,6 +36,7 @@ type configFlags struct {
 	RPCServer             string   `short:"s" long:"rpcserver" description:"RPC server to connect to"`
 	MiningAddr            string   `long:"miningaddr" description:"Address to mine to"`
 	NumberOfBlocks        uint64   `short:"n" long:"numblocks" description:"Number of blocks to mine. If omitted, will mine until the process is interrupted."`
+	Threads               *int     `short:"t" long:"threads" description:"Number of threads to use for CPU miner."`
 	MineWhenNotSynced     bool     `long:"mine-when-not-synced" description:"Mine even if the node is not synced with the rest of the network."`
 	Profile               string   `long:"profile" description:"Enable HTTP profiling on given port -- NOTE port must be between 1024 and 65536"`
 	TargetBlocksPerSecond *float64 `long:"target-blocks-per-second" description:"Sets a maximum block rate. 0 means no limit (The default one is 2 * target network block rate)"`
@@ -76,6 +78,13 @@ func parseConfig() (*configFlags, error) {
 			return nil, errors.New("The profile port must be between 1024 and 65535")
 		}
 	}
+
+	if cfg.Threads == nil {
+		numcpu := runtime.NumCPU()
+		fmt.Printf("Number of CPU's found: %d\n", numcpu)
+		cfg.Threads = &numcpu
+	}
+	fmt.Printf("Threads enabled: %d\n", *cfg.Threads)
 
 	if cfg.MiningAddr == "" {
 		return nil, errors.New("--miningaddr is required")

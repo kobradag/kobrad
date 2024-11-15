@@ -239,13 +239,13 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 		config.GenesisBlock.Header.Bits())
 	coinbaseManager := coinbasemanager.New(
 		dbManager,
-
 		config.SubsidyGenesisReward,
 		config.PreDeflationaryPhaseBaseSubsidy,
 		config.CoinbasePayloadScriptPublicKeyMaxLength,
 		config.GenesisHash,
 		config.DeflationaryPhaseDaaScore,
 		config.DeflationaryPhaseBaseSubsidy,
+
 
 		dagTraversalManager,
 		ghostdagDataStore,
@@ -349,6 +349,7 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 		config.MaxBlockParents,
 		config.TimestampDeviationTolerance,
 		config.TargetTimePerBlock,
+		config.POWScores,
 		config.MaxBlockLevel,
 
 		dbManager,
@@ -397,7 +398,8 @@ func (f *factory) NewConsensus(config *Config, db infrastructuredatabase.Databas
 	blockBuilder := blockbuilder.New(
 		dbManager,
 		genesisHash,
-
+		config.POWScores,
+		
 		difficultyManager,
 		pastMedianTimeManager,
 		coinbaseManager,

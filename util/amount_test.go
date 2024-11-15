@@ -35,7 +35,7 @@ func TestAmountCreation(t *testing.T) {
 			name:     "one hundred",
 			amount:   100,
 			valid:    true,
-			expected: 100 * constants.LeorPerPyrin,
+			expected: 100 * constants.LeorPerKobra,
 		},
 		{
 			name:     "fraction",
@@ -47,13 +47,13 @@ func TestAmountCreation(t *testing.T) {
 			name:     "rounding up",
 			amount:   54.999999999999943157,
 			valid:    true,
-			expected: 55 * constants.LeorPerPyrin,
+			expected: 55 * constants.LeorPerKobra,
 		},
 		{
 			name:     "rounding down",
 			amount:   55.000000000000056843,
 			valid:    true,
-			expected: 55 * constants.LeorPerPyrin,
+			expected: 55 * constants.LeorPerKobra,
 		},
 
 		// Negative tests.

@@ -5,9 +5,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_RequestPruningPointUTXOSet) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_RequestPruningPointUTXOSet) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_RequestPruningPointUTXOSet is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_RequestPruningPointUTXOSet is nil")
 	}
 	return x.RequestPruningPointUTXOSet.toAppMessage()
 }
@@ -23,7 +23,7 @@ func (x *RequestPruningPointUTXOSetMessage) toAppMessage() (appmessage.Message, 
 	return &appmessage.MsgRequestPruningPointUTXOSet{PruningPointHash: pruningPointHash}, nil
 }
 
-func (x *HarbidMessage_RequestPruningPointUTXOSet) fromAppMessage(
+func (x *KobradMessage_RequestPruningPointUTXOSet) fromAppMessage(
 	msgRequestPruningPointUTXOSet *appmessage.MsgRequestPruningPointUTXOSet) error {
 
 	x.RequestPruningPointUTXOSet = &RequestPruningPointUTXOSetMessage{}

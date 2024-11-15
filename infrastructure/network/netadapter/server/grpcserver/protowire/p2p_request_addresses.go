@@ -5,9 +5,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_RequestAddresses) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_RequestAddresses) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_RequestAddresses is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_RequestAddresses is nil")
 	}
 	return x.RequestAddresses.toAppMessage()
 }
@@ -29,7 +29,7 @@ func (x *RequestAddressesMessage) toAppMessage() (appmessage.Message, error) {
 
 }
 
-func (x *HarbidMessage_RequestAddresses) fromAppMessage(msgGetAddresses *appmessage.MsgRequestAddresses) error {
+func (x *KobradMessage_RequestAddresses) fromAppMessage(msgGetAddresses *appmessage.MsgRequestAddresses) error {
 	x.RequestAddresses = &RequestAddressesMessage{
 		IncludeAllSubnetworks: msgGetAddresses.IncludeAllSubnetworks,
 		SubnetworkId:          domainSubnetworkIDToProto(msgGetAddresses.SubnetworkID),

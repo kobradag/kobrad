@@ -6,7 +6,7 @@ supported kobra messages to and from the appmessage. This package does not deal
 with the specifics of message handling such as what to do when a message is
 received. This provides the caller with a high level of flexibility.
 
-# Pyrin Message Overview
+# Kobra Message Overview
 
 The kobra protocol consists of exchanging messages between peers. Each
 message is preceded by a header which identifies information about it such as
@@ -60,7 +60,7 @@ latest protocol version this package supports and is typically the value to use
 for all outbound connections before a potentially lower protocol version is
 negotiated.
 
-# Pyrin Network
+# Kobra Network
 
 The kobra network is a magic number which is used to identify the start of a
 message and which kobra network the message applies to. This package provides
@@ -96,10 +96,10 @@ function. It accepts any io.Reader, but typically this will be a net.Conn to
 a remote node running a kobra peer. Example syntax is:
 
 	// Reads and validates the next kobra message from conn using the
-	// protocol version pver and the kobra network Pyrinpyi. The returns
+	// protocol version pver and the kobra network Kobra. The returns
 	// are a appmessage.Message, a []byte which contains the unmarshalled
 	// raw payload, and a possible error.
-	msg, rawPayload, err := appmessage.ReadMessage(conn, pver, Pyrinpyi)
+	msg, rawPayload, err := appmessage.ReadMessage(conn, pver, Kobra)
 	if err != nil {
 		// Log and handle the error
 	}
@@ -115,9 +115,9 @@ from a remote peer is:
 	msg := appmessage.NewMsgRequestAddresses()
 
 	// Writes a kobra message msg to conn using the protocol version
-	// pver, and the kobra network Pyrinpyi. The return is a possible
+	// pver, and the kobra network Kobra. The return is a possible
 	// error.
-	err := appmessage.WriteMessage(conn, msg, pver, Pyrinpyi)
+	err := appmessage.WriteMessage(conn, msg, pver, Kobra)
 	if err != nil {
 		// Log and handle the error
 	}

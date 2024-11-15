@@ -9,8 +9,8 @@ import (
 
 // protobuf generates the command types with two types:
 // 1. A concrete type that holds the fields of the command bearing the name of the command with `RequestMessage` as suffix
-// 2. A wrapper that implements isHarbidMessage_Payload, having a single field pointing to the concrete command
-//    bearing the name of the command with `HarbidMessage_` prefix and `Request` suffix
+// 2. A wrapper that implements isKobradMessage_Payload, having a single field pointing to the concrete command
+//    bearing the name of the command with `KobradMessage_` prefix and `Request` suffix
 
 // unwrapCommandType converts a reflect.Type signifying a wrapper type into the concrete request type
 func unwrapCommandType(requestTypeWrapped reflect.Type) reflect.Type {
@@ -29,13 +29,13 @@ func isFieldExported(field reflect.StructField) bool {
 }
 
 // generatekobradMessage generates a wrapped kobradMessage with the given `commandValue`
-func generatekobradMessage(commandValue reflect.Value, commandDesc *commandDescription) (*protowire.HarbidMessage, error) {
+func generatekobradMessage(commandValue reflect.Value, commandDesc *commandDescription) (*protowire.KobradMessage, error) {
 	commandWrapper := reflect.New(commandDesc.typeof)
 	unwrapCommandValue(commandWrapper).Set(commandValue)
 
-	kobradMessage := reflect.New(reflect.TypeOf(protowire.HarbidMessage{}))
+	kobradMessage := reflect.New(reflect.TypeOf(protowire.KobradMessage{}))
 	kobradMessage.Elem().FieldByName("Payload").Set(commandWrapper)
-	return kobradMessage.Interface().(*protowire.HarbidMessage), nil
+	return kobradMessage.Interface().(*protowire.KobradMessage), nil
 }
 
 // pointerToValue returns a reflect.Value that represents a pointer to the given value

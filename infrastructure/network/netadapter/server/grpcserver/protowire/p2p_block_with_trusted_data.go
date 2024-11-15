@@ -8,9 +8,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_BlockWithTrustedData) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_BlockWithTrustedData) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_BlockWithTrustedData is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_BlockWithTrustedData is nil")
 	}
 
 	msgBlock, err := x.BlockWithTrustedData.Block.toAppMessage()
@@ -52,7 +52,7 @@ func (x *HarbidMessage_BlockWithTrustedData) toAppMessage() (appmessage.Message,
 	}, nil
 }
 
-func (x *HarbidMessage_BlockWithTrustedData) fromAppMessage(msgBlockWithTrustedData *appmessage.MsgBlockWithTrustedData) error {
+func (x *KobradMessage_BlockWithTrustedData) fromAppMessage(msgBlockWithTrustedData *appmessage.MsgBlockWithTrustedData) error {
 	x.BlockWithTrustedData = &BlockWithTrustedDataMessage{
 		Block:        &BlockMessage{},
 		DaaScore:     msgBlockWithTrustedData.DAAScore,

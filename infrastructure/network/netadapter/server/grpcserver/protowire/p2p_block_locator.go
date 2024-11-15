@@ -6,9 +6,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_BlockLocator) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_BlockLocator) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_BlockLocator is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_BlockLocator is nil")
 	}
 	hashes, err := x.BlockLocator.toAppMessage()
 	if err != nil {
@@ -28,7 +28,7 @@ func (x *BlockLocatorMessage) toAppMessage() ([]*externalapi.DomainHash, error) 
 	return protoHashesToDomain(x.Hashes)
 }
 
-func (x *HarbidMessage_BlockLocator) fromAppMessage(msgBlockLocator *appmessage.MsgBlockLocator) error {
+func (x *KobradMessage_BlockLocator) fromAppMessage(msgBlockLocator *appmessage.MsgBlockLocator) error {
 	if len(msgBlockLocator.BlockLocatorHashes) > appmessage.MaxBlockLocatorsPerMsg {
 		return errors.Errorf("too many block locator hashes for message "+
 			"[count %d, max %d]", len(msgBlockLocator.BlockLocatorHashes), appmessage.MaxBlockLocatorsPerMsg)

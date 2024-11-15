@@ -9,38 +9,38 @@ import (
 )
 
 var commandTypes = []reflect.Type{
-	reflect.TypeOf(protowire.HarbidMessage_AddPeerRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetConnectedPeerInfoRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetPeerAddressesRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetCurrentNetworkRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetInfoRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_AddPeerRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetConnectedPeerInfoRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetPeerAddressesRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetCurrentNetworkRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetInfoRequest{}),
 
-	reflect.TypeOf(protowire.HarbidMessage_GetBlockRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetBlocksRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetHeadersRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetBlockCountRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetBlockDagInfoRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetSelectedTipHashRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetVirtualSelectedParentBlueScoreRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetVirtualSelectedParentChainFromBlockRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_ResolveFinalityConflictRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_EstimateNetworkHashesPerSecondRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetBlockRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetBlocksRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetHeadersRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetBlockCountRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetBlockDagInfoRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetSelectedTipHashRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetVirtualSelectedParentBlueScoreRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetVirtualSelectedParentChainFromBlockRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_ResolveFinalityConflictRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_EstimateNetworkHashesPerSecondRequest{}),
 
-	reflect.TypeOf(protowire.HarbidMessage_GetBlockTemplateRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_SubmitBlockRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetBlockTemplateRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_SubmitBlockRequest{}),
 
-	reflect.TypeOf(protowire.HarbidMessage_GetMempoolEntryRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetMempoolEntriesRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetMempoolEntriesByAddressesRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetMempoolEntryRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetMempoolEntriesRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetMempoolEntriesByAddressesRequest{}),
 
-	reflect.TypeOf(protowire.HarbidMessage_SubmitTransactionRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_SubmitTransactionRequest{}),
 
-	reflect.TypeOf(protowire.HarbidMessage_GetUtxosByAddressesRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetBalanceByAddressRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_GetCoinSupplyRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetUtxosByAddressesRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetBalanceByAddressRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_GetCoinSupplyRequest{}),
 
-	reflect.TypeOf(protowire.HarbidMessage_BanRequest{}),
-	reflect.TypeOf(protowire.HarbidMessage_UnbanRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_BanRequest{}),
+	reflect.TypeOf(protowire.KobradMessage_UnbanRequest{}),
 }
 
 type commandDescription struct {

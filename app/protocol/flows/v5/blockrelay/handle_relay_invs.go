@@ -11,6 +11,7 @@ import (
 	"github.com/kobradag/kobrad/domain/consensus/model/externalapi"
 	"github.com/kobradag/kobrad/domain/consensus/ruleerrors"
 	"github.com/kobradag/kobrad/domain/consensus/utils/consensushashing"
+	"github.com/kobradag/kobrad/domain/consensus/utils/constants"
 	"github.com/kobradag/kobrad/domain/consensus/utils/hashset"
 	"github.com/kobradag/kobrad/infrastructure/config"
 	"github.com/kobradag/kobrad/infrastructure/network/netadapter/router"
@@ -134,6 +135,21 @@ func (flow *handleRelayInvsFlow) start() error {
 			continue
 		}
 
+		if !flow.IsIBDRunning() {
+			daaScore := block.Header.DAAScore()
+			var version uint16 = 1
+			for _, powScore := range flow.Config().ActiveNetParams.POWScores {
+				if daaScore >= powScore {
+					version = version + 1
+				}
+			}
+			constants.BlockVersion = version
+			if block.Header.Version() != constants.BlockVersion {
+				log.Infof("Cannot process %s, Wrong block version %d, it should be %d", consensushashing.BlockHash(block), block.Header.Version(), constants.BlockVersion)
+				continue
+			}
+		}
+
 		err = flow.banIfBlockIsHeaderOnly(block)
 		if err != nil {
 			return err
@@ -234,7 +250,6 @@ func (flow *handleRelayInvsFlow) start() error {
 				return err
 			}
 		}
-
 		log.Infof("Accepted block %s via relay", inv.Hash)
 		err = flow.OnNewBlock(block)
 		if err != nil {

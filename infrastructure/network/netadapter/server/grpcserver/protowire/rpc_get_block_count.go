@@ -5,26 +5,26 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_GetBlockCountRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetBlockCountRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetBlockCountRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetBlockCountRequest is nil")
 	}
 	return &appmessage.GetBlockCountRequestMessage{}, nil
 }
 
-func (x *HarbidMessage_GetBlockCountRequest) fromAppMessage(_ *appmessage.GetBlockCountRequestMessage) error {
+func (x *KobradMessage_GetBlockCountRequest) fromAppMessage(_ *appmessage.GetBlockCountRequestMessage) error {
 	x.GetBlockCountRequest = &GetBlockCountRequestMessage{}
 	return nil
 }
 
-func (x *HarbidMessage_GetBlockCountResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetBlockCountResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetBlockCountResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetBlockCountResponse is nil")
 	}
 	return x.GetBlockCountResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_GetBlockCountResponse) fromAppMessage(message *appmessage.GetBlockCountResponseMessage) error {
+func (x *KobradMessage_GetBlockCountResponse) fromAppMessage(message *appmessage.GetBlockCountResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

@@ -10,6 +10,16 @@ import (
 
 // These constants are used to identify a specific RuleError.
 var (
+	// ErrDevFeeNotIncluded indicates that the transactions do not
+	// include dev fee.
+	ErrDevFeeNotIncluded = newRuleError("ErrDevFeeNotIncluded")
+	
+	// DaaScoreNil indicates that the DAA Score is zero or negative.
+	DaaScoreNil = newRuleError("DaaScoreNil")
+
+	// PowScoresEmpty indicates that there are no hard fork DAA Scores defined.
+	PowScoresEmpty = newRuleError("PowScoresEmpty")
+	
 	// ErrDuplicateBlock indicates a block with the same hash already
 	// exists.
 	ErrDuplicateBlock = newRuleError("ErrDuplicateBlock")
@@ -121,7 +131,7 @@ var (
 	// ErrFirstTxNotCoinbase indicates the first transaction in a block
 	// is not a coinbase transaction.
 	ErrFirstTxNotCoinbase = newRuleError("ErrFirstTxNotCoinbase")
-
+	
 	// ErrMultipleCoinbases indicates a block contains more than one
 	// coinbase transaction.
 	ErrMultipleCoinbases = newRuleError("ErrMultipleCoinbases")

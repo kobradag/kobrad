@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_StopNotifyingUtxosChangedRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_StopNotifyingUtxosChangedRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_StopNotifyingUtxosChangedRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_StopNotifyingUtxosChangedRequest is nil")
 	}
 	return x.StopNotifyingUtxosChangedRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_StopNotifyingUtxosChangedRequest) fromAppMessage(message *appmessage.StopNotifyingUTXOsChangedRequestMessage) error {
+func (x *KobradMessage_StopNotifyingUtxosChangedRequest) fromAppMessage(message *appmessage.StopNotifyingUTXOsChangedRequestMessage) error {
 	x.StopNotifyingUtxosChangedRequest = &StopNotifyingUtxosChangedRequestMessage{
 		Addresses: message.Addresses,
 	}
@@ -28,14 +28,14 @@ func (x *StopNotifyingUtxosChangedRequestMessage) toAppMessage() (appmessage.Mes
 	}, nil
 }
 
-func (x *HarbidMessage_StopNotifyingUtxosChangedResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_StopNotifyingUtxosChangedResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_StopNotifyingUtxosChangedResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_StopNotifyingUtxosChangedResponse is nil")
 	}
 	return x.StopNotifyingUtxosChangedResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_StopNotifyingUtxosChangedResponse) fromAppMessage(message *appmessage.StopNotifyingUTXOsChangedResponseMessage) error {
+func (x *KobradMessage_StopNotifyingUtxosChangedResponse) fromAppMessage(message *appmessage.StopNotifyingUTXOsChangedResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

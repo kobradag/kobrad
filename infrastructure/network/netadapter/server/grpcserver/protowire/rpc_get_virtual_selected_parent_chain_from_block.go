@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_GetVirtualSelectedParentChainFromBlockRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetVirtualSelectedParentChainFromBlockRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetVirtualSelectedParentChainFromBlockRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetVirtualSelectedParentChainFromBlockRequest is nil")
 	}
 	return x.GetVirtualSelectedParentChainFromBlockRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_GetVirtualSelectedParentChainFromBlockRequest) fromAppMessage(message *appmessage.GetVirtualSelectedParentChainFromBlockRequestMessage) error {
+func (x *KobradMessage_GetVirtualSelectedParentChainFromBlockRequest) fromAppMessage(message *appmessage.GetVirtualSelectedParentChainFromBlockRequestMessage) error {
 	x.GetVirtualSelectedParentChainFromBlockRequest = &GetVirtualSelectedParentChainFromBlockRequestMessage{
 		StartHash:                     message.StartHash,
 		IncludeAcceptedTransactionIds: message.IncludeAcceptedTransactionIDs,
@@ -30,14 +30,14 @@ func (x *GetVirtualSelectedParentChainFromBlockRequestMessage) toAppMessage() (a
 	}, nil
 }
 
-func (x *HarbidMessage_GetVirtualSelectedParentChainFromBlockResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetVirtualSelectedParentChainFromBlockResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetVirtualSelectedParentChainFromBlockResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetVirtualSelectedParentChainFromBlockResponse is nil")
 	}
 	return x.GetVirtualSelectedParentChainFromBlockResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_GetVirtualSelectedParentChainFromBlockResponse) fromAppMessage(message *appmessage.GetVirtualSelectedParentChainFromBlockResponseMessage) error {
+func (x *KobradMessage_GetVirtualSelectedParentChainFromBlockResponse) fromAppMessage(message *appmessage.GetVirtualSelectedParentChainFromBlockResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

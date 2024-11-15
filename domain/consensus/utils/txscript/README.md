@@ -7,9 +7,9 @@ txscript
 Package txscript implements the kobra transaction script language. There is
 a comprehensive test suite.
 
-## Pyrin Scripts
+## Kobra Scripts
 
-Pyrin provides a stack-based, FORTH-like language for the scripts in
+Kobra provides a stack-based, FORTH-like language for the scripts in
 the kobra transactions. This language is not turing complete
 although it is still fairly powerful. 
 

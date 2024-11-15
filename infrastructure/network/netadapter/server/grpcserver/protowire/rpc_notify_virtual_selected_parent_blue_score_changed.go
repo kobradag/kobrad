@@ -5,26 +5,26 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest is nil")
 	}
 	return &appmessage.NotifyVirtualSelectedParentBlueScoreChangedRequestMessage{}, nil
 }
 
-func (x *HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest) fromAppMessage(_ *appmessage.NotifyVirtualSelectedParentBlueScoreChangedRequestMessage) error {
+func (x *KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest) fromAppMessage(_ *appmessage.NotifyVirtualSelectedParentBlueScoreChangedRequestMessage) error {
 	x.NotifyVirtualSelectedParentBlueScoreChangedRequest = &NotifyVirtualSelectedParentBlueScoreChangedRequestMessage{}
 	return nil
 }
 
-func (x *HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse is nil")
 	}
 	return x.NotifyVirtualSelectedParentBlueScoreChangedResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse) fromAppMessage(message *appmessage.NotifyVirtualSelectedParentBlueScoreChangedResponseMessage) error {
+func (x *KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse) fromAppMessage(message *appmessage.NotifyVirtualSelectedParentBlueScoreChangedResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}
@@ -49,14 +49,14 @@ func (x *NotifyVirtualSelectedParentBlueScoreChangedResponseMessage) toAppMessag
 	}, nil
 }
 
-func (x *HarbidMessage_VirtualSelectedParentBlueScoreChangedNotification) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_VirtualSelectedParentBlueScoreChangedNotification) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_VirtualSelectedParentBlueScoreChangedNotification is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_VirtualSelectedParentBlueScoreChangedNotification is nil")
 	}
 	return x.VirtualSelectedParentBlueScoreChangedNotification.toAppMessage()
 }
 
-func (x *HarbidMessage_VirtualSelectedParentBlueScoreChangedNotification) fromAppMessage(message *appmessage.VirtualSelectedParentBlueScoreChangedNotificationMessage) error {
+func (x *KobradMessage_VirtualSelectedParentBlueScoreChangedNotification) fromAppMessage(message *appmessage.VirtualSelectedParentBlueScoreChangedNotificationMessage) error {
 	x.VirtualSelectedParentBlueScoreChangedNotification = &VirtualSelectedParentBlueScoreChangedNotificationMessage{
 		VirtualSelectedParentBlueScore: message.VirtualSelectedParentBlueScore,
 	}

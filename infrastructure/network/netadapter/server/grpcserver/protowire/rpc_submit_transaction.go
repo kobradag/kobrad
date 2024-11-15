@@ -7,14 +7,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_SubmitTransactionRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_SubmitTransactionRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_SubmitTransactionRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_SubmitTransactionRequest is nil")
 	}
 	return x.SubmitTransactionRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_SubmitTransactionRequest) fromAppMessage(message *appmessage.SubmitTransactionRequestMessage) error {
+func (x *KobradMessage_SubmitTransactionRequest) fromAppMessage(message *appmessage.SubmitTransactionRequestMessage) error {
 	x.SubmitTransactionRequest = &SubmitTransactionRequestMessage{
 		Transaction: &RpcTransaction{},
 		AllowOrphan: message.AllowOrphan,
@@ -37,14 +37,14 @@ func (x *SubmitTransactionRequestMessage) toAppMessage() (appmessage.Message, er
 	}, nil
 }
 
-func (x *HarbidMessage_SubmitTransactionResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_SubmitTransactionResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_SubmitTransactionResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_SubmitTransactionResponse is nil")
 	}
 	return x.SubmitTransactionResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_SubmitTransactionResponse) fromAppMessage(message *appmessage.SubmitTransactionResponseMessage) error {
+func (x *KobradMessage_SubmitTransactionResponse) fromAppMessage(message *appmessage.SubmitTransactionResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

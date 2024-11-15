@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_GetBalancesByAddressesRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetBalancesByAddressesRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetBalanceByAddressRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetBalanceByAddressRequest is nil")
 	}
 	return x.GetBalancesByAddressesRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_GetBalancesByAddressesRequest) fromAppMessage(message *appmessage.GetBalancesByAddressesRequestMessage) error {
+func (x *KobradMessage_GetBalancesByAddressesRequest) fromAppMessage(message *appmessage.GetBalancesByAddressesRequestMessage) error {
 	x.GetBalancesByAddressesRequest = &GetBalancesByAddressesRequestMessage{
 		Addresses: message.Addresses,
 	}
@@ -28,14 +28,14 @@ func (x *GetBalancesByAddressesRequestMessage) toAppMessage() (appmessage.Messag
 	}, nil
 }
 
-func (x *HarbidMessage_GetBalancesByAddressesResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetBalancesByAddressesResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
 		return nil, errors.Wrapf(errorNil, "GetBalanceByAddressResponse is nil")
 	}
 	return x.GetBalancesByAddressesResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_GetBalancesByAddressesResponse) fromAppMessage(message *appmessage.GetBalancesByAddressesResponseMessage) error {
+func (x *KobradMessage_GetBalancesByAddressesResponse) fromAppMessage(message *appmessage.GetBalancesByAddressesResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

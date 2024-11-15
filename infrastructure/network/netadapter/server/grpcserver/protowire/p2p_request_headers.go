@@ -5,9 +5,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_RequestHeaders) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_RequestHeaders) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_RequestBlockLocator is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_RequestBlockLocator is nil")
 	}
 	lowHash, err := x.RequestHeaders.LowHash.toDomain()
 	if err != nil {
@@ -45,7 +45,7 @@ func (x *RequestHeadersMessage) toAppMessage() (appmessage.Message, error) {
 
 }
 
-func (x *HarbidMessage_RequestHeaders) fromAppMessage(msgRequestHeaders *appmessage.MsgRequestHeaders) error {
+func (x *KobradMessage_RequestHeaders) fromAppMessage(msgRequestHeaders *appmessage.MsgRequestHeaders) error {
 	x.RequestHeaders = &RequestHeadersMessage{
 		LowHash:  domainHashToProto(msgRequestHeaders.LowHash),
 		HighHash: domainHashToProto(msgRequestHeaders.HighHash),

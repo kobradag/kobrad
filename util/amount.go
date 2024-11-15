@@ -88,7 +88,7 @@ func NewAmount(f float64) (Amount, error) {
 		return 0, errors.New("invalid kobra amount")
 	}
 
-	return round(f * constants.LeorPerPyrin), nil
+	return round(f * constants.LeorPerKobra), nil
 }
 
 // ToUnit converts a monetary amount counted in kobra base units to a

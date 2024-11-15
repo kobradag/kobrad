@@ -25,6 +25,7 @@ require (
 )
 
 require (
+	github.com/aead/skein v0.0.0-20160722084837-9365ae6e95d2 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.6 // indirect
 	golang.org/x/net v0.19.0 // indirect

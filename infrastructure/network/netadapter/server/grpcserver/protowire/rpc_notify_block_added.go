@@ -5,23 +5,23 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_NotifyBlockAddedRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_NotifyBlockAddedRequest) toAppMessage() (appmessage.Message, error) {
 	return &appmessage.NotifyBlockAddedRequestMessage{}, nil
 }
 
-func (x *HarbidMessage_NotifyBlockAddedRequest) fromAppMessage(_ *appmessage.NotifyBlockAddedRequestMessage) error {
+func (x *KobradMessage_NotifyBlockAddedRequest) fromAppMessage(_ *appmessage.NotifyBlockAddedRequestMessage) error {
 	x.NotifyBlockAddedRequest = &NotifyBlockAddedRequestMessage{}
 	return nil
 }
 
-func (x *HarbidMessage_NotifyBlockAddedResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_NotifyBlockAddedResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_NotifyBlockAddedResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_NotifyBlockAddedResponse is nil")
 	}
 	return x.NotifyBlockAddedResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_NotifyBlockAddedResponse) fromAppMessage(message *appmessage.NotifyBlockAddedResponseMessage) error {
+func (x *KobradMessage_NotifyBlockAddedResponse) fromAppMessage(message *appmessage.NotifyBlockAddedResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}
@@ -46,14 +46,14 @@ func (x *NotifyBlockAddedResponseMessage) toAppMessage() (appmessage.Message, er
 	}, nil
 }
 
-func (x *HarbidMessage_BlockAddedNotification) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_BlockAddedNotification) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_BlockAddedNotification is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_BlockAddedNotification is nil")
 	}
 	return x.BlockAddedNotification.toAppMessage()
 }
 
-func (x *HarbidMessage_BlockAddedNotification) fromAppMessage(message *appmessage.BlockAddedNotificationMessage) error {
+func (x *KobradMessage_BlockAddedNotification) fromAppMessage(message *appmessage.BlockAddedNotificationMessage) error {
 	block := &RpcBlock{}
 	err := block.fromAppMessage(message.Block)
 	if err != nil {

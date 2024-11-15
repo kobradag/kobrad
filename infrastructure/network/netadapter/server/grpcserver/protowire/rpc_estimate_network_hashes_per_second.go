@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_EstimateNetworkHashesPerSecondRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_EstimateNetworkHashesPerSecondRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_EstimateNetworkHashesPerSecondRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_EstimateNetworkHashesPerSecondRequest is nil")
 	}
 	return x.EstimateNetworkHashesPerSecondRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_EstimateNetworkHashesPerSecondRequest) fromAppMessage(message *appmessage.EstimateNetworkHashesPerSecondRequestMessage) error {
+func (x *KobradMessage_EstimateNetworkHashesPerSecondRequest) fromAppMessage(message *appmessage.EstimateNetworkHashesPerSecondRequestMessage) error {
 	x.EstimateNetworkHashesPerSecondRequest = &EstimateNetworkHashesPerSecondRequestMessage{
 		WindowSize: message.WindowSize,
 		StartHash:  message.StartHash,
@@ -30,14 +30,14 @@ func (x *EstimateNetworkHashesPerSecondRequestMessage) toAppMessage() (appmessag
 	}, nil
 }
 
-func (x *HarbidMessage_EstimateNetworkHashesPerSecondResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_EstimateNetworkHashesPerSecondResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_EstimateNetworkHashesPerSecondResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_EstimateNetworkHashesPerSecondResponse is nil")
 	}
 	return x.EstimateNetworkHashesPerSecondResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_EstimateNetworkHashesPerSecondResponse) fromAppMessage(message *appmessage.EstimateNetworkHashesPerSecondResponseMessage) error {
+func (x *KobradMessage_EstimateNetworkHashesPerSecondResponse) fromAppMessage(message *appmessage.EstimateNetworkHashesPerSecondResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

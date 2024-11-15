@@ -5,7 +5,6 @@ import (
 
 	"github.com/kobradag/kobrad/infrastructure/config"
 	"github.com/pkg/errors"
-
 	"github.com/jessevdk/go-flags"
 )
 
@@ -22,6 +21,8 @@ const (
 	newAddressSubCmd                = "new-address"
 	dumpUnencryptedDataSubCmd       = "dump-unencrypted-data"
 	startDaemonSubCmd               = "start-daemon"
+	versionSubCmd                   = "version"
+	getDaemonVersionSubCmd          = "get-daemon-version"
 )
 
 const (
@@ -30,6 +31,7 @@ const (
 )
 
 type configFlags struct {
+	ShowVersion bool `short:"V" long:"version" description:"Display version information and exit"`
 	config.NetworkFlags
 }
 
@@ -55,10 +57,10 @@ type sendConfig struct {
 	KeysFile                 string   `long:"keys-file" short:"f" description:"Keys file location (default: ~/.kobrawallet/keys.json (*nix), %USERPROFILE%\\AppData\\Local\\Caswallet\\key.json (Windows))"`
 	Password                 string   `long:"password" short:"p" description:"Wallet password"`
 	DaemonAddress            string   `long:"daemonaddress" short:"d" description:"Wallet daemon server to connect to"`
-	ToAddress                string   `long:"to-address" short:"t" description:"The public address to send Pyrin to" required:"true"`
-	FromAddresses            []string `long:"from-address" short:"a" description:"Specific public address to send Pyrin from. Use multiple times to accept several addresses" required:"false"`
-	SendAmount               float64  `long:"send-amount" short:"v" description:"An amount to send in Pyrin (e.g. 1234.12345678)"`
-	IsSendAll                bool     `long:"send-all" description:"Send all the Pyrin in the wallet (mutually exclusive with --send-amount)"`
+	ToAddress                string   `long:"to-address" short:"t" description:"The public address to send Kobra to" required:"true"`
+	FromAddresses            []string `long:"from-address" short:"a" description:"Specific public address to send Kobra from. Use multiple times to accept several addresses" required:"false"`
+	SendAmount               string   `long:"send-amount" short:"v" description:"An amount to send in Kobra (e.g. 1234.12345678)"`
+	IsSendAll                bool     `long:"send-all" description:"Send all the Kobra in the wallet (mutually exclusive with --send-amount)"`
 	UseExistingChangeAddress bool     `long:"use-existing-change-address" short:"u" description:"Will use an existing change address (in case no change address was ever used, it will use a new one)"`
 	Verbose                  bool     `long:"show-serialized" short:"s" description:"Show a list of hex encoded sent transactions"`
 	config.NetworkFlags
@@ -72,10 +74,10 @@ type sweepConfig struct {
 
 type createUnsignedTransactionConfig struct {
 	DaemonAddress            string   `long:"daemonaddress" short:"d" description:"Wallet daemon server to connect to"`
-	ToAddress                string   `long:"to-address" short:"t" description:"The public address to send Pyrin to" required:"true"`
-	FromAddresses            []string `long:"from-address" short:"a" description:"Specific public address to send Pyrin from. Use multiple times to accept several addresses" required:"false"`
-	SendAmount               float64  `long:"send-amount" short:"v" description:"An amount to send in Pyrin (e.g. 1234.12345678)"`
-	IsSendAll                bool     `long:"send-all" description:"Send all the Pyrin in the wallet (mutually exclusive with --send-amount)"`
+	ToAddress                string   `long:"to-address" short:"t" description:"The public address to send Kobra to" required:"true"`
+	FromAddresses            []string `long:"from-address" short:"a" description:"Specific public address to send Kobra from. Use multiple times to accept several addresses" required:"false"`
+	SendAmount               string   `long:"send-amount" short:"v" description:"An amount to send in Kobra (e.g. 1234.12345678)"`
+	IsSendAll                bool     `long:"send-all" description:"Send all the Kobra in the wallet (mutually exclusive with --send-amount)"`
 	UseExistingChangeAddress bool     `long:"use-existing-change-address" short:"u" description:"Will use an existing change address (in case no change address was ever used, it will use a new one)"`
 	config.NetworkFlags
 }
@@ -129,6 +131,13 @@ type dumpUnencryptedDataConfig struct {
 	config.NetworkFlags
 }
 
+type versionConfig struct {
+}
+
+type getDaemonVersionConfig struct {
+	DaemonAddress string `long:"daemonaddress" short:"d" description:"Wallet daemon server to connect to"`
+}
+
 func parseCommandLine() (subCommand string, config interface{}) {
 	cfg := &configFlags{}
 	parser := flags.NewParser(cfg, flags.PrintErrors|flags.HelpFlag)
@@ -139,11 +148,11 @@ func parseCommandLine() (subCommand string, config interface{}) {
 
 	balanceConf := &balanceConfig{DaemonAddress: defaultListen}
 	parser.AddCommand(balanceSubCmd, "Shows the balance of a public address",
-		"Shows the balance for a public address in Pyrin", balanceConf)
+		"Shows the balance for a public address in Kobra", balanceConf)
 
 	sendConf := &sendConfig{DaemonAddress: defaultListen}
-	parser.AddCommand(sendSubCmd, "Sends a Pyrin transaction to a public address",
-		"Sends a Pyrin transaction to a public address", sendConf)
+	parser.AddCommand(sendSubCmd, "Sends a Kobra transaction to a public address",
+		"Sends a Kobra transaction to a public address", sendConf)
 
 	sweepConf := &sweepConfig{DaemonAddress: defaultListen}
 	parser.AddCommand(sweepSubCmd, "Sends all funds associated with the given schnorr private key to a new address of the current wallet",
@@ -152,8 +161,8 @@ func parseCommandLine() (subCommand string, config interface{}) {
 			"to send funds to your main wallet.", sweepConf)
 
 	createUnsignedTransactionConf := &createUnsignedTransactionConfig{DaemonAddress: defaultListen}
-	parser.AddCommand(createUnsignedTransactionSubCmd, "Create an unsigned Pyrin transaction",
-		"Create an unsigned Pyrin transaction", createUnsignedTransactionConf)
+	parser.AddCommand(createUnsignedTransactionSubCmd, "Create an unsigned Kobra transaction",
+		"Create an unsigned Kobra transaction", createUnsignedTransactionConf)
 
 	signConf := &signConfig{}
 	parser.AddCommand(signSubCmd, "Sign the given partially signed transaction",
@@ -185,6 +194,9 @@ func parseCommandLine() (subCommand string, config interface{}) {
 		Listen:    defaultListen,
 	}
 	parser.AddCommand(startDaemonSubCmd, "Start the wallet daemon", "Start the wallet daemon", startDaemonConf)
+	parser.AddCommand(versionSubCmd, "Get the wallet version", "Get the wallet version", &versionConfig{})
+	getDaemonVersionConf := &getDaemonVersionConfig{DaemonAddress: defaultListen}
+	parser.AddCommand(getDaemonVersionSubCmd, "Get the wallet daemon version", "Get the wallet daemon version", getDaemonVersionConf)
 
 	_, err := parser.Parse()
 	if err != nil {
@@ -290,14 +302,17 @@ func parseCommandLine() (subCommand string, config interface{}) {
 			printErrorAndExit(err)
 		}
 		config = startDaemonConf
+	case versionSubCmd:
+	case getDaemonVersionSubCmd:
+		config = getDaemonVersionConf
 	}
 
 	return parser.Command.Active.Name, config
 }
 
 func validateCreateUnsignedTransactionConf(conf *createUnsignedTransactionConfig) error {
-	if (!conf.IsSendAll && conf.SendAmount == 0) ||
-		(conf.IsSendAll && conf.SendAmount > 0) {
+	if (!conf.IsSendAll && conf.SendAmount == "") ||
+		(conf.IsSendAll && conf.SendAmount != "") {
 
 		return errors.New("exactly one of '--send-amount' or '--all' must be specified")
 	}
@@ -305,8 +320,8 @@ func validateCreateUnsignedTransactionConf(conf *createUnsignedTransactionConfig
 }
 
 func validateSendConfig(conf *sendConfig) error {
-	if (!conf.IsSendAll && conf.SendAmount == 0) ||
-		(conf.IsSendAll && conf.SendAmount > 0) {
+	if (!conf.IsSendAll && conf.SendAmount == "") ||
+		(conf.IsSendAll && conf.SendAmount != "") {
 
 		return errors.New("exactly one of '--send-amount' or '--all' must be specified")
 	}

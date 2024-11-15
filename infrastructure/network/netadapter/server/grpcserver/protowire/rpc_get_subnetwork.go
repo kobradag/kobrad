@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_GetSubnetworkRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetSubnetworkRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetSubnetworkRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetSubnetworkRequest is nil")
 	}
 	return x.GetSubnetworkRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_GetSubnetworkRequest) fromAppMessage(message *appmessage.GetSubnetworkRequestMessage) error {
+func (x *KobradMessage_GetSubnetworkRequest) fromAppMessage(message *appmessage.GetSubnetworkRequestMessage) error {
 	x.GetSubnetworkRequest = &GetSubnetworkRequestMessage{
 		SubnetworkId: message.SubnetworkID,
 	}
@@ -28,14 +28,14 @@ func (x *GetSubnetworkRequestMessage) toAppMessage() (appmessage.Message, error)
 	}, nil
 }
 
-func (x *HarbidMessage_GetSubnetworkResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetSubnetworkResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetSubnetworkResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetSubnetworkResponse is nil")
 	}
 	return x.GetSubnetworkResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_GetSubnetworkResponse) fromAppMessage(message *appmessage.GetSubnetworkResponseMessage) error {
+func (x *KobradMessage_GetSubnetworkResponse) fromAppMessage(message *appmessage.GetSubnetworkResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

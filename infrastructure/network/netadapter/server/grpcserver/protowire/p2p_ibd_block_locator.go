@@ -5,9 +5,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_IbdBlockLocator) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_IbdBlockLocator) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_IbdBlockLocator is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_IbdBlockLocator is nil")
 	}
 	return x.IbdBlockLocator.toAppMessage()
 }
@@ -30,7 +30,7 @@ func (x *IbdBlockLocatorMessage) toAppMessage() (appmessage.Message, error) {
 	}, nil
 }
 
-func (x *HarbidMessage_IbdBlockLocator) fromAppMessage(message *appmessage.MsgIBDBlockLocator) error {
+func (x *KobradMessage_IbdBlockLocator) fromAppMessage(message *appmessage.MsgIBDBlockLocator) error {
 	x.IbdBlockLocator = &IbdBlockLocatorMessage{
 		TargetHash:         domainHashToProto(message.TargetHash),
 		BlockLocatorHashes: domainHashesToProto(message.BlockLocatorHashes),

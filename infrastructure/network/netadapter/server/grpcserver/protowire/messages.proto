@@ -6,7 +6,7 @@ option go_package = "github.com/kobradag/kobrad/protowire";
 import "p2p.proto";
 import "rpc.proto";
 
-message HarbidMessage {
+message KobradMessage {
   oneof payload {
     AddressesMessage addresses = 1;
     BlockMessage block = 2;
@@ -143,9 +143,9 @@ message HarbidMessage {
 }
 
 service P2P {
-  rpc MessageStream (stream HarbidMessage) returns (stream HarbidMessage) {}
+  rpc MessageStream (stream KobradMessage) returns (stream KobradMessage) {}
 }
 
 service RPC {
-  rpc MessageStream (stream HarbidMessage) returns (stream HarbidMessage) {}
+  rpc MessageStream (stream KobradMessage) returns (stream KobradMessage) {}
 }

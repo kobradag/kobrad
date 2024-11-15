@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_Block) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_Block) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrap(errorNil, "HarbidMessage_Block is nil")
+		return nil, errors.Wrap(errorNil, "KobradMessage_Block is nil")
 	}
 	return x.Block.toAppMessage()
 }
 
-func (x *HarbidMessage_Block) fromAppMessage(msgBlock *appmessage.MsgBlock) error {
+func (x *KobradMessage_Block) fromAppMessage(msgBlock *appmessage.MsgBlock) error {
 	x.Block = new(BlockMessage)
 	return x.Block.fromAppMessage(msgBlock)
 }

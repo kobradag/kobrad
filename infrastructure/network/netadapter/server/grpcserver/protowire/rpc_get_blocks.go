@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_GetBlocksRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetBlocksRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetBlocksRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetBlocksRequest is nil")
 	}
 	return x.GetBlocksRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_GetBlocksRequest) fromAppMessage(message *appmessage.GetBlocksRequestMessage) error {
+func (x *KobradMessage_GetBlocksRequest) fromAppMessage(message *appmessage.GetBlocksRequestMessage) error {
 	x.GetBlocksRequest = &GetBlocksRequestMessage{
 		LowHash:             message.LowHash,
 		IncludeBlocks:       message.IncludeBlocks,
@@ -32,14 +32,14 @@ func (x *GetBlocksRequestMessage) toAppMessage() (appmessage.Message, error) {
 	}, nil
 }
 
-func (x *HarbidMessage_GetBlocksResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetBlocksResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetBlocksResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetBlocksResponse is nil")
 	}
 	return x.GetBlocksResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_GetBlocksResponse) fromAppMessage(message *appmessage.GetBlocksResponseMessage) error {
+func (x *KobradMessage_GetBlocksResponse) fromAppMessage(message *appmessage.GetBlocksResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

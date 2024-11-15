@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_GetUtxosByAddressesRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetUtxosByAddressesRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetUtxosByAddressesRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetUtxosByAddressesRequest is nil")
 	}
 	return x.GetUtxosByAddressesRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_GetUtxosByAddressesRequest) fromAppMessage(message *appmessage.GetUTXOsByAddressesRequestMessage) error {
+func (x *KobradMessage_GetUtxosByAddressesRequest) fromAppMessage(message *appmessage.GetUTXOsByAddressesRequestMessage) error {
 	x.GetUtxosByAddressesRequest = &GetUtxosByAddressesRequestMessage{
 		Addresses: message.Addresses,
 	}
@@ -28,14 +28,14 @@ func (x *GetUtxosByAddressesRequestMessage) toAppMessage() (appmessage.Message, 
 	}, nil
 }
 
-func (x *HarbidMessage_GetUtxosByAddressesResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetUtxosByAddressesResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
 		return nil, errors.Wrapf(errorNil, "GetUtxosByAddressesResponseMessage is nil")
 	}
 	return x.GetUtxosByAddressesResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_GetUtxosByAddressesResponse) fromAppMessage(message *appmessage.GetUTXOsByAddressesResponseMessage) error {
+func (x *KobradMessage_GetUtxosByAddressesResponse) fromAppMessage(message *appmessage.GetUTXOsByAddressesResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

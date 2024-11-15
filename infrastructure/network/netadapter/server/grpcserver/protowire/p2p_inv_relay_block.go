@@ -5,9 +5,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_InvRelayBlock) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_InvRelayBlock) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_InvRelayBlock is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_InvRelayBlock is nil")
 	}
 	return x.InvRelayBlock.toAppMessage()
 }
@@ -25,7 +25,7 @@ func (x *InvRelayBlockMessage) toAppMessage() (appmessage.Message, error) {
 
 }
 
-func (x *HarbidMessage_InvRelayBlock) fromAppMessage(msgInvRelayBlock *appmessage.MsgInvRelayBlock) error {
+func (x *KobradMessage_InvRelayBlock) fromAppMessage(msgInvRelayBlock *appmessage.MsgInvRelayBlock) error {
 	x.InvRelayBlock = &InvRelayBlockMessage{
 		Hash: domainHashToProto(msgInvRelayBlock.Hash),
 	}

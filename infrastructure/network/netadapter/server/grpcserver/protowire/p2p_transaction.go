@@ -7,14 +7,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_Transaction) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_Transaction) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_Transaction is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_Transaction is nil")
 	}
 	return x.Transaction.toAppMessage()
 }
 
-func (x *HarbidMessage_Transaction) fromAppMessage(msgTx *appmessage.MsgTx) error {
+func (x *KobradMessage_Transaction) fromAppMessage(msgTx *appmessage.MsgTx) error {
 	x.Transaction = new(TransactionMessage)
 	x.Transaction.fromAppMessage(msgTx)
 	return nil

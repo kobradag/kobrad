@@ -23,7 +23,7 @@ var hashesTried uint64
 const logHashRateInterval = 10 * time.Second
 
 func mineLoop(client *minerClient, numberOfBlocks uint64, targetBlocksPerSecond float64, mineWhenNotSynced bool,
-	miningAddr util.Address) error {
+	miningAddr util.Address, threads *int) error {
 	rand.Seed(time.Now().UnixNano()) // Seed the global concurrent-safe random source.
 
 	errChan := make(chan error)
@@ -39,37 +39,42 @@ func mineLoop(client *minerClient, numberOfBlocks uint64, targetBlocksPerSecond 
 		templatesLoop(client, miningAddr, errChan)
 	})
 
-	spawn("blocksLoop", func() {
-		const windowSize = 10
-		hasBlockRateTarget := targetBlocksPerSecond != 0
-		var windowTicker, blockTicker *time.Ticker
-		// We use tickers to limit the block rate:
-		// 1. windowTicker -> makes sure that the last windowSize blocks take at least windowSize*targetBlocksPerSecond.
-		// 2. blockTicker -> makes sure that each block takes at least targetBlocksPerSecond/windowSize.
-		// that way we both allow for fluctuation in block rate but also make sure they're not too big (by an order of magnitude)
-		if hasBlockRateTarget {
-			windowRate := time.Duration(float64(time.Second) / (targetBlocksPerSecond / windowSize))
-			blockRate := time.Duration(float64(time.Second) / (targetBlocksPerSecond * windowSize))
-			log.Infof("Minimum average time per %d blocks: %s, smaller minimum time per block: %s", windowSize, windowRate, blockRate)
-			windowTicker = time.NewTicker(windowRate)
-			blockTicker = time.NewTicker(blockRate)
-			defer windowTicker.Stop()
-			defer blockTicker.Stop()
-		}
-		windowStart := time.Now()
-		for blockIndex := 1; ; blockIndex++ {
-			foundBlockChan <- mineNextBlock(mineWhenNotSynced)
-			if hasBlockRateTarget {
-				<-blockTicker.C
-				if (blockIndex % windowSize) == 0 {
-					tickerStart := time.Now()
-					<-windowTicker.C
-					log.Infof("Finished mining %d blocks in: %s. slept for: %s", windowSize, time.Since(windowStart), time.Since(tickerStart))
-					windowStart = time.Now()
+	for t := 0; t < *threads; t++ {
+		go func() {
+			spawn("blocksLoop", func() {
+				const windowSize = 10
+				hasBlockRateTarget := targetBlocksPerSecond != 0
+				var windowTicker, blockTicker *time.Ticker
+				// We use tickers to limit the block rate:
+				// 1. windowTicker -> makes sure that the last windowSize blocks take at least windowSize*targetBlocksPerSecond.
+				// 2. blockTicker -> makes sure that each block takes at least targetBlocksPerSecond/windowSize.
+				// that way we both allow for fluctuation in block rate but also make sure they're not too big (by an order of magnitude)
+				if hasBlockRateTarget {
+					windowRate := time.Duration(float64(time.Second) / (targetBlocksPerSecond / windowSize))
+					blockRate := time.Duration(float64(time.Second) / (targetBlocksPerSecond * windowSize))
+					log.Infof("Minimum average time per %d blocks: %s, smaller minimum time per block: %s", windowSize, windowRate, blockRate)
+					windowTicker = time.NewTicker(windowRate)
+					blockTicker = time.NewTicker(blockRate)
+					defer windowTicker.Stop()
+					defer blockTicker.Stop()
 				}
-			}
-		}
-	})
+
+				windowStart := time.Now()
+				for blockIndex := 1; ; blockIndex++ {
+					foundBlockChan <- mineNextBlock(mineWhenNotSynced)
+					if hasBlockRateTarget {
+						<-blockTicker.C
+						if (blockIndex % windowSize) == 0 {
+							tickerStart := time.Now()
+							<-windowTicker.C
+							log.Infof("Finished mining %d blocks in: %s. slept for: %s", windowSize, time.Since(windowStart), time.Since(tickerStart))
+							windowStart = time.Now()
+						}
+					}
+				}
+			})
+		}()
+	}
 
 	spawn("handleFoundBlock", func() {
 		for i := uint64(0); numberOfBlocks == 0 || i < numberOfBlocks; i++ {

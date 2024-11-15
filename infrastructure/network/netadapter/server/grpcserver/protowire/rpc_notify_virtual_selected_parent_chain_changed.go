@@ -5,30 +5,30 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_NotifyVirtualSelectedParentChainChangedRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_NotifyVirtualSelectedParentChainChangedRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_NotifyVirtualSelectedParentChainChangedRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_NotifyVirtualSelectedParentChainChangedRequest is nil")
 	}
 	return &appmessage.NotifyVirtualSelectedParentChainChangedRequestMessage{
 		IncludeAcceptedTransactionIDs: x.NotifyVirtualSelectedParentChainChangedRequest.IncludeAcceptedTransactionIds,
 	}, nil
 }
 
-func (x *HarbidMessage_NotifyVirtualSelectedParentChainChangedRequest) fromAppMessage(appmessage *appmessage.NotifyVirtualSelectedParentChainChangedRequestMessage) error {
+func (x *KobradMessage_NotifyVirtualSelectedParentChainChangedRequest) fromAppMessage(appmessage *appmessage.NotifyVirtualSelectedParentChainChangedRequestMessage) error {
 	x.NotifyVirtualSelectedParentChainChangedRequest = &NotifyVirtualSelectedParentChainChangedRequestMessage{
 		IncludeAcceptedTransactionIds: appmessage.IncludeAcceptedTransactionIDs,
 	}
 	return nil
 }
 
-func (x *HarbidMessage_NotifyVirtualSelectedParentChainChangedResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_NotifyVirtualSelectedParentChainChangedResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_NotifyVirtualSelectedParentChainChangedResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_NotifyVirtualSelectedParentChainChangedResponse is nil")
 	}
 	return x.NotifyVirtualSelectedParentChainChangedResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_NotifyVirtualSelectedParentChainChangedResponse) fromAppMessage(message *appmessage.NotifyVirtualSelectedParentChainChangedResponseMessage) error {
+func (x *KobradMessage_NotifyVirtualSelectedParentChainChangedResponse) fromAppMessage(message *appmessage.NotifyVirtualSelectedParentChainChangedResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}
@@ -53,14 +53,14 @@ func (x *NotifyVirtualSelectedParentChainChangedResponseMessage) toAppMessage() 
 	}, nil
 }
 
-func (x *HarbidMessage_VirtualSelectedParentChainChangedNotification) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_VirtualSelectedParentChainChangedNotification) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_VirtualSelectedParentChainChangedNotification is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_VirtualSelectedParentChainChangedNotification is nil")
 	}
 	return x.VirtualSelectedParentChainChangedNotification.toAppMessage()
 }
 
-func (x *HarbidMessage_VirtualSelectedParentChainChangedNotification) fromAppMessage(message *appmessage.VirtualSelectedParentChainChangedNotificationMessage) error {
+func (x *KobradMessage_VirtualSelectedParentChainChangedNotification) fromAppMessage(message *appmessage.VirtualSelectedParentChainChangedNotificationMessage) error {
 	x.VirtualSelectedParentChainChangedNotification = &VirtualSelectedParentChainChangedNotificationMessage{
 		RemovedChainBlockHashes: message.RemovedChainBlockHashes,
 		AddedChainBlockHashes:   message.AddedChainBlockHashes,

@@ -10,8 +10,8 @@ import (
 	"github.com/kobradag/kobrad/domain/consensus/utils/utxo"
 )
 
-// PyrinwalletdUTXOsTolibkobrawalletUTXOs converts a  []*pb.UtxosByAddressesEntry to a []*libkobrawallet.UTXO
-func PyrinwalletdUTXOsTolibkobrawalletUTXOs(kobrawalletdUtxoEntires []*pb.UtxosByAddressesEntry) ([]*UTXO, error) {
+// KobrawalletdUTXOsTolibkobrawalletUTXOs converts a  []*pb.UtxosByAddressesEntry to a []*libkobrawallet.UTXO
+func KobrawalletdUTXOsTolibkobrawalletUTXOs(kobrawalletdUtxoEntires []*pb.UtxosByAddressesEntry) ([]*UTXO, error) {
 	UTXOs := make([]*UTXO, len(kobrawalletdUtxoEntires))
 	for i, entry := range kobrawalletdUtxoEntires {
 		script, err := hex.DecodeString(entry.UtxoEntry.ScriptPublicKey.ScriptPublicKey)
@@ -41,8 +41,8 @@ func PyrinwalletdUTXOsTolibkobrawalletUTXOs(kobrawalletdUtxoEntires []*pb.UtxosB
 	return UTXOs, nil
 }
 
-// AppMessageUTXOToPyrinwalletdUTXO converts an appmessage.UTXOsByAddressesEntry to a  pb.UtxosByAddressesEntry
-func AppMessageUTXOToPyrinwalletdUTXO(appUTXOsByAddressesEntry *appmessage.UTXOsByAddressesEntry) *pb.UtxosByAddressesEntry {
+// AppMessageUTXOToKobrawalletdUTXO converts an appmessage.UTXOsByAddressesEntry to a  pb.UtxosByAddressesEntry
+func AppMessageUTXOToKobrawalletdUTXO(appUTXOsByAddressesEntry *appmessage.UTXOsByAddressesEntry) *pb.UtxosByAddressesEntry {
 	return &pb.UtxosByAddressesEntry{
 		Outpoint: &pb.Outpoint{
 			TransactionId: appUTXOsByAddressesEntry.Outpoint.TransactionID,

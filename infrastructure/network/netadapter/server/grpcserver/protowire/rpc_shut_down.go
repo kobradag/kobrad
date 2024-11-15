@@ -5,23 +5,23 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_ShutDownRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_ShutDownRequest) toAppMessage() (appmessage.Message, error) {
 	return &appmessage.ShutDownRequestMessage{}, nil
 }
 
-func (x *HarbidMessage_ShutDownRequest) fromAppMessage(_ *appmessage.ShutDownRequestMessage) error {
+func (x *KobradMessage_ShutDownRequest) fromAppMessage(_ *appmessage.ShutDownRequestMessage) error {
 	x.ShutDownRequest = &ShutDownRequestMessage{}
 	return nil
 }
 
-func (x *HarbidMessage_ShutDownResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_ShutDownResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_ShutDownResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_ShutDownResponse is nil")
 	}
 	return x.ShutDownResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_ShutDownResponse) fromAppMessage(message *appmessage.ShutDownResponseMessage) error {
+func (x *KobradMessage_ShutDownResponse) fromAppMessage(message *appmessage.ShutDownResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

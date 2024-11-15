@@ -43,8 +43,8 @@ func (c *p2PClient) MessageStream(ctx context.Context, opts ...grpc.CallOption) 
 }
 
 type P2P_MessageStreamClient interface {
-	Send(*HarbidMessage) error
-	Recv() (*HarbidMessage, error)
+	Send(*KobradMessage) error
+	Recv() (*KobradMessage, error)
 	grpc.ClientStream
 }
 
@@ -52,12 +52,12 @@ type p2PMessageStreamClient struct {
 	grpc.ClientStream
 }
 
-func (x *p2PMessageStreamClient) Send(m *HarbidMessage) error {
+func (x *p2PMessageStreamClient) Send(m *KobradMessage) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *p2PMessageStreamClient) Recv() (*HarbidMessage, error) {
-	m := new(HarbidMessage)
+func (x *p2PMessageStreamClient) Recv() (*KobradMessage, error) {
+	m := new(KobradMessage)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -97,8 +97,8 @@ func _P2P_MessageStream_Handler(srv interface{}, stream grpc.ServerStream) error
 }
 
 type P2P_MessageStreamServer interface {
-	Send(*HarbidMessage) error
-	Recv() (*HarbidMessage, error)
+	Send(*KobradMessage) error
+	Recv() (*KobradMessage, error)
 	grpc.ServerStream
 }
 
@@ -106,12 +106,12 @@ type p2PMessageStreamServer struct {
 	grpc.ServerStream
 }
 
-func (x *p2PMessageStreamServer) Send(m *HarbidMessage) error {
+func (x *p2PMessageStreamServer) Send(m *KobradMessage) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *p2PMessageStreamServer) Recv() (*HarbidMessage, error) {
-	m := new(HarbidMessage)
+func (x *p2PMessageStreamServer) Recv() (*KobradMessage, error) {
+	m := new(KobradMessage)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -161,8 +161,8 @@ func (c *rPCClient) MessageStream(ctx context.Context, opts ...grpc.CallOption) 
 }
 
 type RPC_MessageStreamClient interface {
-	Send(*HarbidMessage) error
-	Recv() (*HarbidMessage, error)
+	Send(*KobradMessage) error
+	Recv() (*KobradMessage, error)
 	grpc.ClientStream
 }
 
@@ -170,12 +170,12 @@ type rPCMessageStreamClient struct {
 	grpc.ClientStream
 }
 
-func (x *rPCMessageStreamClient) Send(m *HarbidMessage) error {
+func (x *rPCMessageStreamClient) Send(m *KobradMessage) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *rPCMessageStreamClient) Recv() (*HarbidMessage, error) {
-	m := new(HarbidMessage)
+func (x *rPCMessageStreamClient) Recv() (*KobradMessage, error) {
+	m := new(KobradMessage)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -215,8 +215,8 @@ func _RPC_MessageStream_Handler(srv interface{}, stream grpc.ServerStream) error
 }
 
 type RPC_MessageStreamServer interface {
-	Send(*HarbidMessage) error
-	Recv() (*HarbidMessage, error)
+	Send(*KobradMessage) error
+	Recv() (*KobradMessage, error)
 	grpc.ServerStream
 }
 
@@ -224,12 +224,12 @@ type rPCMessageStreamServer struct {
 	grpc.ServerStream
 }
 
-func (x *rPCMessageStreamServer) Send(m *HarbidMessage) error {
+func (x *rPCMessageStreamServer) Send(m *KobradMessage) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *rPCMessageStreamServer) Recv() (*HarbidMessage, error) {
-	m := new(HarbidMessage)
+func (x *rPCMessageStreamServer) Recv() (*KobradMessage, error) {
+	m := new(KobradMessage)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}

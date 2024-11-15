@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_ResolveFinalityConflictRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_ResolveFinalityConflictRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_ResolveFinalityConflictRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_ResolveFinalityConflictRequest is nil")
 	}
 	return x.ResolveFinalityConflictRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_ResolveFinalityConflictRequest) fromAppMessage(message *appmessage.ResolveFinalityConflictRequestMessage) error {
+func (x *KobradMessage_ResolveFinalityConflictRequest) fromAppMessage(message *appmessage.ResolveFinalityConflictRequestMessage) error {
 	x.ResolveFinalityConflictRequest = &ResolveFinalityConflictRequestMessage{
 		FinalityBlockHash: message.FinalityBlockHash,
 	}
@@ -28,14 +28,14 @@ func (x *ResolveFinalityConflictRequestMessage) toAppMessage() (appmessage.Messa
 	}, nil
 }
 
-func (x *HarbidMessage_ResolveFinalityConflictResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_ResolveFinalityConflictResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_ResolveFinalityConflictResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_ResolveFinalityConflictResponse is nil")
 	}
 	return x.ResolveFinalityConflictResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_ResolveFinalityConflictResponse) fromAppMessage(message *appmessage.ResolveFinalityConflictResponseMessage) error {
+func (x *KobradMessage_ResolveFinalityConflictResponse) fromAppMessage(message *appmessage.ResolveFinalityConflictResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

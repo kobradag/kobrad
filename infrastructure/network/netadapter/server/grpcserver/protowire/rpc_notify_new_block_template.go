@@ -5,23 +5,23 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_NotifyNewBlockTemplateRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_NotifyNewBlockTemplateRequest) toAppMessage() (appmessage.Message, error) {
 	return &appmessage.NotifyNewBlockTemplateRequestMessage{}, nil
 }
 
-func (x *HarbidMessage_NotifyNewBlockTemplateRequest) fromAppMessage(_ *appmessage.NotifyNewBlockTemplateRequestMessage) error {
+func (x *KobradMessage_NotifyNewBlockTemplateRequest) fromAppMessage(_ *appmessage.NotifyNewBlockTemplateRequestMessage) error {
 	x.NotifyNewBlockTemplateRequest = &NotifyNewBlockTemplateRequestMessage{}
 	return nil
 }
 
-func (x *HarbidMessage_NotifyNewBlockTemplateResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_NotifyNewBlockTemplateResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_NotifyNewBlockTemplateResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_NotifyNewBlockTemplateResponse is nil")
 	}
 	return x.NotifyNewBlockTemplateResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_NotifyNewBlockTemplateResponse) fromAppMessage(message *appmessage.NotifyNewBlockTemplateResponseMessage) error {
+func (x *KobradMessage_NotifyNewBlockTemplateResponse) fromAppMessage(message *appmessage.NotifyNewBlockTemplateResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}
@@ -46,14 +46,14 @@ func (x *NotifyNewBlockTemplateResponseMessage) toAppMessage() (appmessage.Messa
 	}, nil
 }
 
-func (x *HarbidMessage_NewBlockTemplateNotification) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_NewBlockTemplateNotification) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_NewBlockTemplateNotification is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_NewBlockTemplateNotification is nil")
 	}
 	return x.NewBlockTemplateNotification.toAppMessage()
 }
 
-func (x *HarbidMessage_NewBlockTemplateNotification) fromAppMessage(message *appmessage.NewBlockTemplateNotificationMessage) error {
+func (x *KobradMessage_NewBlockTemplateNotification) fromAppMessage(message *appmessage.NewBlockTemplateNotificationMessage) error {
 	x.NewBlockTemplateNotification = &NewBlockTemplateNotificationMessage{}
 	return nil
 }

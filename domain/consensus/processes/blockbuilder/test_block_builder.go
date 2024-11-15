@@ -95,9 +95,16 @@ func (bb *testBlockBuilder) buildUTXOInvalidHeader(stagingArea *model.StagingAre
 		})
 	}
 
+	// Raise BlockVersion until daaScore is more than powScore
+	var version uint16 = 1
+	for _, powScore := range bb.POWScores {
+		if daaScore >= powScore {
+			version = version + 1
+		}
+	}
 	bb.nonceCounter++
 	return blockheader.NewImmutableBlockHeader(
-		constants.BlockVersion,
+		version,
 		parents,
 		hashMerkleRoot,
 		&externalapi.DomainHash{},

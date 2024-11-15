@@ -5,9 +5,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_PruningPoints) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_PruningPoints) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_PruningPoints is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_PruningPoints is nil")
 	}
 
 	if x.PruningPoints == nil {
@@ -27,7 +27,7 @@ func (x *HarbidMessage_PruningPoints) toAppMessage() (appmessage.Message, error)
 	}, nil
 }
 
-func (x *HarbidMessage_PruningPoints) fromAppMessage(msgPruningPoints *appmessage.MsgPruningPoints) error {
+func (x *KobradMessage_PruningPoints) fromAppMessage(msgPruningPoints *appmessage.MsgPruningPoints) error {
 	blockHeaders := make([]*BlockHeader, len(msgPruningPoints.Headers))
 	for i, blockHeader := range msgPruningPoints.Headers {
 		blockHeaders[i] = &BlockHeader{}

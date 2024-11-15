@@ -36,7 +36,7 @@ func main() {
 	defer client.Disconnect()
 
 	if !cfg.AllowConnectionToDifferentVersions {
-		kobradMessage, err := client.Post(&protowire.HarbidMessage{Payload: &protowire.HarbidMessage_GetInfoRequest{GetInfoRequest: &protowire.GetInfoRequestMessage{}}})
+		kobradMessage, err := client.Post(&protowire.KobradMessage{Payload: &protowire.KobradMessage_GetInfoRequest{GetInfoRequest: &protowire.GetInfoRequestMessage{}}})
 		if err != nil {
 			printErrorAndExit(fmt.Sprintf("Cannot post GetInfo message: %s", err))
 		}
@@ -101,7 +101,7 @@ func postJSON(cfg *configFlags, client *grpcclient.GRPCClient, doneChan chan str
 }
 
 func prettifyResponse(response string) string {
-	kobradMessage := &protowire.HarbidMessage{}
+	kobradMessage := &protowire.KobradMessage{}
 	err := protojson.Unmarshal([]byte(response), kobradMessage)
 	if err != nil {
 		printErrorAndExit(fmt.Sprintf("error parsing the response from the RPC server: %s", err))

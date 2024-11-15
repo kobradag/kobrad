@@ -5,9 +5,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_RequestAnticone) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_RequestAnticone) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_RequestAnticone is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_RequestAnticone is nil")
 	}
 	return x.RequestAnticone.toAppMessage()
 }
@@ -33,7 +33,7 @@ func (x *RequestAnticoneMessage) toAppMessage() (appmessage.Message, error) {
 
 }
 
-func (x *HarbidMessage_RequestAnticone) fromAppMessage(msgRequestPastDiff *appmessage.MsgRequestAnticone) error {
+func (x *KobradMessage_RequestAnticone) fromAppMessage(msgRequestPastDiff *appmessage.MsgRequestAnticone) error {
 	x.RequestAnticone = &RequestAnticoneMessage{
 		BlockHash:   domainHashToProto(msgRequestPastDiff.BlockHash),
 		ContextHash: domainHashToProto(msgRequestPastDiff.ContextHash),

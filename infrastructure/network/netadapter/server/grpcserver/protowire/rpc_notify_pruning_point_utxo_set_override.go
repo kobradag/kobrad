@@ -5,26 +5,26 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_NotifyPruningPointUTXOSetOverrideRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_NotifyPruningPointUTXOSetOverrideRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_NotifyPruningPointUTXOSetOverrideRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_NotifyPruningPointUTXOSetOverrideRequest is nil")
 	}
 	return &appmessage.NotifyPruningPointUTXOSetOverrideRequestMessage{}, nil
 }
 
-func (x *HarbidMessage_NotifyPruningPointUTXOSetOverrideRequest) fromAppMessage(_ *appmessage.NotifyPruningPointUTXOSetOverrideRequestMessage) error {
+func (x *KobradMessage_NotifyPruningPointUTXOSetOverrideRequest) fromAppMessage(_ *appmessage.NotifyPruningPointUTXOSetOverrideRequestMessage) error {
 	x.NotifyPruningPointUTXOSetOverrideRequest = &NotifyPruningPointUTXOSetOverrideRequestMessage{}
 	return nil
 }
 
-func (x *HarbidMessage_NotifyPruningPointUTXOSetOverrideResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_NotifyPruningPointUTXOSetOverrideResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_NotifyPruningPointUTXOSetOverrideResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_NotifyPruningPointUTXOSetOverrideResponse is nil")
 	}
 	return x.NotifyPruningPointUTXOSetOverrideResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_NotifyPruningPointUTXOSetOverrideResponse) fromAppMessage(message *appmessage.NotifyPruningPointUTXOSetOverrideResponseMessage) error {
+func (x *KobradMessage_NotifyPruningPointUTXOSetOverrideResponse) fromAppMessage(message *appmessage.NotifyPruningPointUTXOSetOverrideResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}
@@ -49,38 +49,38 @@ func (x *NotifyPruningPointUTXOSetOverrideResponseMessage) toAppMessage() (appme
 	}, nil
 }
 
-func (x *HarbidMessage_PruningPointUTXOSetOverrideNotification) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_PruningPointUTXOSetOverrideNotification) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_PruningPointUTXOSetOverrideNotification is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_PruningPointUTXOSetOverrideNotification is nil")
 	}
 	return &appmessage.PruningPointUTXOSetOverrideNotificationMessage{}, nil
 }
 
-func (x *HarbidMessage_PruningPointUTXOSetOverrideNotification) fromAppMessage(_ *appmessage.PruningPointUTXOSetOverrideNotificationMessage) error {
+func (x *KobradMessage_PruningPointUTXOSetOverrideNotification) fromAppMessage(_ *appmessage.PruningPointUTXOSetOverrideNotificationMessage) error {
 	x.PruningPointUTXOSetOverrideNotification = &PruningPointUTXOSetOverrideNotificationMessage{}
 	return nil
 }
 
-func (x *HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_StopNotifyingPruningPointUTXOSetOverrideRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_StopNotifyingPruningPointUTXOSetOverrideRequest is nil")
 	}
 	return &appmessage.StopNotifyingPruningPointUTXOSetOverrideRequestMessage{}, nil
 }
 
-func (x *HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideRequest) fromAppMessage(_ *appmessage.StopNotifyingPruningPointUTXOSetOverrideRequestMessage) error {
+func (x *KobradMessage_StopNotifyingPruningPointUTXOSetOverrideRequest) fromAppMessage(_ *appmessage.StopNotifyingPruningPointUTXOSetOverrideRequestMessage) error {
 	x.StopNotifyingPruningPointUTXOSetOverrideRequest = &StopNotifyingPruningPointUTXOSetOverrideRequestMessage{}
 	return nil
 }
 
-func (x *HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_StopNotifyingPruningPointUTXOSetOverrideResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_StopNotifyingPruningPointUTXOSetOverrideResponse is nil")
 	}
 	return x.StopNotifyingPruningPointUTXOSetOverrideResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideResponse) fromAppMessage(
+func (x *KobradMessage_StopNotifyingPruningPointUTXOSetOverrideResponse) fromAppMessage(
 	message *appmessage.StopNotifyingPruningPointUTXOSetOverrideResponseMessage) error {
 
 	var err *RPCError

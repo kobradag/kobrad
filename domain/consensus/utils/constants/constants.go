@@ -2,21 +2,28 @@ package constants
 
 import "math"
 
-const (
-	// BlockVersion represents the current block version
+var (
+	// BlockVersion represents the current block
+	// 1 Pyrinhash
+	// 2 Kodahash
 	BlockVersion uint16 = 1
+)
 
+const (
+	DevFee        = 2
+	DevFeeMin     = 1
+	DevFeeAddress = "kobra:qp8eyg0rs0jvggygh8rk7y8ux5e3wyq03w36cewcrz7542xdgumh7sr5x77ma"
 	// MaxTransactionVersion is the current latest supported transaction version.
 	MaxTransactionVersion uint16 = 0
 
 	// MaxScriptPublicKeyVersion is the current latest supported public key script version.
 	MaxScriptPublicKeyVersion uint16 = 0
 
-	// LeorPerPyrin is the number of leor in one kobra (1 KODA).
-	LeorPerPyrin = 100_000_000
+	// LeorPerKobra is the number of leor in one kobra (1 KODA).
+	LeorPerKobra = 100_000_000
 
 	// MaxLeor is the maximum transaction amount allowed in leor.
-	MaxLeor = uint64(1_000_000_000 * LeorPerPyrin)
+	MaxLeor = uint64(1_000_000_000 * LeorPerKobra)
 
 	// MaxTxInSequenceNum is the maximum sequence number the sequence field
 	// of a transaction input can be.

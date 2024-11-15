@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_GetBlockTemplateRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetBlockTemplateRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetBlockTemplateRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetBlockTemplateRequest is nil")
 	}
 	return x.GetBlockTemplateRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_GetBlockTemplateRequest) fromAppMessage(message *appmessage.GetBlockTemplateRequestMessage) error {
+func (x *KobradMessage_GetBlockTemplateRequest) fromAppMessage(message *appmessage.GetBlockTemplateRequestMessage) error {
 	x.GetBlockTemplateRequest = &GetBlockTemplateRequestMessage{
 		PayAddress: message.PayAddress,
 		ExtraData:  message.ExtraData,
@@ -30,14 +30,14 @@ func (x *GetBlockTemplateRequestMessage) toAppMessage() (appmessage.Message, err
 	}, nil
 }
 
-func (x *HarbidMessage_GetBlockTemplateResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetBlockTemplateResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetBlockTemplateResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetBlockTemplateResponse is nil")
 	}
 	return x.GetBlockTemplateResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_GetBlockTemplateResponse) fromAppMessage(message *appmessage.GetBlockTemplateResponseMessage) error {
+func (x *KobradMessage_GetBlockTemplateResponse) fromAppMessage(message *appmessage.GetBlockTemplateResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

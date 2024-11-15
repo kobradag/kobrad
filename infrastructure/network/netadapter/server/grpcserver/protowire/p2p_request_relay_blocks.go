@@ -5,9 +5,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_RequestRelayBlocks) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_RequestRelayBlocks) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_RequestRelayBlocks is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_RequestRelayBlocks is nil")
 	}
 	return x.RequestRelayBlocks.toAppMessage()
 }
@@ -28,7 +28,7 @@ func (x *RequestRelayBlocksMessage) toAppMessage() (appmessage.Message, error) {
 
 }
 
-func (x *HarbidMessage_RequestRelayBlocks) fromAppMessage(msgGetRelayBlocks *appmessage.MsgRequestRelayBlocks) error {
+func (x *KobradMessage_RequestRelayBlocks) fromAppMessage(msgGetRelayBlocks *appmessage.MsgRequestRelayBlocks) error {
 	if len(msgGetRelayBlocks.Hashes) > appmessage.MaxRequestRelayBlocksHashes {
 		return errors.Errorf("too many hashes for message "+
 			"[count %d, max %d]", len(msgGetRelayBlocks.Hashes), appmessage.MaxRequestRelayBlocksHashes)

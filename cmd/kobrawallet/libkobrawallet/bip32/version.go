@@ -22,80 +22,80 @@ var BitcoinMainnetPublic = [4]byte{
 	0x1e,
 }
 
-// HarbiMainnetPrivate is the version that is used for
+// KobraMainnetPrivate is the version that is used for
 // kobra mainnet bip32 private extended keys.
 // Ecnodes to xprv in base58.
-var HarbiMainnetPrivate = [4]byte{
+var KobraMainnetPrivate = [4]byte{
 	0x03,
 	0x8f,
 	0x2e,
 	0xf4,
 }
 
-// HarbiMainnetPublic is the version that is used for
+// KobraMainnetPublic is the version that is used for
 // kobra mainnet bip32 public extended keys.
 // Ecnodes to kpub in base58.
-var HarbiMainnetPublic = [4]byte{
+var KobraMainnetPublic = [4]byte{
 	0x03,
 	0x8f,
 	0x33,
 	0x2e,
 }
 
-// HarbiTestnetPrivate is the version that is used for
+// KobraTestnetPrivate is the version that is used for
 // kobra testnet bip32 public extended keys.
 // Ecnodes to ktrv in base58.
-var HarbiTestnetPrivate = [4]byte{
+var KobraTestnetPrivate = [4]byte{
 	0x03,
 	0x90,
 	0x9e,
 	0x07,
 }
 
-// HarbiTestnetPublic is the version that is used for
+// KobraTestnetPublic is the version that is used for
 // kobra testnet bip32 public extended keys.
 // Ecnodes to ktub in base58.
-var HarbiTestnetPublic = [4]byte{
+var KobraTestnetPublic = [4]byte{
 	0x03,
 	0x90,
 	0xa2,
 	0x41,
 }
 
-// HarbidevnetPrivate is the version that is used for
+// KobradevnetPrivate is the version that is used for
 // kobra devnet bip32 public extended keys.
 // Ecnodes to kdrv in base58.
-var HarbidevnetPrivate = [4]byte{
+var KobradevnetPrivate = [4]byte{
 	0x03,
 	0x8b,
 	0x3d,
 	0x80,
 }
 
-// HarbidevnetPublic is the version that is used for
+// KobradevnetPublic is the version that is used for
 // kobra devnet bip32 public extended keys.
 // Ecnodes to xdub in base58.
-var HarbidevnetPublic = [4]byte{
+var KobradevnetPublic = [4]byte{
 	0x03,
 	0x8b,
 	0x41,
 	0xba,
 }
 
-// HarbiSimnetPrivate is the version that is used for
+// KobraSimnetPrivate is the version that is used for
 // kobra simnet bip32 public extended keys.
 // Ecnodes to ksrv in base58.
-var HarbiSimnetPrivate = [4]byte{
+var KobraSimnetPrivate = [4]byte{
 	0x03,
 	0x90,
 	0x42,
 	0x42,
 }
 
-// HarbiSimnetPublic is the version that is used for
+// KobraSimnetPublic is the version that is used for
 // kobra simnet bip32 public extended keys.
 // Ecnodes to xsub in base58.
-var HarbiSimnetPublic = [4]byte{
+var KobraSimnetPublic = [4]byte{
 	0x03,
 	0x90,
 	0x46,
@@ -106,14 +106,14 @@ func toPublicVersion(version [4]byte) ([4]byte, error) {
 	switch version {
 	case BitcoinMainnetPrivate:
 		return BitcoinMainnetPublic, nil
-	case HarbiMainnetPrivate:
-		return HarbiMainnetPublic, nil
-	case HarbiTestnetPrivate:
-		return HarbiTestnetPublic, nil
-	case HarbidevnetPrivate:
-		return HarbidevnetPublic, nil
-	case HarbiSimnetPrivate:
-		return HarbiSimnetPublic, nil
+	case KobraMainnetPrivate:
+		return KobraMainnetPublic, nil
+	case KobraTestnetPrivate:
+		return KobraTestnetPublic, nil
+	case KobradevnetPrivate:
+		return KobradevnetPublic, nil
+	case KobraSimnetPrivate:
+		return KobraSimnetPublic, nil
 	}
 
 	return [4]byte{}, errors.Errorf("unknown version %x", version)
@@ -123,13 +123,13 @@ func isPrivateVersion(version [4]byte) bool {
 	switch version {
 	case BitcoinMainnetPrivate:
 		return true
-	case HarbiMainnetPrivate:
+	case KobraMainnetPrivate:
 		return true
-	case HarbiTestnetPrivate:
+	case KobraTestnetPrivate:
 		return true
-	case HarbidevnetPrivate:
+	case KobradevnetPrivate:
 		return true
-	case HarbiSimnetPrivate:
+	case KobraSimnetPrivate:
 		return true
 	}
 

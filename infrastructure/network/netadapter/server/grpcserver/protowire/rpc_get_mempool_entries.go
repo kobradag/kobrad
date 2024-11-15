@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_GetMempoolEntriesRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetMempoolEntriesRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetMempoolEntriesRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetMempoolEntriesRequest is nil")
 	}
 	return x.GetMempoolEntriesRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_GetMempoolEntriesRequest) fromAppMessage(message *appmessage.GetMempoolEntriesRequestMessage) error {
+func (x *KobradMessage_GetMempoolEntriesRequest) fromAppMessage(message *appmessage.GetMempoolEntriesRequestMessage) error {
 	x.GetMempoolEntriesRequest = &GetMempoolEntriesRequestMessage{
 		IncludeOrphanPool:     message.IncludeOrphanPool,
 		FilterTransactionPool: message.FilterTransactionPool,
@@ -30,14 +30,14 @@ func (x *GetMempoolEntriesRequestMessage) toAppMessage() (appmessage.Message, er
 	}, nil
 }
 
-func (x *HarbidMessage_GetMempoolEntriesResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetMempoolEntriesResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetMempoolEntriesResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetMempoolEntriesResponse is nil")
 	}
 	return x.GetMempoolEntriesResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_GetMempoolEntriesResponse) fromAppMessage(message *appmessage.GetMempoolEntriesResponseMessage) error {
+func (x *KobradMessage_GetMempoolEntriesResponse) fromAppMessage(message *appmessage.GetMempoolEntriesResponseMessage) error {
 	var rpcErr *RPCError
 	if message.Error != nil {
 		rpcErr = &RPCError{Message: message.Error.Message}

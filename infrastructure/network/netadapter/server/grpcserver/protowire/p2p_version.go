@@ -7,9 +7,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_Version) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_Version) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_Version is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_Version is nil")
 	}
 	return x.Version.toAppMessage()
 }
@@ -57,7 +57,7 @@ func (x *VersionMessage) toAppMessage() (appmessage.Message, error) {
 	}, nil
 }
 
-func (x *HarbidMessage_Version) fromAppMessage(msgVersion *appmessage.MsgVersion) error {
+func (x *KobradMessage_Version) fromAppMessage(msgVersion *appmessage.MsgVersion) error {
 	err := appmessage.ValidateUserAgent(msgVersion.UserAgent)
 	if err != nil {
 		return err

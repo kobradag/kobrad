@@ -258,13 +258,14 @@ func (s *server) moreUTXOsForMergeTransaction(alreadySelectedUTXOs []*libkobrawa
 	alreadySelectedUTXOsMap := make(map[externalapi.DomainOutpoint]struct{}, len(alreadySelectedUTXOs))
 	for _, alreadySelectedUTXO := range alreadySelectedUTXOs {
 		alreadySelectedUTXOsMap[*alreadySelectedUTXO.Outpoint] = struct{}{}
+
 	}
 
 	for _, utxo := range s.utxosSortedByAmount {
 		if _, ok := alreadySelectedUTXOsMap[*utxo.Outpoint]; ok {
 			continue
 		}
-		if !isUTXOSpendable(utxo, dagInfo.VirtualDAAScore, s.params.BlockCoinbaseMaturity) {
+		if !s.isUTXOSpendable(utxo, dagInfo.VirtualDAAScore) {
 			continue
 		}
 		additionalUTXOs = append(additionalUTXOs, &libkobrawallet.UTXO{

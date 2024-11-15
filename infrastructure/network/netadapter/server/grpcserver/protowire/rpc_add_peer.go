@@ -5,14 +5,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_AddPeerRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_AddPeerRequest) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_AddPeerRequest is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_AddPeerRequest is nil")
 	}
 	return x.AddPeerRequest.toAppMessage()
 }
 
-func (x *HarbidMessage_AddPeerRequest) fromAppMessage(message *appmessage.AddPeerRequestMessage) error {
+func (x *KobradMessage_AddPeerRequest) fromAppMessage(message *appmessage.AddPeerRequestMessage) error {
 	x.AddPeerRequest = &AddPeerRequestMessage{
 		Address:     message.Address,
 		IsPermanent: message.IsPermanent,
@@ -30,14 +30,14 @@ func (x *AddPeerRequestMessage) toAppMessage() (appmessage.Message, error) {
 	}, nil
 }
 
-func (x *HarbidMessage_AddPeerResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_AddPeerResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_AddPeerResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_AddPeerResponse is nil")
 	}
 	return x.AddPeerResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_AddPeerResponse) fromAppMessage(message *appmessage.AddPeerResponseMessage) error {
+func (x *KobradMessage_AddPeerResponse) fromAppMessage(message *appmessage.AddPeerResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

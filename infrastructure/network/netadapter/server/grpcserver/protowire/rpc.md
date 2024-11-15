@@ -125,10 +125,10 @@
 ## rpc.proto
 RPC-related types. Request messages, response messages, and dependant types.
 
-Clients are expected to build RequestMessages and wrap them in HarbidMessage. (see messages.proto)
+Clients are expected to build RequestMessages and wrap them in KobradMessage. (see messages.proto)
 
-Having received a RequestMessage, (wrapped in a HarbidMessage) the RPC server will respond with a
-ResponseMessage (likewise wrapped in a HarbidMessage) respective to the original RequestMessage.
+Having received a RequestMessage, (wrapped in a KobradMessage) the RPC server will respond with a
+ResponseMessage (likewise wrapped in a KobradMessage) respective to the original RequestMessage.
 
 **IMPORTANT:** This API is a work in progress and is subject to break between versions.
 

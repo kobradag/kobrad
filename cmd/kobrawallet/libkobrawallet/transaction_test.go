@@ -318,7 +318,7 @@ func TestMaxLeor(t *testing.T) {
 		params := &consensusConfig.Params
 		cfg := *consensusConfig
 		cfg.BlockCoinbaseMaturity = 0
-		cfg.PreDeflationaryPhaseBaseSubsidy = 20e6 * constants.LeorPerPyrin
+		cfg.PreDeflationaryPhaseBaseSubsidy = 20e6 * constants.LeorPerKobra
 		tc, teardown, err := consensus.NewFactory().NewTestConsensus(&cfg, "TestMaxLeor")
 		if err != nil {
 			t.Fatalf("Error setting up tc: %+v", err)
@@ -480,7 +480,7 @@ func TestMaxLeor(t *testing.T) {
 		unsignedTxWithLargeInputAndOutputAmount, err := libkobrawallet.CreateUnsignedTransaction(publicKeys, minimumSignatures,
 			[]*libkobrawallet.Payment{{
 				Address: address,
-				Amount:  22e6 * constants.LeorPerPyrin,
+				Amount:  22e6 * constants.LeorPerKobra,
 			}}, selectedUTXOsForTxWithLargeInputAndOutputAmount)
 		if err != nil {
 			t.Fatalf("CreateUnsignedTransactions: %+v", err)

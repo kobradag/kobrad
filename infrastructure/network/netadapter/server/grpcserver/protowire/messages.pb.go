@@ -20,148 +20,148 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type HarbidMessage struct {
+type KobradMessage struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Payload:
 	//
-	//	*HarbidMessage_Addresses
-	//	*HarbidMessage_Block
-	//	*HarbidMessage_Transaction
-	//	*HarbidMessage_BlockLocator
-	//	*HarbidMessage_RequestAddresses
-	//	*HarbidMessage_RequestRelayBlocks
-	//	*HarbidMessage_RequestTransactions
-	//	*HarbidMessage_IbdBlock
-	//	*HarbidMessage_InvRelayBlock
-	//	*HarbidMessage_InvTransactions
-	//	*HarbidMessage_Ping
-	//	*HarbidMessage_Pong
-	//	*HarbidMessage_Verack
-	//	*HarbidMessage_Version
-	//	*HarbidMessage_TransactionNotFound
-	//	*HarbidMessage_Reject
-	//	*HarbidMessage_PruningPointUtxoSetChunk
-	//	*HarbidMessage_RequestIBDBlocks
-	//	*HarbidMessage_UnexpectedPruningPoint
-	//	*HarbidMessage_IbdBlockLocator
-	//	*HarbidMessage_IbdBlockLocatorHighestHash
-	//	*HarbidMessage_RequestNextPruningPointUtxoSetChunk
-	//	*HarbidMessage_DonePruningPointUtxoSetChunks
-	//	*HarbidMessage_IbdBlockLocatorHighestHashNotFound
-	//	*HarbidMessage_BlockWithTrustedData
-	//	*HarbidMessage_DoneBlocksWithTrustedData
-	//	*HarbidMessage_RequestPruningPointAndItsAnticone
-	//	*HarbidMessage_BlockHeaders
-	//	*HarbidMessage_RequestNextHeaders
-	//	*HarbidMessage_DoneHeaders
-	//	*HarbidMessage_RequestPruningPointUTXOSet
-	//	*HarbidMessage_RequestHeaders
-	//	*HarbidMessage_RequestBlockLocator
-	//	*HarbidMessage_PruningPoints
-	//	*HarbidMessage_RequestPruningPointProof
-	//	*HarbidMessage_PruningPointProof
-	//	*HarbidMessage_Ready
-	//	*HarbidMessage_BlockWithTrustedDataV4
-	//	*HarbidMessage_TrustedData
-	//	*HarbidMessage_RequestIBDChainBlockLocator
-	//	*HarbidMessage_IbdChainBlockLocator
-	//	*HarbidMessage_RequestAnticone
-	//	*HarbidMessage_RequestNextPruningPointAndItsAnticoneBlocks
-	//	*HarbidMessage_GetCurrentNetworkRequest
-	//	*HarbidMessage_GetCurrentNetworkResponse
-	//	*HarbidMessage_SubmitBlockRequest
-	//	*HarbidMessage_SubmitBlockResponse
-	//	*HarbidMessage_GetBlockTemplateRequest
-	//	*HarbidMessage_GetBlockTemplateResponse
-	//	*HarbidMessage_NotifyBlockAddedRequest
-	//	*HarbidMessage_NotifyBlockAddedResponse
-	//	*HarbidMessage_BlockAddedNotification
-	//	*HarbidMessage_GetPeerAddressesRequest
-	//	*HarbidMessage_GetPeerAddressesResponse
-	//	*HarbidMessage_GetSelectedTipHashRequest
-	//	*HarbidMessage_GetSelectedTipHashResponse
-	//	*HarbidMessage_GetMempoolEntryRequest
-	//	*HarbidMessage_GetMempoolEntryResponse
-	//	*HarbidMessage_GetConnectedPeerInfoRequest
-	//	*HarbidMessage_GetConnectedPeerInfoResponse
-	//	*HarbidMessage_AddPeerRequest
-	//	*HarbidMessage_AddPeerResponse
-	//	*HarbidMessage_SubmitTransactionRequest
-	//	*HarbidMessage_SubmitTransactionResponse
-	//	*HarbidMessage_NotifyVirtualSelectedParentChainChangedRequest
-	//	*HarbidMessage_NotifyVirtualSelectedParentChainChangedResponse
-	//	*HarbidMessage_VirtualSelectedParentChainChangedNotification
-	//	*HarbidMessage_GetBlockRequest
-	//	*HarbidMessage_GetBlockResponse
-	//	*HarbidMessage_GetSubnetworkRequest
-	//	*HarbidMessage_GetSubnetworkResponse
-	//	*HarbidMessage_GetVirtualSelectedParentChainFromBlockRequest
-	//	*HarbidMessage_GetVirtualSelectedParentChainFromBlockResponse
-	//	*HarbidMessage_GetBlocksRequest
-	//	*HarbidMessage_GetBlocksResponse
-	//	*HarbidMessage_GetBlockCountRequest
-	//	*HarbidMessage_GetBlockCountResponse
-	//	*HarbidMessage_GetBlockDagInfoRequest
-	//	*HarbidMessage_GetBlockDagInfoResponse
-	//	*HarbidMessage_ResolveFinalityConflictRequest
-	//	*HarbidMessage_ResolveFinalityConflictResponse
-	//	*HarbidMessage_NotifyFinalityConflictsRequest
-	//	*HarbidMessage_NotifyFinalityConflictsResponse
-	//	*HarbidMessage_FinalityConflictNotification
-	//	*HarbidMessage_FinalityConflictResolvedNotification
-	//	*HarbidMessage_GetMempoolEntriesRequest
-	//	*HarbidMessage_GetMempoolEntriesResponse
-	//	*HarbidMessage_ShutDownRequest
-	//	*HarbidMessage_ShutDownResponse
-	//	*HarbidMessage_GetHeadersRequest
-	//	*HarbidMessage_GetHeadersResponse
-	//	*HarbidMessage_NotifyUtxosChangedRequest
-	//	*HarbidMessage_NotifyUtxosChangedResponse
-	//	*HarbidMessage_UtxosChangedNotification
-	//	*HarbidMessage_GetUtxosByAddressesRequest
-	//	*HarbidMessage_GetUtxosByAddressesResponse
-	//	*HarbidMessage_GetVirtualSelectedParentBlueScoreRequest
-	//	*HarbidMessage_GetVirtualSelectedParentBlueScoreResponse
-	//	*HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest
-	//	*HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse
-	//	*HarbidMessage_VirtualSelectedParentBlueScoreChangedNotification
-	//	*HarbidMessage_BanRequest
-	//	*HarbidMessage_BanResponse
-	//	*HarbidMessage_UnbanRequest
-	//	*HarbidMessage_UnbanResponse
-	//	*HarbidMessage_GetInfoRequest
-	//	*HarbidMessage_GetInfoResponse
-	//	*HarbidMessage_StopNotifyingUtxosChangedRequest
-	//	*HarbidMessage_StopNotifyingUtxosChangedResponse
-	//	*HarbidMessage_NotifyPruningPointUTXOSetOverrideRequest
-	//	*HarbidMessage_NotifyPruningPointUTXOSetOverrideResponse
-	//	*HarbidMessage_PruningPointUTXOSetOverrideNotification
-	//	*HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideRequest
-	//	*HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideResponse
-	//	*HarbidMessage_EstimateNetworkHashesPerSecondRequest
-	//	*HarbidMessage_EstimateNetworkHashesPerSecondResponse
-	//	*HarbidMessage_NotifyVirtualDaaScoreChangedRequest
-	//	*HarbidMessage_NotifyVirtualDaaScoreChangedResponse
-	//	*HarbidMessage_VirtualDaaScoreChangedNotification
-	//	*HarbidMessage_GetBalanceByAddressRequest
-	//	*HarbidMessage_GetBalanceByAddressResponse
-	//	*HarbidMessage_GetBalancesByAddressesRequest
-	//	*HarbidMessage_GetBalancesByAddressesResponse
-	//	*HarbidMessage_NotifyNewBlockTemplateRequest
-	//	*HarbidMessage_NotifyNewBlockTemplateResponse
-	//	*HarbidMessage_NewBlockTemplateNotification
-	//	*HarbidMessage_GetMempoolEntriesByAddressesRequest
-	//	*HarbidMessage_GetMempoolEntriesByAddressesResponse
-	//	*HarbidMessage_GetCoinSupplyRequest
-	//	*HarbidMessage_GetCoinSupplyResponse
-	Payload isHarbidMessage_Payload `protobuf_oneof:"payload"`
+	//	*KobradMessage_Addresses
+	//	*KobradMessage_Block
+	//	*KobradMessage_Transaction
+	//	*KobradMessage_BlockLocator
+	//	*KobradMessage_RequestAddresses
+	//	*KobradMessage_RequestRelayBlocks
+	//	*KobradMessage_RequestTransactions
+	//	*KobradMessage_IbdBlock
+	//	*KobradMessage_InvRelayBlock
+	//	*KobradMessage_InvTransactions
+	//	*KobradMessage_Ping
+	//	*KobradMessage_Pong
+	//	*KobradMessage_Verack
+	//	*KobradMessage_Version
+	//	*KobradMessage_TransactionNotFound
+	//	*KobradMessage_Reject
+	//	*KobradMessage_PruningPointUtxoSetChunk
+	//	*KobradMessage_RequestIBDBlocks
+	//	*KobradMessage_UnexpectedPruningPoint
+	//	*KobradMessage_IbdBlockLocator
+	//	*KobradMessage_IbdBlockLocatorHighestHash
+	//	*KobradMessage_RequestNextPruningPointUtxoSetChunk
+	//	*KobradMessage_DonePruningPointUtxoSetChunks
+	//	*KobradMessage_IbdBlockLocatorHighestHashNotFound
+	//	*KobradMessage_BlockWithTrustedData
+	//	*KobradMessage_DoneBlocksWithTrustedData
+	//	*KobradMessage_RequestPruningPointAndItsAnticone
+	//	*KobradMessage_BlockHeaders
+	//	*KobradMessage_RequestNextHeaders
+	//	*KobradMessage_DoneHeaders
+	//	*KobradMessage_RequestPruningPointUTXOSet
+	//	*KobradMessage_RequestHeaders
+	//	*KobradMessage_RequestBlockLocator
+	//	*KobradMessage_PruningPoints
+	//	*KobradMessage_RequestPruningPointProof
+	//	*KobradMessage_PruningPointProof
+	//	*KobradMessage_Ready
+	//	*KobradMessage_BlockWithTrustedDataV4
+	//	*KobradMessage_TrustedData
+	//	*KobradMessage_RequestIBDChainBlockLocator
+	//	*KobradMessage_IbdChainBlockLocator
+	//	*KobradMessage_RequestAnticone
+	//	*KobradMessage_RequestNextPruningPointAndItsAnticoneBlocks
+	//	*KobradMessage_GetCurrentNetworkRequest
+	//	*KobradMessage_GetCurrentNetworkResponse
+	//	*KobradMessage_SubmitBlockRequest
+	//	*KobradMessage_SubmitBlockResponse
+	//	*KobradMessage_GetBlockTemplateRequest
+	//	*KobradMessage_GetBlockTemplateResponse
+	//	*KobradMessage_NotifyBlockAddedRequest
+	//	*KobradMessage_NotifyBlockAddedResponse
+	//	*KobradMessage_BlockAddedNotification
+	//	*KobradMessage_GetPeerAddressesRequest
+	//	*KobradMessage_GetPeerAddressesResponse
+	//	*KobradMessage_GetSelectedTipHashRequest
+	//	*KobradMessage_GetSelectedTipHashResponse
+	//	*KobradMessage_GetMempoolEntryRequest
+	//	*KobradMessage_GetMempoolEntryResponse
+	//	*KobradMessage_GetConnectedPeerInfoRequest
+	//	*KobradMessage_GetConnectedPeerInfoResponse
+	//	*KobradMessage_AddPeerRequest
+	//	*KobradMessage_AddPeerResponse
+	//	*KobradMessage_SubmitTransactionRequest
+	//	*KobradMessage_SubmitTransactionResponse
+	//	*KobradMessage_NotifyVirtualSelectedParentChainChangedRequest
+	//	*KobradMessage_NotifyVirtualSelectedParentChainChangedResponse
+	//	*KobradMessage_VirtualSelectedParentChainChangedNotification
+	//	*KobradMessage_GetBlockRequest
+	//	*KobradMessage_GetBlockResponse
+	//	*KobradMessage_GetSubnetworkRequest
+	//	*KobradMessage_GetSubnetworkResponse
+	//	*KobradMessage_GetVirtualSelectedParentChainFromBlockRequest
+	//	*KobradMessage_GetVirtualSelectedParentChainFromBlockResponse
+	//	*KobradMessage_GetBlocksRequest
+	//	*KobradMessage_GetBlocksResponse
+	//	*KobradMessage_GetBlockCountRequest
+	//	*KobradMessage_GetBlockCountResponse
+	//	*KobradMessage_GetBlockDagInfoRequest
+	//	*KobradMessage_GetBlockDagInfoResponse
+	//	*KobradMessage_ResolveFinalityConflictRequest
+	//	*KobradMessage_ResolveFinalityConflictResponse
+	//	*KobradMessage_NotifyFinalityConflictsRequest
+	//	*KobradMessage_NotifyFinalityConflictsResponse
+	//	*KobradMessage_FinalityConflictNotification
+	//	*KobradMessage_FinalityConflictResolvedNotification
+	//	*KobradMessage_GetMempoolEntriesRequest
+	//	*KobradMessage_GetMempoolEntriesResponse
+	//	*KobradMessage_ShutDownRequest
+	//	*KobradMessage_ShutDownResponse
+	//	*KobradMessage_GetHeadersRequest
+	//	*KobradMessage_GetHeadersResponse
+	//	*KobradMessage_NotifyUtxosChangedRequest
+	//	*KobradMessage_NotifyUtxosChangedResponse
+	//	*KobradMessage_UtxosChangedNotification
+	//	*KobradMessage_GetUtxosByAddressesRequest
+	//	*KobradMessage_GetUtxosByAddressesResponse
+	//	*KobradMessage_GetVirtualSelectedParentBlueScoreRequest
+	//	*KobradMessage_GetVirtualSelectedParentBlueScoreResponse
+	//	*KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest
+	//	*KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse
+	//	*KobradMessage_VirtualSelectedParentBlueScoreChangedNotification
+	//	*KobradMessage_BanRequest
+	//	*KobradMessage_BanResponse
+	//	*KobradMessage_UnbanRequest
+	//	*KobradMessage_UnbanResponse
+	//	*KobradMessage_GetInfoRequest
+	//	*KobradMessage_GetInfoResponse
+	//	*KobradMessage_StopNotifyingUtxosChangedRequest
+	//	*KobradMessage_StopNotifyingUtxosChangedResponse
+	//	*KobradMessage_NotifyPruningPointUTXOSetOverrideRequest
+	//	*KobradMessage_NotifyPruningPointUTXOSetOverrideResponse
+	//	*KobradMessage_PruningPointUTXOSetOverrideNotification
+	//	*KobradMessage_StopNotifyingPruningPointUTXOSetOverrideRequest
+	//	*KobradMessage_StopNotifyingPruningPointUTXOSetOverrideResponse
+	//	*KobradMessage_EstimateNetworkHashesPerSecondRequest
+	//	*KobradMessage_EstimateNetworkHashesPerSecondResponse
+	//	*KobradMessage_NotifyVirtualDaaScoreChangedRequest
+	//	*KobradMessage_NotifyVirtualDaaScoreChangedResponse
+	//	*KobradMessage_VirtualDaaScoreChangedNotification
+	//	*KobradMessage_GetBalanceByAddressRequest
+	//	*KobradMessage_GetBalanceByAddressResponse
+	//	*KobradMessage_GetBalancesByAddressesRequest
+	//	*KobradMessage_GetBalancesByAddressesResponse
+	//	*KobradMessage_NotifyNewBlockTemplateRequest
+	//	*KobradMessage_NotifyNewBlockTemplateResponse
+	//	*KobradMessage_NewBlockTemplateNotification
+	//	*KobradMessage_GetMempoolEntriesByAddressesRequest
+	//	*KobradMessage_GetMempoolEntriesByAddressesResponse
+	//	*KobradMessage_GetCoinSupplyRequest
+	//	*KobradMessage_GetCoinSupplyResponse
+	Payload isKobradMessage_Payload `protobuf_oneof:"payload"`
 }
 
-func (x *HarbidMessage) Reset() {
-	*x = HarbidMessage{}
+func (x *KobradMessage) Reset() {
+	*x = KobradMessage{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_messages_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -169,13 +169,13 @@ func (x *HarbidMessage) Reset() {
 	}
 }
 
-func (x *HarbidMessage) String() string {
+func (x *KobradMessage) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*HarbidMessage) ProtoMessage() {}
+func (*KobradMessage) ProtoMessage() {}
 
-func (x *HarbidMessage) ProtoReflect() protoreflect.Message {
+func (x *KobradMessage) ProtoReflect() protoreflect.Message {
 	mi := &file_messages_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -187,1711 +187,1711 @@ func (x *HarbidMessage) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use HarbidMessage.ProtoReflect.Descriptor instead.
-func (*HarbidMessage) Descriptor() ([]byte, []int) {
+// Deprecated: Use KobradMessage.ProtoReflect.Descriptor instead.
+func (*KobradMessage) Descriptor() ([]byte, []int) {
 	return file_messages_proto_rawDescGZIP(), []int{0}
 }
 
-func (m *HarbidMessage) GetPayload() isHarbidMessage_Payload {
+func (m *KobradMessage) GetPayload() isKobradMessage_Payload {
 	if m != nil {
 		return m.Payload
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetAddresses() *AddressesMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_Addresses); ok {
+func (x *KobradMessage) GetAddresses() *AddressesMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_Addresses); ok {
 		return x.Addresses
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetBlock() *BlockMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_Block); ok {
+func (x *KobradMessage) GetBlock() *BlockMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_Block); ok {
 		return x.Block
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetTransaction() *TransactionMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_Transaction); ok {
+func (x *KobradMessage) GetTransaction() *TransactionMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_Transaction); ok {
 		return x.Transaction
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetBlockLocator() *BlockLocatorMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_BlockLocator); ok {
+func (x *KobradMessage) GetBlockLocator() *BlockLocatorMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_BlockLocator); ok {
 		return x.BlockLocator
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestAddresses() *RequestAddressesMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestAddresses); ok {
+func (x *KobradMessage) GetRequestAddresses() *RequestAddressesMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestAddresses); ok {
 		return x.RequestAddresses
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestRelayBlocks() *RequestRelayBlocksMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestRelayBlocks); ok {
+func (x *KobradMessage) GetRequestRelayBlocks() *RequestRelayBlocksMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestRelayBlocks); ok {
 		return x.RequestRelayBlocks
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestTransactions() *RequestTransactionsMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestTransactions); ok {
+func (x *KobradMessage) GetRequestTransactions() *RequestTransactionsMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestTransactions); ok {
 		return x.RequestTransactions
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetIbdBlock() *BlockMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_IbdBlock); ok {
+func (x *KobradMessage) GetIbdBlock() *BlockMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_IbdBlock); ok {
 		return x.IbdBlock
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetInvRelayBlock() *InvRelayBlockMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_InvRelayBlock); ok {
+func (x *KobradMessage) GetInvRelayBlock() *InvRelayBlockMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_InvRelayBlock); ok {
 		return x.InvRelayBlock
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetInvTransactions() *InvTransactionsMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_InvTransactions); ok {
+func (x *KobradMessage) GetInvTransactions() *InvTransactionsMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_InvTransactions); ok {
 		return x.InvTransactions
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetPing() *PingMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_Ping); ok {
+func (x *KobradMessage) GetPing() *PingMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_Ping); ok {
 		return x.Ping
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetPong() *PongMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_Pong); ok {
+func (x *KobradMessage) GetPong() *PongMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_Pong); ok {
 		return x.Pong
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetVerack() *VerackMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_Verack); ok {
+func (x *KobradMessage) GetVerack() *VerackMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_Verack); ok {
 		return x.Verack
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetVersion() *VersionMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_Version); ok {
+func (x *KobradMessage) GetVersion() *VersionMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_Version); ok {
 		return x.Version
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetTransactionNotFound() *TransactionNotFoundMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_TransactionNotFound); ok {
+func (x *KobradMessage) GetTransactionNotFound() *TransactionNotFoundMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_TransactionNotFound); ok {
 		return x.TransactionNotFound
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetReject() *RejectMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_Reject); ok {
+func (x *KobradMessage) GetReject() *RejectMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_Reject); ok {
 		return x.Reject
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetPruningPointUtxoSetChunk() *PruningPointUtxoSetChunkMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_PruningPointUtxoSetChunk); ok {
+func (x *KobradMessage) GetPruningPointUtxoSetChunk() *PruningPointUtxoSetChunkMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_PruningPointUtxoSetChunk); ok {
 		return x.PruningPointUtxoSetChunk
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestIBDBlocks() *RequestIBDBlocksMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestIBDBlocks); ok {
+func (x *KobradMessage) GetRequestIBDBlocks() *RequestIBDBlocksMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestIBDBlocks); ok {
 		return x.RequestIBDBlocks
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetUnexpectedPruningPoint() *UnexpectedPruningPointMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_UnexpectedPruningPoint); ok {
+func (x *KobradMessage) GetUnexpectedPruningPoint() *UnexpectedPruningPointMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_UnexpectedPruningPoint); ok {
 		return x.UnexpectedPruningPoint
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetIbdBlockLocator() *IbdBlockLocatorMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_IbdBlockLocator); ok {
+func (x *KobradMessage) GetIbdBlockLocator() *IbdBlockLocatorMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_IbdBlockLocator); ok {
 		return x.IbdBlockLocator
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetIbdBlockLocatorHighestHash() *IbdBlockLocatorHighestHashMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_IbdBlockLocatorHighestHash); ok {
+func (x *KobradMessage) GetIbdBlockLocatorHighestHash() *IbdBlockLocatorHighestHashMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_IbdBlockLocatorHighestHash); ok {
 		return x.IbdBlockLocatorHighestHash
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestNextPruningPointUtxoSetChunk() *RequestNextPruningPointUtxoSetChunkMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestNextPruningPointUtxoSetChunk); ok {
+func (x *KobradMessage) GetRequestNextPruningPointUtxoSetChunk() *RequestNextPruningPointUtxoSetChunkMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestNextPruningPointUtxoSetChunk); ok {
 		return x.RequestNextPruningPointUtxoSetChunk
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetDonePruningPointUtxoSetChunks() *DonePruningPointUtxoSetChunksMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_DonePruningPointUtxoSetChunks); ok {
+func (x *KobradMessage) GetDonePruningPointUtxoSetChunks() *DonePruningPointUtxoSetChunksMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_DonePruningPointUtxoSetChunks); ok {
 		return x.DonePruningPointUtxoSetChunks
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetIbdBlockLocatorHighestHashNotFound() *IbdBlockLocatorHighestHashNotFoundMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_IbdBlockLocatorHighestHashNotFound); ok {
+func (x *KobradMessage) GetIbdBlockLocatorHighestHashNotFound() *IbdBlockLocatorHighestHashNotFoundMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_IbdBlockLocatorHighestHashNotFound); ok {
 		return x.IbdBlockLocatorHighestHashNotFound
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetBlockWithTrustedData() *BlockWithTrustedDataMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_BlockWithTrustedData); ok {
+func (x *KobradMessage) GetBlockWithTrustedData() *BlockWithTrustedDataMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_BlockWithTrustedData); ok {
 		return x.BlockWithTrustedData
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetDoneBlocksWithTrustedData() *DoneBlocksWithTrustedDataMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_DoneBlocksWithTrustedData); ok {
+func (x *KobradMessage) GetDoneBlocksWithTrustedData() *DoneBlocksWithTrustedDataMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_DoneBlocksWithTrustedData); ok {
 		return x.DoneBlocksWithTrustedData
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestPruningPointAndItsAnticone() *RequestPruningPointAndItsAnticoneMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestPruningPointAndItsAnticone); ok {
+func (x *KobradMessage) GetRequestPruningPointAndItsAnticone() *RequestPruningPointAndItsAnticoneMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestPruningPointAndItsAnticone); ok {
 		return x.RequestPruningPointAndItsAnticone
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetBlockHeaders() *BlockHeadersMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_BlockHeaders); ok {
+func (x *KobradMessage) GetBlockHeaders() *BlockHeadersMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_BlockHeaders); ok {
 		return x.BlockHeaders
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestNextHeaders() *RequestNextHeadersMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestNextHeaders); ok {
+func (x *KobradMessage) GetRequestNextHeaders() *RequestNextHeadersMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestNextHeaders); ok {
 		return x.RequestNextHeaders
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetDoneHeaders() *DoneHeadersMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_DoneHeaders); ok {
+func (x *KobradMessage) GetDoneHeaders() *DoneHeadersMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_DoneHeaders); ok {
 		return x.DoneHeaders
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestPruningPointUTXOSet() *RequestPruningPointUTXOSetMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestPruningPointUTXOSet); ok {
+func (x *KobradMessage) GetRequestPruningPointUTXOSet() *RequestPruningPointUTXOSetMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestPruningPointUTXOSet); ok {
 		return x.RequestPruningPointUTXOSet
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestHeaders() *RequestHeadersMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestHeaders); ok {
+func (x *KobradMessage) GetRequestHeaders() *RequestHeadersMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestHeaders); ok {
 		return x.RequestHeaders
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestBlockLocator() *RequestBlockLocatorMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestBlockLocator); ok {
+func (x *KobradMessage) GetRequestBlockLocator() *RequestBlockLocatorMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestBlockLocator); ok {
 		return x.RequestBlockLocator
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetPruningPoints() *PruningPointsMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_PruningPoints); ok {
+func (x *KobradMessage) GetPruningPoints() *PruningPointsMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_PruningPoints); ok {
 		return x.PruningPoints
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestPruningPointProof() *RequestPruningPointProofMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestPruningPointProof); ok {
+func (x *KobradMessage) GetRequestPruningPointProof() *RequestPruningPointProofMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestPruningPointProof); ok {
 		return x.RequestPruningPointProof
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetPruningPointProof() *PruningPointProofMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_PruningPointProof); ok {
+func (x *KobradMessage) GetPruningPointProof() *PruningPointProofMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_PruningPointProof); ok {
 		return x.PruningPointProof
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetReady() *ReadyMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_Ready); ok {
+func (x *KobradMessage) GetReady() *ReadyMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_Ready); ok {
 		return x.Ready
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetBlockWithTrustedDataV4() *BlockWithTrustedDataV4Message {
-	if x, ok := x.GetPayload().(*HarbidMessage_BlockWithTrustedDataV4); ok {
+func (x *KobradMessage) GetBlockWithTrustedDataV4() *BlockWithTrustedDataV4Message {
+	if x, ok := x.GetPayload().(*KobradMessage_BlockWithTrustedDataV4); ok {
 		return x.BlockWithTrustedDataV4
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetTrustedData() *TrustedDataMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_TrustedData); ok {
+func (x *KobradMessage) GetTrustedData() *TrustedDataMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_TrustedData); ok {
 		return x.TrustedData
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestIBDChainBlockLocator() *RequestIBDChainBlockLocatorMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestIBDChainBlockLocator); ok {
+func (x *KobradMessage) GetRequestIBDChainBlockLocator() *RequestIBDChainBlockLocatorMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestIBDChainBlockLocator); ok {
 		return x.RequestIBDChainBlockLocator
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetIbdChainBlockLocator() *IbdChainBlockLocatorMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_IbdChainBlockLocator); ok {
+func (x *KobradMessage) GetIbdChainBlockLocator() *IbdChainBlockLocatorMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_IbdChainBlockLocator); ok {
 		return x.IbdChainBlockLocator
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestAnticone() *RequestAnticoneMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestAnticone); ok {
+func (x *KobradMessage) GetRequestAnticone() *RequestAnticoneMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestAnticone); ok {
 		return x.RequestAnticone
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetRequestNextPruningPointAndItsAnticoneBlocks() *RequestNextPruningPointAndItsAnticoneBlocksMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_RequestNextPruningPointAndItsAnticoneBlocks); ok {
+func (x *KobradMessage) GetRequestNextPruningPointAndItsAnticoneBlocks() *RequestNextPruningPointAndItsAnticoneBlocksMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_RequestNextPruningPointAndItsAnticoneBlocks); ok {
 		return x.RequestNextPruningPointAndItsAnticoneBlocks
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetCurrentNetworkRequest() *GetCurrentNetworkRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetCurrentNetworkRequest); ok {
+func (x *KobradMessage) GetGetCurrentNetworkRequest() *GetCurrentNetworkRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetCurrentNetworkRequest); ok {
 		return x.GetCurrentNetworkRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetCurrentNetworkResponse() *GetCurrentNetworkResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetCurrentNetworkResponse); ok {
+func (x *KobradMessage) GetGetCurrentNetworkResponse() *GetCurrentNetworkResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetCurrentNetworkResponse); ok {
 		return x.GetCurrentNetworkResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetSubmitBlockRequest() *SubmitBlockRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_SubmitBlockRequest); ok {
+func (x *KobradMessage) GetSubmitBlockRequest() *SubmitBlockRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_SubmitBlockRequest); ok {
 		return x.SubmitBlockRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetSubmitBlockResponse() *SubmitBlockResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_SubmitBlockResponse); ok {
+func (x *KobradMessage) GetSubmitBlockResponse() *SubmitBlockResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_SubmitBlockResponse); ok {
 		return x.SubmitBlockResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBlockTemplateRequest() *GetBlockTemplateRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBlockTemplateRequest); ok {
+func (x *KobradMessage) GetGetBlockTemplateRequest() *GetBlockTemplateRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBlockTemplateRequest); ok {
 		return x.GetBlockTemplateRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBlockTemplateResponse() *GetBlockTemplateResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBlockTemplateResponse); ok {
+func (x *KobradMessage) GetGetBlockTemplateResponse() *GetBlockTemplateResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBlockTemplateResponse); ok {
 		return x.GetBlockTemplateResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyBlockAddedRequest() *NotifyBlockAddedRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyBlockAddedRequest); ok {
+func (x *KobradMessage) GetNotifyBlockAddedRequest() *NotifyBlockAddedRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyBlockAddedRequest); ok {
 		return x.NotifyBlockAddedRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyBlockAddedResponse() *NotifyBlockAddedResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyBlockAddedResponse); ok {
+func (x *KobradMessage) GetNotifyBlockAddedResponse() *NotifyBlockAddedResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyBlockAddedResponse); ok {
 		return x.NotifyBlockAddedResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetBlockAddedNotification() *BlockAddedNotificationMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_BlockAddedNotification); ok {
+func (x *KobradMessage) GetBlockAddedNotification() *BlockAddedNotificationMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_BlockAddedNotification); ok {
 		return x.BlockAddedNotification
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetPeerAddressesRequest() *GetPeerAddressesRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetPeerAddressesRequest); ok {
+func (x *KobradMessage) GetGetPeerAddressesRequest() *GetPeerAddressesRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetPeerAddressesRequest); ok {
 		return x.GetPeerAddressesRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetPeerAddressesResponse() *GetPeerAddressesResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetPeerAddressesResponse); ok {
+func (x *KobradMessage) GetGetPeerAddressesResponse() *GetPeerAddressesResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetPeerAddressesResponse); ok {
 		return x.GetPeerAddressesResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetSelectedTipHashRequest() *GetSelectedTipHashRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetSelectedTipHashRequest); ok {
+func (x *KobradMessage) GetGetSelectedTipHashRequest() *GetSelectedTipHashRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetSelectedTipHashRequest); ok {
 		return x.GetSelectedTipHashRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetSelectedTipHashResponse() *GetSelectedTipHashResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetSelectedTipHashResponse); ok {
+func (x *KobradMessage) GetGetSelectedTipHashResponse() *GetSelectedTipHashResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetSelectedTipHashResponse); ok {
 		return x.GetSelectedTipHashResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetMempoolEntryRequest() *GetMempoolEntryRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetMempoolEntryRequest); ok {
+func (x *KobradMessage) GetGetMempoolEntryRequest() *GetMempoolEntryRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetMempoolEntryRequest); ok {
 		return x.GetMempoolEntryRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetMempoolEntryResponse() *GetMempoolEntryResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetMempoolEntryResponse); ok {
+func (x *KobradMessage) GetGetMempoolEntryResponse() *GetMempoolEntryResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetMempoolEntryResponse); ok {
 		return x.GetMempoolEntryResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetConnectedPeerInfoRequest() *GetConnectedPeerInfoRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetConnectedPeerInfoRequest); ok {
+func (x *KobradMessage) GetGetConnectedPeerInfoRequest() *GetConnectedPeerInfoRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetConnectedPeerInfoRequest); ok {
 		return x.GetConnectedPeerInfoRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetConnectedPeerInfoResponse() *GetConnectedPeerInfoResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetConnectedPeerInfoResponse); ok {
+func (x *KobradMessage) GetGetConnectedPeerInfoResponse() *GetConnectedPeerInfoResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetConnectedPeerInfoResponse); ok {
 		return x.GetConnectedPeerInfoResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetAddPeerRequest() *AddPeerRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_AddPeerRequest); ok {
+func (x *KobradMessage) GetAddPeerRequest() *AddPeerRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_AddPeerRequest); ok {
 		return x.AddPeerRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetAddPeerResponse() *AddPeerResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_AddPeerResponse); ok {
+func (x *KobradMessage) GetAddPeerResponse() *AddPeerResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_AddPeerResponse); ok {
 		return x.AddPeerResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetSubmitTransactionRequest() *SubmitTransactionRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_SubmitTransactionRequest); ok {
+func (x *KobradMessage) GetSubmitTransactionRequest() *SubmitTransactionRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_SubmitTransactionRequest); ok {
 		return x.SubmitTransactionRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetSubmitTransactionResponse() *SubmitTransactionResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_SubmitTransactionResponse); ok {
+func (x *KobradMessage) GetSubmitTransactionResponse() *SubmitTransactionResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_SubmitTransactionResponse); ok {
 		return x.SubmitTransactionResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyVirtualSelectedParentChainChangedRequest() *NotifyVirtualSelectedParentChainChangedRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyVirtualSelectedParentChainChangedRequest); ok {
+func (x *KobradMessage) GetNotifyVirtualSelectedParentChainChangedRequest() *NotifyVirtualSelectedParentChainChangedRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyVirtualSelectedParentChainChangedRequest); ok {
 		return x.NotifyVirtualSelectedParentChainChangedRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyVirtualSelectedParentChainChangedResponse() *NotifyVirtualSelectedParentChainChangedResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyVirtualSelectedParentChainChangedResponse); ok {
+func (x *KobradMessage) GetNotifyVirtualSelectedParentChainChangedResponse() *NotifyVirtualSelectedParentChainChangedResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyVirtualSelectedParentChainChangedResponse); ok {
 		return x.NotifyVirtualSelectedParentChainChangedResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetVirtualSelectedParentChainChangedNotification() *VirtualSelectedParentChainChangedNotificationMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_VirtualSelectedParentChainChangedNotification); ok {
+func (x *KobradMessage) GetVirtualSelectedParentChainChangedNotification() *VirtualSelectedParentChainChangedNotificationMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_VirtualSelectedParentChainChangedNotification); ok {
 		return x.VirtualSelectedParentChainChangedNotification
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBlockRequest() *GetBlockRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBlockRequest); ok {
+func (x *KobradMessage) GetGetBlockRequest() *GetBlockRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBlockRequest); ok {
 		return x.GetBlockRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBlockResponse() *GetBlockResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBlockResponse); ok {
+func (x *KobradMessage) GetGetBlockResponse() *GetBlockResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBlockResponse); ok {
 		return x.GetBlockResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetSubnetworkRequest() *GetSubnetworkRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetSubnetworkRequest); ok {
+func (x *KobradMessage) GetGetSubnetworkRequest() *GetSubnetworkRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetSubnetworkRequest); ok {
 		return x.GetSubnetworkRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetSubnetworkResponse() *GetSubnetworkResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetSubnetworkResponse); ok {
+func (x *KobradMessage) GetGetSubnetworkResponse() *GetSubnetworkResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetSubnetworkResponse); ok {
 		return x.GetSubnetworkResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetVirtualSelectedParentChainFromBlockRequest() *GetVirtualSelectedParentChainFromBlockRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetVirtualSelectedParentChainFromBlockRequest); ok {
+func (x *KobradMessage) GetGetVirtualSelectedParentChainFromBlockRequest() *GetVirtualSelectedParentChainFromBlockRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetVirtualSelectedParentChainFromBlockRequest); ok {
 		return x.GetVirtualSelectedParentChainFromBlockRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetVirtualSelectedParentChainFromBlockResponse() *GetVirtualSelectedParentChainFromBlockResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetVirtualSelectedParentChainFromBlockResponse); ok {
+func (x *KobradMessage) GetGetVirtualSelectedParentChainFromBlockResponse() *GetVirtualSelectedParentChainFromBlockResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetVirtualSelectedParentChainFromBlockResponse); ok {
 		return x.GetVirtualSelectedParentChainFromBlockResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBlocksRequest() *GetBlocksRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBlocksRequest); ok {
+func (x *KobradMessage) GetGetBlocksRequest() *GetBlocksRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBlocksRequest); ok {
 		return x.GetBlocksRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBlocksResponse() *GetBlocksResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBlocksResponse); ok {
+func (x *KobradMessage) GetGetBlocksResponse() *GetBlocksResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBlocksResponse); ok {
 		return x.GetBlocksResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBlockCountRequest() *GetBlockCountRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBlockCountRequest); ok {
+func (x *KobradMessage) GetGetBlockCountRequest() *GetBlockCountRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBlockCountRequest); ok {
 		return x.GetBlockCountRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBlockCountResponse() *GetBlockCountResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBlockCountResponse); ok {
+func (x *KobradMessage) GetGetBlockCountResponse() *GetBlockCountResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBlockCountResponse); ok {
 		return x.GetBlockCountResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBlockDagInfoRequest() *GetBlockDagInfoRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBlockDagInfoRequest); ok {
+func (x *KobradMessage) GetGetBlockDagInfoRequest() *GetBlockDagInfoRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBlockDagInfoRequest); ok {
 		return x.GetBlockDagInfoRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBlockDagInfoResponse() *GetBlockDagInfoResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBlockDagInfoResponse); ok {
+func (x *KobradMessage) GetGetBlockDagInfoResponse() *GetBlockDagInfoResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBlockDagInfoResponse); ok {
 		return x.GetBlockDagInfoResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetResolveFinalityConflictRequest() *ResolveFinalityConflictRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_ResolveFinalityConflictRequest); ok {
+func (x *KobradMessage) GetResolveFinalityConflictRequest() *ResolveFinalityConflictRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_ResolveFinalityConflictRequest); ok {
 		return x.ResolveFinalityConflictRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetResolveFinalityConflictResponse() *ResolveFinalityConflictResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_ResolveFinalityConflictResponse); ok {
+func (x *KobradMessage) GetResolveFinalityConflictResponse() *ResolveFinalityConflictResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_ResolveFinalityConflictResponse); ok {
 		return x.ResolveFinalityConflictResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyFinalityConflictsRequest() *NotifyFinalityConflictsRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyFinalityConflictsRequest); ok {
+func (x *KobradMessage) GetNotifyFinalityConflictsRequest() *NotifyFinalityConflictsRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyFinalityConflictsRequest); ok {
 		return x.NotifyFinalityConflictsRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyFinalityConflictsResponse() *NotifyFinalityConflictsResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyFinalityConflictsResponse); ok {
+func (x *KobradMessage) GetNotifyFinalityConflictsResponse() *NotifyFinalityConflictsResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyFinalityConflictsResponse); ok {
 		return x.NotifyFinalityConflictsResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetFinalityConflictNotification() *FinalityConflictNotificationMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_FinalityConflictNotification); ok {
+func (x *KobradMessage) GetFinalityConflictNotification() *FinalityConflictNotificationMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_FinalityConflictNotification); ok {
 		return x.FinalityConflictNotification
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetFinalityConflictResolvedNotification() *FinalityConflictResolvedNotificationMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_FinalityConflictResolvedNotification); ok {
+func (x *KobradMessage) GetFinalityConflictResolvedNotification() *FinalityConflictResolvedNotificationMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_FinalityConflictResolvedNotification); ok {
 		return x.FinalityConflictResolvedNotification
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetMempoolEntriesRequest() *GetMempoolEntriesRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetMempoolEntriesRequest); ok {
+func (x *KobradMessage) GetGetMempoolEntriesRequest() *GetMempoolEntriesRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetMempoolEntriesRequest); ok {
 		return x.GetMempoolEntriesRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetMempoolEntriesResponse() *GetMempoolEntriesResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetMempoolEntriesResponse); ok {
+func (x *KobradMessage) GetGetMempoolEntriesResponse() *GetMempoolEntriesResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetMempoolEntriesResponse); ok {
 		return x.GetMempoolEntriesResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetShutDownRequest() *ShutDownRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_ShutDownRequest); ok {
+func (x *KobradMessage) GetShutDownRequest() *ShutDownRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_ShutDownRequest); ok {
 		return x.ShutDownRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetShutDownResponse() *ShutDownResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_ShutDownResponse); ok {
+func (x *KobradMessage) GetShutDownResponse() *ShutDownResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_ShutDownResponse); ok {
 		return x.ShutDownResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetHeadersRequest() *GetHeadersRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetHeadersRequest); ok {
+func (x *KobradMessage) GetGetHeadersRequest() *GetHeadersRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetHeadersRequest); ok {
 		return x.GetHeadersRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetHeadersResponse() *GetHeadersResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetHeadersResponse); ok {
+func (x *KobradMessage) GetGetHeadersResponse() *GetHeadersResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetHeadersResponse); ok {
 		return x.GetHeadersResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyUtxosChangedRequest() *NotifyUtxosChangedRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyUtxosChangedRequest); ok {
+func (x *KobradMessage) GetNotifyUtxosChangedRequest() *NotifyUtxosChangedRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyUtxosChangedRequest); ok {
 		return x.NotifyUtxosChangedRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyUtxosChangedResponse() *NotifyUtxosChangedResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyUtxosChangedResponse); ok {
+func (x *KobradMessage) GetNotifyUtxosChangedResponse() *NotifyUtxosChangedResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyUtxosChangedResponse); ok {
 		return x.NotifyUtxosChangedResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetUtxosChangedNotification() *UtxosChangedNotificationMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_UtxosChangedNotification); ok {
+func (x *KobradMessage) GetUtxosChangedNotification() *UtxosChangedNotificationMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_UtxosChangedNotification); ok {
 		return x.UtxosChangedNotification
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetUtxosByAddressesRequest() *GetUtxosByAddressesRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetUtxosByAddressesRequest); ok {
+func (x *KobradMessage) GetGetUtxosByAddressesRequest() *GetUtxosByAddressesRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetUtxosByAddressesRequest); ok {
 		return x.GetUtxosByAddressesRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetUtxosByAddressesResponse() *GetUtxosByAddressesResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetUtxosByAddressesResponse); ok {
+func (x *KobradMessage) GetGetUtxosByAddressesResponse() *GetUtxosByAddressesResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetUtxosByAddressesResponse); ok {
 		return x.GetUtxosByAddressesResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetVirtualSelectedParentBlueScoreRequest() *GetVirtualSelectedParentBlueScoreRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetVirtualSelectedParentBlueScoreRequest); ok {
+func (x *KobradMessage) GetGetVirtualSelectedParentBlueScoreRequest() *GetVirtualSelectedParentBlueScoreRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetVirtualSelectedParentBlueScoreRequest); ok {
 		return x.GetVirtualSelectedParentBlueScoreRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetVirtualSelectedParentBlueScoreResponse() *GetVirtualSelectedParentBlueScoreResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetVirtualSelectedParentBlueScoreResponse); ok {
+func (x *KobradMessage) GetGetVirtualSelectedParentBlueScoreResponse() *GetVirtualSelectedParentBlueScoreResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetVirtualSelectedParentBlueScoreResponse); ok {
 		return x.GetVirtualSelectedParentBlueScoreResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyVirtualSelectedParentBlueScoreChangedRequest() *NotifyVirtualSelectedParentBlueScoreChangedRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest); ok {
+func (x *KobradMessage) GetNotifyVirtualSelectedParentBlueScoreChangedRequest() *NotifyVirtualSelectedParentBlueScoreChangedRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest); ok {
 		return x.NotifyVirtualSelectedParentBlueScoreChangedRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyVirtualSelectedParentBlueScoreChangedResponse() *NotifyVirtualSelectedParentBlueScoreChangedResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse); ok {
+func (x *KobradMessage) GetNotifyVirtualSelectedParentBlueScoreChangedResponse() *NotifyVirtualSelectedParentBlueScoreChangedResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse); ok {
 		return x.NotifyVirtualSelectedParentBlueScoreChangedResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetVirtualSelectedParentBlueScoreChangedNotification() *VirtualSelectedParentBlueScoreChangedNotificationMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_VirtualSelectedParentBlueScoreChangedNotification); ok {
+func (x *KobradMessage) GetVirtualSelectedParentBlueScoreChangedNotification() *VirtualSelectedParentBlueScoreChangedNotificationMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_VirtualSelectedParentBlueScoreChangedNotification); ok {
 		return x.VirtualSelectedParentBlueScoreChangedNotification
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetBanRequest() *BanRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_BanRequest); ok {
+func (x *KobradMessage) GetBanRequest() *BanRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_BanRequest); ok {
 		return x.BanRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetBanResponse() *BanResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_BanResponse); ok {
+func (x *KobradMessage) GetBanResponse() *BanResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_BanResponse); ok {
 		return x.BanResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetUnbanRequest() *UnbanRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_UnbanRequest); ok {
+func (x *KobradMessage) GetUnbanRequest() *UnbanRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_UnbanRequest); ok {
 		return x.UnbanRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetUnbanResponse() *UnbanResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_UnbanResponse); ok {
+func (x *KobradMessage) GetUnbanResponse() *UnbanResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_UnbanResponse); ok {
 		return x.UnbanResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetInfoRequest() *GetInfoRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetInfoRequest); ok {
+func (x *KobradMessage) GetGetInfoRequest() *GetInfoRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetInfoRequest); ok {
 		return x.GetInfoRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetInfoResponse() *GetInfoResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetInfoResponse); ok {
+func (x *KobradMessage) GetGetInfoResponse() *GetInfoResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetInfoResponse); ok {
 		return x.GetInfoResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetStopNotifyingUtxosChangedRequest() *StopNotifyingUtxosChangedRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_StopNotifyingUtxosChangedRequest); ok {
+func (x *KobradMessage) GetStopNotifyingUtxosChangedRequest() *StopNotifyingUtxosChangedRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_StopNotifyingUtxosChangedRequest); ok {
 		return x.StopNotifyingUtxosChangedRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetStopNotifyingUtxosChangedResponse() *StopNotifyingUtxosChangedResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_StopNotifyingUtxosChangedResponse); ok {
+func (x *KobradMessage) GetStopNotifyingUtxosChangedResponse() *StopNotifyingUtxosChangedResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_StopNotifyingUtxosChangedResponse); ok {
 		return x.StopNotifyingUtxosChangedResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyPruningPointUTXOSetOverrideRequest() *NotifyPruningPointUTXOSetOverrideRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyPruningPointUTXOSetOverrideRequest); ok {
+func (x *KobradMessage) GetNotifyPruningPointUTXOSetOverrideRequest() *NotifyPruningPointUTXOSetOverrideRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyPruningPointUTXOSetOverrideRequest); ok {
 		return x.NotifyPruningPointUTXOSetOverrideRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyPruningPointUTXOSetOverrideResponse() *NotifyPruningPointUTXOSetOverrideResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyPruningPointUTXOSetOverrideResponse); ok {
+func (x *KobradMessage) GetNotifyPruningPointUTXOSetOverrideResponse() *NotifyPruningPointUTXOSetOverrideResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyPruningPointUTXOSetOverrideResponse); ok {
 		return x.NotifyPruningPointUTXOSetOverrideResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetPruningPointUTXOSetOverrideNotification() *PruningPointUTXOSetOverrideNotificationMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_PruningPointUTXOSetOverrideNotification); ok {
+func (x *KobradMessage) GetPruningPointUTXOSetOverrideNotification() *PruningPointUTXOSetOverrideNotificationMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_PruningPointUTXOSetOverrideNotification); ok {
 		return x.PruningPointUTXOSetOverrideNotification
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetStopNotifyingPruningPointUTXOSetOverrideRequest() *StopNotifyingPruningPointUTXOSetOverrideRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideRequest); ok {
+func (x *KobradMessage) GetStopNotifyingPruningPointUTXOSetOverrideRequest() *StopNotifyingPruningPointUTXOSetOverrideRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_StopNotifyingPruningPointUTXOSetOverrideRequest); ok {
 		return x.StopNotifyingPruningPointUTXOSetOverrideRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetStopNotifyingPruningPointUTXOSetOverrideResponse() *StopNotifyingPruningPointUTXOSetOverrideResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideResponse); ok {
+func (x *KobradMessage) GetStopNotifyingPruningPointUTXOSetOverrideResponse() *StopNotifyingPruningPointUTXOSetOverrideResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_StopNotifyingPruningPointUTXOSetOverrideResponse); ok {
 		return x.StopNotifyingPruningPointUTXOSetOverrideResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetEstimateNetworkHashesPerSecondRequest() *EstimateNetworkHashesPerSecondRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_EstimateNetworkHashesPerSecondRequest); ok {
+func (x *KobradMessage) GetEstimateNetworkHashesPerSecondRequest() *EstimateNetworkHashesPerSecondRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_EstimateNetworkHashesPerSecondRequest); ok {
 		return x.EstimateNetworkHashesPerSecondRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetEstimateNetworkHashesPerSecondResponse() *EstimateNetworkHashesPerSecondResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_EstimateNetworkHashesPerSecondResponse); ok {
+func (x *KobradMessage) GetEstimateNetworkHashesPerSecondResponse() *EstimateNetworkHashesPerSecondResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_EstimateNetworkHashesPerSecondResponse); ok {
 		return x.EstimateNetworkHashesPerSecondResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyVirtualDaaScoreChangedRequest() *NotifyVirtualDaaScoreChangedRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyVirtualDaaScoreChangedRequest); ok {
+func (x *KobradMessage) GetNotifyVirtualDaaScoreChangedRequest() *NotifyVirtualDaaScoreChangedRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyVirtualDaaScoreChangedRequest); ok {
 		return x.NotifyVirtualDaaScoreChangedRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyVirtualDaaScoreChangedResponse() *NotifyVirtualDaaScoreChangedResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyVirtualDaaScoreChangedResponse); ok {
+func (x *KobradMessage) GetNotifyVirtualDaaScoreChangedResponse() *NotifyVirtualDaaScoreChangedResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyVirtualDaaScoreChangedResponse); ok {
 		return x.NotifyVirtualDaaScoreChangedResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetVirtualDaaScoreChangedNotification() *VirtualDaaScoreChangedNotificationMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_VirtualDaaScoreChangedNotification); ok {
+func (x *KobradMessage) GetVirtualDaaScoreChangedNotification() *VirtualDaaScoreChangedNotificationMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_VirtualDaaScoreChangedNotification); ok {
 		return x.VirtualDaaScoreChangedNotification
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBalanceByAddressRequest() *GetBalanceByAddressRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBalanceByAddressRequest); ok {
+func (x *KobradMessage) GetGetBalanceByAddressRequest() *GetBalanceByAddressRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBalanceByAddressRequest); ok {
 		return x.GetBalanceByAddressRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBalanceByAddressResponse() *GetBalanceByAddressResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBalanceByAddressResponse); ok {
+func (x *KobradMessage) GetGetBalanceByAddressResponse() *GetBalanceByAddressResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBalanceByAddressResponse); ok {
 		return x.GetBalanceByAddressResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBalancesByAddressesRequest() *GetBalancesByAddressesRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBalancesByAddressesRequest); ok {
+func (x *KobradMessage) GetGetBalancesByAddressesRequest() *GetBalancesByAddressesRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBalancesByAddressesRequest); ok {
 		return x.GetBalancesByAddressesRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetBalancesByAddressesResponse() *GetBalancesByAddressesResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetBalancesByAddressesResponse); ok {
+func (x *KobradMessage) GetGetBalancesByAddressesResponse() *GetBalancesByAddressesResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetBalancesByAddressesResponse); ok {
 		return x.GetBalancesByAddressesResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyNewBlockTemplateRequest() *NotifyNewBlockTemplateRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyNewBlockTemplateRequest); ok {
+func (x *KobradMessage) GetNotifyNewBlockTemplateRequest() *NotifyNewBlockTemplateRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyNewBlockTemplateRequest); ok {
 		return x.NotifyNewBlockTemplateRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNotifyNewBlockTemplateResponse() *NotifyNewBlockTemplateResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NotifyNewBlockTemplateResponse); ok {
+func (x *KobradMessage) GetNotifyNewBlockTemplateResponse() *NotifyNewBlockTemplateResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NotifyNewBlockTemplateResponse); ok {
 		return x.NotifyNewBlockTemplateResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetNewBlockTemplateNotification() *NewBlockTemplateNotificationMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_NewBlockTemplateNotification); ok {
+func (x *KobradMessage) GetNewBlockTemplateNotification() *NewBlockTemplateNotificationMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_NewBlockTemplateNotification); ok {
 		return x.NewBlockTemplateNotification
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetMempoolEntriesByAddressesRequest() *GetMempoolEntriesByAddressesRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetMempoolEntriesByAddressesRequest); ok {
+func (x *KobradMessage) GetGetMempoolEntriesByAddressesRequest() *GetMempoolEntriesByAddressesRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetMempoolEntriesByAddressesRequest); ok {
 		return x.GetMempoolEntriesByAddressesRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetMempoolEntriesByAddressesResponse() *GetMempoolEntriesByAddressesResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetMempoolEntriesByAddressesResponse); ok {
+func (x *KobradMessage) GetGetMempoolEntriesByAddressesResponse() *GetMempoolEntriesByAddressesResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetMempoolEntriesByAddressesResponse); ok {
 		return x.GetMempoolEntriesByAddressesResponse
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetCoinSupplyRequest() *GetCoinSupplyRequestMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetCoinSupplyRequest); ok {
+func (x *KobradMessage) GetGetCoinSupplyRequest() *GetCoinSupplyRequestMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetCoinSupplyRequest); ok {
 		return x.GetCoinSupplyRequest
 	}
 	return nil
 }
 
-func (x *HarbidMessage) GetGetCoinSupplyResponse() *GetCoinSupplyResponseMessage {
-	if x, ok := x.GetPayload().(*HarbidMessage_GetCoinSupplyResponse); ok {
+func (x *KobradMessage) GetGetCoinSupplyResponse() *GetCoinSupplyResponseMessage {
+	if x, ok := x.GetPayload().(*KobradMessage_GetCoinSupplyResponse); ok {
 		return x.GetCoinSupplyResponse
 	}
 	return nil
 }
 
-type isHarbidMessage_Payload interface {
-	isHarbidMessage_Payload()
+type isKobradMessage_Payload interface {
+	isKobradMessage_Payload()
 }
 
-type HarbidMessage_Addresses struct {
+type KobradMessage_Addresses struct {
 	Addresses *AddressesMessage `protobuf:"bytes,1,opt,name=addresses,proto3,oneof"`
 }
 
-type HarbidMessage_Block struct {
+type KobradMessage_Block struct {
 	Block *BlockMessage `protobuf:"bytes,2,opt,name=block,proto3,oneof"`
 }
 
-type HarbidMessage_Transaction struct {
+type KobradMessage_Transaction struct {
 	Transaction *TransactionMessage `protobuf:"bytes,3,opt,name=transaction,proto3,oneof"`
 }
 
-type HarbidMessage_BlockLocator struct {
+type KobradMessage_BlockLocator struct {
 	BlockLocator *BlockLocatorMessage `protobuf:"bytes,5,opt,name=blockLocator,proto3,oneof"`
 }
 
-type HarbidMessage_RequestAddresses struct {
+type KobradMessage_RequestAddresses struct {
 	RequestAddresses *RequestAddressesMessage `protobuf:"bytes,6,opt,name=requestAddresses,proto3,oneof"`
 }
 
-type HarbidMessage_RequestRelayBlocks struct {
+type KobradMessage_RequestRelayBlocks struct {
 	RequestRelayBlocks *RequestRelayBlocksMessage `protobuf:"bytes,10,opt,name=requestRelayBlocks,proto3,oneof"`
 }
 
-type HarbidMessage_RequestTransactions struct {
+type KobradMessage_RequestTransactions struct {
 	RequestTransactions *RequestTransactionsMessage `protobuf:"bytes,12,opt,name=requestTransactions,proto3,oneof"`
 }
 
-type HarbidMessage_IbdBlock struct {
+type KobradMessage_IbdBlock struct {
 	IbdBlock *BlockMessage `protobuf:"bytes,13,opt,name=ibdBlock,proto3,oneof"`
 }
 
-type HarbidMessage_InvRelayBlock struct {
+type KobradMessage_InvRelayBlock struct {
 	InvRelayBlock *InvRelayBlockMessage `protobuf:"bytes,14,opt,name=invRelayBlock,proto3,oneof"`
 }
 
-type HarbidMessage_InvTransactions struct {
+type KobradMessage_InvTransactions struct {
 	InvTransactions *InvTransactionsMessage `protobuf:"bytes,15,opt,name=invTransactions,proto3,oneof"`
 }
 
-type HarbidMessage_Ping struct {
+type KobradMessage_Ping struct {
 	Ping *PingMessage `protobuf:"bytes,16,opt,name=ping,proto3,oneof"`
 }
 
-type HarbidMessage_Pong struct {
+type KobradMessage_Pong struct {
 	Pong *PongMessage `protobuf:"bytes,17,opt,name=pong,proto3,oneof"`
 }
 
-type HarbidMessage_Verack struct {
+type KobradMessage_Verack struct {
 	Verack *VerackMessage `protobuf:"bytes,19,opt,name=verack,proto3,oneof"`
 }
 
-type HarbidMessage_Version struct {
+type KobradMessage_Version struct {
 	Version *VersionMessage `protobuf:"bytes,20,opt,name=version,proto3,oneof"`
 }
 
-type HarbidMessage_TransactionNotFound struct {
+type KobradMessage_TransactionNotFound struct {
 	TransactionNotFound *TransactionNotFoundMessage `protobuf:"bytes,21,opt,name=transactionNotFound,proto3,oneof"`
 }
 
-type HarbidMessage_Reject struct {
+type KobradMessage_Reject struct {
 	Reject *RejectMessage `protobuf:"bytes,22,opt,name=reject,proto3,oneof"`
 }
 
-type HarbidMessage_PruningPointUtxoSetChunk struct {
+type KobradMessage_PruningPointUtxoSetChunk struct {
 	PruningPointUtxoSetChunk *PruningPointUtxoSetChunkMessage `protobuf:"bytes,25,opt,name=pruningPointUtxoSetChunk,proto3,oneof"`
 }
 
-type HarbidMessage_RequestIBDBlocks struct {
+type KobradMessage_RequestIBDBlocks struct {
 	RequestIBDBlocks *RequestIBDBlocksMessage `protobuf:"bytes,26,opt,name=requestIBDBlocks,proto3,oneof"`
 }
 
-type HarbidMessage_UnexpectedPruningPoint struct {
+type KobradMessage_UnexpectedPruningPoint struct {
 	UnexpectedPruningPoint *UnexpectedPruningPointMessage `protobuf:"bytes,27,opt,name=unexpectedPruningPoint,proto3,oneof"`
 }
 
-type HarbidMessage_IbdBlockLocator struct {
+type KobradMessage_IbdBlockLocator struct {
 	IbdBlockLocator *IbdBlockLocatorMessage `protobuf:"bytes,30,opt,name=ibdBlockLocator,proto3,oneof"`
 }
 
-type HarbidMessage_IbdBlockLocatorHighestHash struct {
+type KobradMessage_IbdBlockLocatorHighestHash struct {
 	IbdBlockLocatorHighestHash *IbdBlockLocatorHighestHashMessage `protobuf:"bytes,31,opt,name=ibdBlockLocatorHighestHash,proto3,oneof"`
 }
 
-type HarbidMessage_RequestNextPruningPointUtxoSetChunk struct {
+type KobradMessage_RequestNextPruningPointUtxoSetChunk struct {
 	RequestNextPruningPointUtxoSetChunk *RequestNextPruningPointUtxoSetChunkMessage `protobuf:"bytes,33,opt,name=requestNextPruningPointUtxoSetChunk,proto3,oneof"`
 }
 
-type HarbidMessage_DonePruningPointUtxoSetChunks struct {
+type KobradMessage_DonePruningPointUtxoSetChunks struct {
 	DonePruningPointUtxoSetChunks *DonePruningPointUtxoSetChunksMessage `protobuf:"bytes,34,opt,name=donePruningPointUtxoSetChunks,proto3,oneof"`
 }
 
-type HarbidMessage_IbdBlockLocatorHighestHashNotFound struct {
+type KobradMessage_IbdBlockLocatorHighestHashNotFound struct {
 	IbdBlockLocatorHighestHashNotFound *IbdBlockLocatorHighestHashNotFoundMessage `protobuf:"bytes,35,opt,name=ibdBlockLocatorHighestHashNotFound,proto3,oneof"`
 }
 
-type HarbidMessage_BlockWithTrustedData struct {
+type KobradMessage_BlockWithTrustedData struct {
 	BlockWithTrustedData *BlockWithTrustedDataMessage `protobuf:"bytes,36,opt,name=blockWithTrustedData,proto3,oneof"`
 }
 
-type HarbidMessage_DoneBlocksWithTrustedData struct {
+type KobradMessage_DoneBlocksWithTrustedData struct {
 	DoneBlocksWithTrustedData *DoneBlocksWithTrustedDataMessage `protobuf:"bytes,37,opt,name=doneBlocksWithTrustedData,proto3,oneof"`
 }
 
-type HarbidMessage_RequestPruningPointAndItsAnticone struct {
+type KobradMessage_RequestPruningPointAndItsAnticone struct {
 	RequestPruningPointAndItsAnticone *RequestPruningPointAndItsAnticoneMessage `protobuf:"bytes,40,opt,name=requestPruningPointAndItsAnticone,proto3,oneof"`
 }
 
-type HarbidMessage_BlockHeaders struct {
+type KobradMessage_BlockHeaders struct {
 	BlockHeaders *BlockHeadersMessage `protobuf:"bytes,41,opt,name=blockHeaders,proto3,oneof"`
 }
 
-type HarbidMessage_RequestNextHeaders struct {
+type KobradMessage_RequestNextHeaders struct {
 	RequestNextHeaders *RequestNextHeadersMessage `protobuf:"bytes,42,opt,name=requestNextHeaders,proto3,oneof"`
 }
 
-type HarbidMessage_DoneHeaders struct {
+type KobradMessage_DoneHeaders struct {
 	DoneHeaders *DoneHeadersMessage `protobuf:"bytes,43,opt,name=DoneHeaders,proto3,oneof"`
 }
 
-type HarbidMessage_RequestPruningPointUTXOSet struct {
+type KobradMessage_RequestPruningPointUTXOSet struct {
 	RequestPruningPointUTXOSet *RequestPruningPointUTXOSetMessage `protobuf:"bytes,44,opt,name=requestPruningPointUTXOSet,proto3,oneof"`
 }
 
-type HarbidMessage_RequestHeaders struct {
+type KobradMessage_RequestHeaders struct {
 	RequestHeaders *RequestHeadersMessage `protobuf:"bytes,45,opt,name=requestHeaders,proto3,oneof"`
 }
 
-type HarbidMessage_RequestBlockLocator struct {
+type KobradMessage_RequestBlockLocator struct {
 	RequestBlockLocator *RequestBlockLocatorMessage `protobuf:"bytes,46,opt,name=requestBlockLocator,proto3,oneof"`
 }
 
-type HarbidMessage_PruningPoints struct {
+type KobradMessage_PruningPoints struct {
 	PruningPoints *PruningPointsMessage `protobuf:"bytes,47,opt,name=pruningPoints,proto3,oneof"`
 }
 
-type HarbidMessage_RequestPruningPointProof struct {
+type KobradMessage_RequestPruningPointProof struct {
 	RequestPruningPointProof *RequestPruningPointProofMessage `protobuf:"bytes,48,opt,name=requestPruningPointProof,proto3,oneof"`
 }
 
-type HarbidMessage_PruningPointProof struct {
+type KobradMessage_PruningPointProof struct {
 	PruningPointProof *PruningPointProofMessage `protobuf:"bytes,49,opt,name=pruningPointProof,proto3,oneof"`
 }
 
-type HarbidMessage_Ready struct {
+type KobradMessage_Ready struct {
 	Ready *ReadyMessage `protobuf:"bytes,50,opt,name=ready,proto3,oneof"`
 }
 
-type HarbidMessage_BlockWithTrustedDataV4 struct {
+type KobradMessage_BlockWithTrustedDataV4 struct {
 	BlockWithTrustedDataV4 *BlockWithTrustedDataV4Message `protobuf:"bytes,51,opt,name=blockWithTrustedDataV4,proto3,oneof"`
 }
 
-type HarbidMessage_TrustedData struct {
+type KobradMessage_TrustedData struct {
 	TrustedData *TrustedDataMessage `protobuf:"bytes,52,opt,name=trustedData,proto3,oneof"`
 }
 
-type HarbidMessage_RequestIBDChainBlockLocator struct {
+type KobradMessage_RequestIBDChainBlockLocator struct {
 	RequestIBDChainBlockLocator *RequestIBDChainBlockLocatorMessage `protobuf:"bytes,53,opt,name=requestIBDChainBlockLocator,proto3,oneof"`
 }
 
-type HarbidMessage_IbdChainBlockLocator struct {
+type KobradMessage_IbdChainBlockLocator struct {
 	IbdChainBlockLocator *IbdChainBlockLocatorMessage `protobuf:"bytes,54,opt,name=ibdChainBlockLocator,proto3,oneof"`
 }
 
-type HarbidMessage_RequestAnticone struct {
+type KobradMessage_RequestAnticone struct {
 	RequestAnticone *RequestAnticoneMessage `protobuf:"bytes,55,opt,name=requestAnticone,proto3,oneof"`
 }
 
-type HarbidMessage_RequestNextPruningPointAndItsAnticoneBlocks struct {
+type KobradMessage_RequestNextPruningPointAndItsAnticoneBlocks struct {
 	RequestNextPruningPointAndItsAnticoneBlocks *RequestNextPruningPointAndItsAnticoneBlocksMessage `protobuf:"bytes,56,opt,name=requestNextPruningPointAndItsAnticoneBlocks,proto3,oneof"`
 }
 
-type HarbidMessage_GetCurrentNetworkRequest struct {
+type KobradMessage_GetCurrentNetworkRequest struct {
 	GetCurrentNetworkRequest *GetCurrentNetworkRequestMessage `protobuf:"bytes,1001,opt,name=getCurrentNetworkRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetCurrentNetworkResponse struct {
+type KobradMessage_GetCurrentNetworkResponse struct {
 	GetCurrentNetworkResponse *GetCurrentNetworkResponseMessage `protobuf:"bytes,1002,opt,name=getCurrentNetworkResponse,proto3,oneof"`
 }
 
-type HarbidMessage_SubmitBlockRequest struct {
+type KobradMessage_SubmitBlockRequest struct {
 	SubmitBlockRequest *SubmitBlockRequestMessage `protobuf:"bytes,1003,opt,name=submitBlockRequest,proto3,oneof"`
 }
 
-type HarbidMessage_SubmitBlockResponse struct {
+type KobradMessage_SubmitBlockResponse struct {
 	SubmitBlockResponse *SubmitBlockResponseMessage `protobuf:"bytes,1004,opt,name=submitBlockResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetBlockTemplateRequest struct {
+type KobradMessage_GetBlockTemplateRequest struct {
 	GetBlockTemplateRequest *GetBlockTemplateRequestMessage `protobuf:"bytes,1005,opt,name=getBlockTemplateRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetBlockTemplateResponse struct {
+type KobradMessage_GetBlockTemplateResponse struct {
 	GetBlockTemplateResponse *GetBlockTemplateResponseMessage `protobuf:"bytes,1006,opt,name=getBlockTemplateResponse,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyBlockAddedRequest struct {
+type KobradMessage_NotifyBlockAddedRequest struct {
 	NotifyBlockAddedRequest *NotifyBlockAddedRequestMessage `protobuf:"bytes,1007,opt,name=notifyBlockAddedRequest,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyBlockAddedResponse struct {
+type KobradMessage_NotifyBlockAddedResponse struct {
 	NotifyBlockAddedResponse *NotifyBlockAddedResponseMessage `protobuf:"bytes,1008,opt,name=notifyBlockAddedResponse,proto3,oneof"`
 }
 
-type HarbidMessage_BlockAddedNotification struct {
+type KobradMessage_BlockAddedNotification struct {
 	BlockAddedNotification *BlockAddedNotificationMessage `protobuf:"bytes,1009,opt,name=blockAddedNotification,proto3,oneof"`
 }
 
-type HarbidMessage_GetPeerAddressesRequest struct {
+type KobradMessage_GetPeerAddressesRequest struct {
 	GetPeerAddressesRequest *GetPeerAddressesRequestMessage `protobuf:"bytes,1010,opt,name=getPeerAddressesRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetPeerAddressesResponse struct {
+type KobradMessage_GetPeerAddressesResponse struct {
 	GetPeerAddressesResponse *GetPeerAddressesResponseMessage `protobuf:"bytes,1011,opt,name=getPeerAddressesResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetSelectedTipHashRequest struct {
+type KobradMessage_GetSelectedTipHashRequest struct {
 	GetSelectedTipHashRequest *GetSelectedTipHashRequestMessage `protobuf:"bytes,1012,opt,name=getSelectedTipHashRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetSelectedTipHashResponse struct {
+type KobradMessage_GetSelectedTipHashResponse struct {
 	GetSelectedTipHashResponse *GetSelectedTipHashResponseMessage `protobuf:"bytes,1013,opt,name=getSelectedTipHashResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetMempoolEntryRequest struct {
+type KobradMessage_GetMempoolEntryRequest struct {
 	GetMempoolEntryRequest *GetMempoolEntryRequestMessage `protobuf:"bytes,1014,opt,name=getMempoolEntryRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetMempoolEntryResponse struct {
+type KobradMessage_GetMempoolEntryResponse struct {
 	GetMempoolEntryResponse *GetMempoolEntryResponseMessage `protobuf:"bytes,1015,opt,name=getMempoolEntryResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetConnectedPeerInfoRequest struct {
+type KobradMessage_GetConnectedPeerInfoRequest struct {
 	GetConnectedPeerInfoRequest *GetConnectedPeerInfoRequestMessage `protobuf:"bytes,1016,opt,name=getConnectedPeerInfoRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetConnectedPeerInfoResponse struct {
+type KobradMessage_GetConnectedPeerInfoResponse struct {
 	GetConnectedPeerInfoResponse *GetConnectedPeerInfoResponseMessage `protobuf:"bytes,1017,opt,name=getConnectedPeerInfoResponse,proto3,oneof"`
 }
 
-type HarbidMessage_AddPeerRequest struct {
+type KobradMessage_AddPeerRequest struct {
 	AddPeerRequest *AddPeerRequestMessage `protobuf:"bytes,1018,opt,name=addPeerRequest,proto3,oneof"`
 }
 
-type HarbidMessage_AddPeerResponse struct {
+type KobradMessage_AddPeerResponse struct {
 	AddPeerResponse *AddPeerResponseMessage `protobuf:"bytes,1019,opt,name=addPeerResponse,proto3,oneof"`
 }
 
-type HarbidMessage_SubmitTransactionRequest struct {
+type KobradMessage_SubmitTransactionRequest struct {
 	SubmitTransactionRequest *SubmitTransactionRequestMessage `protobuf:"bytes,1020,opt,name=submitTransactionRequest,proto3,oneof"`
 }
 
-type HarbidMessage_SubmitTransactionResponse struct {
+type KobradMessage_SubmitTransactionResponse struct {
 	SubmitTransactionResponse *SubmitTransactionResponseMessage `protobuf:"bytes,1021,opt,name=submitTransactionResponse,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyVirtualSelectedParentChainChangedRequest struct {
+type KobradMessage_NotifyVirtualSelectedParentChainChangedRequest struct {
 	NotifyVirtualSelectedParentChainChangedRequest *NotifyVirtualSelectedParentChainChangedRequestMessage `protobuf:"bytes,1022,opt,name=notifyVirtualSelectedParentChainChangedRequest,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyVirtualSelectedParentChainChangedResponse struct {
+type KobradMessage_NotifyVirtualSelectedParentChainChangedResponse struct {
 	NotifyVirtualSelectedParentChainChangedResponse *NotifyVirtualSelectedParentChainChangedResponseMessage `protobuf:"bytes,1023,opt,name=notifyVirtualSelectedParentChainChangedResponse,proto3,oneof"`
 }
 
-type HarbidMessage_VirtualSelectedParentChainChangedNotification struct {
+type KobradMessage_VirtualSelectedParentChainChangedNotification struct {
 	VirtualSelectedParentChainChangedNotification *VirtualSelectedParentChainChangedNotificationMessage `protobuf:"bytes,1024,opt,name=virtualSelectedParentChainChangedNotification,proto3,oneof"`
 }
 
-type HarbidMessage_GetBlockRequest struct {
+type KobradMessage_GetBlockRequest struct {
 	GetBlockRequest *GetBlockRequestMessage `protobuf:"bytes,1025,opt,name=getBlockRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetBlockResponse struct {
+type KobradMessage_GetBlockResponse struct {
 	GetBlockResponse *GetBlockResponseMessage `protobuf:"bytes,1026,opt,name=getBlockResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetSubnetworkRequest struct {
+type KobradMessage_GetSubnetworkRequest struct {
 	GetSubnetworkRequest *GetSubnetworkRequestMessage `protobuf:"bytes,1027,opt,name=getSubnetworkRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetSubnetworkResponse struct {
+type KobradMessage_GetSubnetworkResponse struct {
 	GetSubnetworkResponse *GetSubnetworkResponseMessage `protobuf:"bytes,1028,opt,name=getSubnetworkResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetVirtualSelectedParentChainFromBlockRequest struct {
+type KobradMessage_GetVirtualSelectedParentChainFromBlockRequest struct {
 	GetVirtualSelectedParentChainFromBlockRequest *GetVirtualSelectedParentChainFromBlockRequestMessage `protobuf:"bytes,1029,opt,name=getVirtualSelectedParentChainFromBlockRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetVirtualSelectedParentChainFromBlockResponse struct {
+type KobradMessage_GetVirtualSelectedParentChainFromBlockResponse struct {
 	GetVirtualSelectedParentChainFromBlockResponse *GetVirtualSelectedParentChainFromBlockResponseMessage `protobuf:"bytes,1030,opt,name=getVirtualSelectedParentChainFromBlockResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetBlocksRequest struct {
+type KobradMessage_GetBlocksRequest struct {
 	GetBlocksRequest *GetBlocksRequestMessage `protobuf:"bytes,1031,opt,name=getBlocksRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetBlocksResponse struct {
+type KobradMessage_GetBlocksResponse struct {
 	GetBlocksResponse *GetBlocksResponseMessage `protobuf:"bytes,1032,opt,name=getBlocksResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetBlockCountRequest struct {
+type KobradMessage_GetBlockCountRequest struct {
 	GetBlockCountRequest *GetBlockCountRequestMessage `protobuf:"bytes,1033,opt,name=getBlockCountRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetBlockCountResponse struct {
+type KobradMessage_GetBlockCountResponse struct {
 	GetBlockCountResponse *GetBlockCountResponseMessage `protobuf:"bytes,1034,opt,name=getBlockCountResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetBlockDagInfoRequest struct {
+type KobradMessage_GetBlockDagInfoRequest struct {
 	GetBlockDagInfoRequest *GetBlockDagInfoRequestMessage `protobuf:"bytes,1035,opt,name=getBlockDagInfoRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetBlockDagInfoResponse struct {
+type KobradMessage_GetBlockDagInfoResponse struct {
 	GetBlockDagInfoResponse *GetBlockDagInfoResponseMessage `protobuf:"bytes,1036,opt,name=getBlockDagInfoResponse,proto3,oneof"`
 }
 
-type HarbidMessage_ResolveFinalityConflictRequest struct {
+type KobradMessage_ResolveFinalityConflictRequest struct {
 	ResolveFinalityConflictRequest *ResolveFinalityConflictRequestMessage `protobuf:"bytes,1037,opt,name=resolveFinalityConflictRequest,proto3,oneof"`
 }
 
-type HarbidMessage_ResolveFinalityConflictResponse struct {
+type KobradMessage_ResolveFinalityConflictResponse struct {
 	ResolveFinalityConflictResponse *ResolveFinalityConflictResponseMessage `protobuf:"bytes,1038,opt,name=resolveFinalityConflictResponse,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyFinalityConflictsRequest struct {
+type KobradMessage_NotifyFinalityConflictsRequest struct {
 	NotifyFinalityConflictsRequest *NotifyFinalityConflictsRequestMessage `protobuf:"bytes,1039,opt,name=notifyFinalityConflictsRequest,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyFinalityConflictsResponse struct {
+type KobradMessage_NotifyFinalityConflictsResponse struct {
 	NotifyFinalityConflictsResponse *NotifyFinalityConflictsResponseMessage `protobuf:"bytes,1040,opt,name=notifyFinalityConflictsResponse,proto3,oneof"`
 }
 
-type HarbidMessage_FinalityConflictNotification struct {
+type KobradMessage_FinalityConflictNotification struct {
 	FinalityConflictNotification *FinalityConflictNotificationMessage `protobuf:"bytes,1041,opt,name=finalityConflictNotification,proto3,oneof"`
 }
 
-type HarbidMessage_FinalityConflictResolvedNotification struct {
+type KobradMessage_FinalityConflictResolvedNotification struct {
 	FinalityConflictResolvedNotification *FinalityConflictResolvedNotificationMessage `protobuf:"bytes,1042,opt,name=finalityConflictResolvedNotification,proto3,oneof"`
 }
 
-type HarbidMessage_GetMempoolEntriesRequest struct {
+type KobradMessage_GetMempoolEntriesRequest struct {
 	GetMempoolEntriesRequest *GetMempoolEntriesRequestMessage `protobuf:"bytes,1043,opt,name=getMempoolEntriesRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetMempoolEntriesResponse struct {
+type KobradMessage_GetMempoolEntriesResponse struct {
 	GetMempoolEntriesResponse *GetMempoolEntriesResponseMessage `protobuf:"bytes,1044,opt,name=getMempoolEntriesResponse,proto3,oneof"`
 }
 
-type HarbidMessage_ShutDownRequest struct {
+type KobradMessage_ShutDownRequest struct {
 	ShutDownRequest *ShutDownRequestMessage `protobuf:"bytes,1045,opt,name=shutDownRequest,proto3,oneof"`
 }
 
-type HarbidMessage_ShutDownResponse struct {
+type KobradMessage_ShutDownResponse struct {
 	ShutDownResponse *ShutDownResponseMessage `protobuf:"bytes,1046,opt,name=shutDownResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetHeadersRequest struct {
+type KobradMessage_GetHeadersRequest struct {
 	GetHeadersRequest *GetHeadersRequestMessage `protobuf:"bytes,1047,opt,name=getHeadersRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetHeadersResponse struct {
+type KobradMessage_GetHeadersResponse struct {
 	GetHeadersResponse *GetHeadersResponseMessage `protobuf:"bytes,1048,opt,name=getHeadersResponse,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyUtxosChangedRequest struct {
+type KobradMessage_NotifyUtxosChangedRequest struct {
 	NotifyUtxosChangedRequest *NotifyUtxosChangedRequestMessage `protobuf:"bytes,1049,opt,name=notifyUtxosChangedRequest,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyUtxosChangedResponse struct {
+type KobradMessage_NotifyUtxosChangedResponse struct {
 	NotifyUtxosChangedResponse *NotifyUtxosChangedResponseMessage `protobuf:"bytes,1050,opt,name=notifyUtxosChangedResponse,proto3,oneof"`
 }
 
-type HarbidMessage_UtxosChangedNotification struct {
+type KobradMessage_UtxosChangedNotification struct {
 	UtxosChangedNotification *UtxosChangedNotificationMessage `protobuf:"bytes,1051,opt,name=utxosChangedNotification,proto3,oneof"`
 }
 
-type HarbidMessage_GetUtxosByAddressesRequest struct {
+type KobradMessage_GetUtxosByAddressesRequest struct {
 	GetUtxosByAddressesRequest *GetUtxosByAddressesRequestMessage `protobuf:"bytes,1052,opt,name=getUtxosByAddressesRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetUtxosByAddressesResponse struct {
+type KobradMessage_GetUtxosByAddressesResponse struct {
 	GetUtxosByAddressesResponse *GetUtxosByAddressesResponseMessage `protobuf:"bytes,1053,opt,name=getUtxosByAddressesResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetVirtualSelectedParentBlueScoreRequest struct {
+type KobradMessage_GetVirtualSelectedParentBlueScoreRequest struct {
 	GetVirtualSelectedParentBlueScoreRequest *GetVirtualSelectedParentBlueScoreRequestMessage `protobuf:"bytes,1054,opt,name=getVirtualSelectedParentBlueScoreRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetVirtualSelectedParentBlueScoreResponse struct {
+type KobradMessage_GetVirtualSelectedParentBlueScoreResponse struct {
 	GetVirtualSelectedParentBlueScoreResponse *GetVirtualSelectedParentBlueScoreResponseMessage `protobuf:"bytes,1055,opt,name=getVirtualSelectedParentBlueScoreResponse,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest struct {
+type KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest struct {
 	NotifyVirtualSelectedParentBlueScoreChangedRequest *NotifyVirtualSelectedParentBlueScoreChangedRequestMessage `protobuf:"bytes,1056,opt,name=notifyVirtualSelectedParentBlueScoreChangedRequest,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse struct {
+type KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse struct {
 	NotifyVirtualSelectedParentBlueScoreChangedResponse *NotifyVirtualSelectedParentBlueScoreChangedResponseMessage `protobuf:"bytes,1057,opt,name=notifyVirtualSelectedParentBlueScoreChangedResponse,proto3,oneof"`
 }
 
-type HarbidMessage_VirtualSelectedParentBlueScoreChangedNotification struct {
+type KobradMessage_VirtualSelectedParentBlueScoreChangedNotification struct {
 	VirtualSelectedParentBlueScoreChangedNotification *VirtualSelectedParentBlueScoreChangedNotificationMessage `protobuf:"bytes,1058,opt,name=virtualSelectedParentBlueScoreChangedNotification,proto3,oneof"`
 }
 
-type HarbidMessage_BanRequest struct {
+type KobradMessage_BanRequest struct {
 	BanRequest *BanRequestMessage `protobuf:"bytes,1059,opt,name=banRequest,proto3,oneof"`
 }
 
-type HarbidMessage_BanResponse struct {
+type KobradMessage_BanResponse struct {
 	BanResponse *BanResponseMessage `protobuf:"bytes,1060,opt,name=banResponse,proto3,oneof"`
 }
 
-type HarbidMessage_UnbanRequest struct {
+type KobradMessage_UnbanRequest struct {
 	UnbanRequest *UnbanRequestMessage `protobuf:"bytes,1061,opt,name=unbanRequest,proto3,oneof"`
 }
 
-type HarbidMessage_UnbanResponse struct {
+type KobradMessage_UnbanResponse struct {
 	UnbanResponse *UnbanResponseMessage `protobuf:"bytes,1062,opt,name=unbanResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetInfoRequest struct {
+type KobradMessage_GetInfoRequest struct {
 	GetInfoRequest *GetInfoRequestMessage `protobuf:"bytes,1063,opt,name=getInfoRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetInfoResponse struct {
+type KobradMessage_GetInfoResponse struct {
 	GetInfoResponse *GetInfoResponseMessage `protobuf:"bytes,1064,opt,name=getInfoResponse,proto3,oneof"`
 }
 
-type HarbidMessage_StopNotifyingUtxosChangedRequest struct {
+type KobradMessage_StopNotifyingUtxosChangedRequest struct {
 	StopNotifyingUtxosChangedRequest *StopNotifyingUtxosChangedRequestMessage `protobuf:"bytes,1065,opt,name=stopNotifyingUtxosChangedRequest,proto3,oneof"`
 }
 
-type HarbidMessage_StopNotifyingUtxosChangedResponse struct {
+type KobradMessage_StopNotifyingUtxosChangedResponse struct {
 	StopNotifyingUtxosChangedResponse *StopNotifyingUtxosChangedResponseMessage `protobuf:"bytes,1066,opt,name=stopNotifyingUtxosChangedResponse,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyPruningPointUTXOSetOverrideRequest struct {
+type KobradMessage_NotifyPruningPointUTXOSetOverrideRequest struct {
 	NotifyPruningPointUTXOSetOverrideRequest *NotifyPruningPointUTXOSetOverrideRequestMessage `protobuf:"bytes,1067,opt,name=notifyPruningPointUTXOSetOverrideRequest,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyPruningPointUTXOSetOverrideResponse struct {
+type KobradMessage_NotifyPruningPointUTXOSetOverrideResponse struct {
 	NotifyPruningPointUTXOSetOverrideResponse *NotifyPruningPointUTXOSetOverrideResponseMessage `protobuf:"bytes,1068,opt,name=notifyPruningPointUTXOSetOverrideResponse,proto3,oneof"`
 }
 
-type HarbidMessage_PruningPointUTXOSetOverrideNotification struct {
+type KobradMessage_PruningPointUTXOSetOverrideNotification struct {
 	PruningPointUTXOSetOverrideNotification *PruningPointUTXOSetOverrideNotificationMessage `protobuf:"bytes,1069,opt,name=pruningPointUTXOSetOverrideNotification,proto3,oneof"`
 }
 
-type HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideRequest struct {
+type KobradMessage_StopNotifyingPruningPointUTXOSetOverrideRequest struct {
 	StopNotifyingPruningPointUTXOSetOverrideRequest *StopNotifyingPruningPointUTXOSetOverrideRequestMessage `protobuf:"bytes,1070,opt,name=stopNotifyingPruningPointUTXOSetOverrideRequest,proto3,oneof"`
 }
 
-type HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideResponse struct {
+type KobradMessage_StopNotifyingPruningPointUTXOSetOverrideResponse struct {
 	StopNotifyingPruningPointUTXOSetOverrideResponse *StopNotifyingPruningPointUTXOSetOverrideResponseMessage `protobuf:"bytes,1071,opt,name=stopNotifyingPruningPointUTXOSetOverrideResponse,proto3,oneof"`
 }
 
-type HarbidMessage_EstimateNetworkHashesPerSecondRequest struct {
+type KobradMessage_EstimateNetworkHashesPerSecondRequest struct {
 	EstimateNetworkHashesPerSecondRequest *EstimateNetworkHashesPerSecondRequestMessage `protobuf:"bytes,1072,opt,name=estimateNetworkHashesPerSecondRequest,proto3,oneof"`
 }
 
-type HarbidMessage_EstimateNetworkHashesPerSecondResponse struct {
+type KobradMessage_EstimateNetworkHashesPerSecondResponse struct {
 	EstimateNetworkHashesPerSecondResponse *EstimateNetworkHashesPerSecondResponseMessage `protobuf:"bytes,1073,opt,name=estimateNetworkHashesPerSecondResponse,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyVirtualDaaScoreChangedRequest struct {
+type KobradMessage_NotifyVirtualDaaScoreChangedRequest struct {
 	NotifyVirtualDaaScoreChangedRequest *NotifyVirtualDaaScoreChangedRequestMessage `protobuf:"bytes,1074,opt,name=notifyVirtualDaaScoreChangedRequest,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyVirtualDaaScoreChangedResponse struct {
+type KobradMessage_NotifyVirtualDaaScoreChangedResponse struct {
 	NotifyVirtualDaaScoreChangedResponse *NotifyVirtualDaaScoreChangedResponseMessage `protobuf:"bytes,1075,opt,name=notifyVirtualDaaScoreChangedResponse,proto3,oneof"`
 }
 
-type HarbidMessage_VirtualDaaScoreChangedNotification struct {
+type KobradMessage_VirtualDaaScoreChangedNotification struct {
 	VirtualDaaScoreChangedNotification *VirtualDaaScoreChangedNotificationMessage `protobuf:"bytes,1076,opt,name=virtualDaaScoreChangedNotification,proto3,oneof"`
 }
 
-type HarbidMessage_GetBalanceByAddressRequest struct {
+type KobradMessage_GetBalanceByAddressRequest struct {
 	GetBalanceByAddressRequest *GetBalanceByAddressRequestMessage `protobuf:"bytes,1077,opt,name=getBalanceByAddressRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetBalanceByAddressResponse struct {
+type KobradMessage_GetBalanceByAddressResponse struct {
 	GetBalanceByAddressResponse *GetBalanceByAddressResponseMessage `protobuf:"bytes,1078,opt,name=getBalanceByAddressResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetBalancesByAddressesRequest struct {
+type KobradMessage_GetBalancesByAddressesRequest struct {
 	GetBalancesByAddressesRequest *GetBalancesByAddressesRequestMessage `protobuf:"bytes,1079,opt,name=getBalancesByAddressesRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetBalancesByAddressesResponse struct {
+type KobradMessage_GetBalancesByAddressesResponse struct {
 	GetBalancesByAddressesResponse *GetBalancesByAddressesResponseMessage `protobuf:"bytes,1080,opt,name=getBalancesByAddressesResponse,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyNewBlockTemplateRequest struct {
+type KobradMessage_NotifyNewBlockTemplateRequest struct {
 	NotifyNewBlockTemplateRequest *NotifyNewBlockTemplateRequestMessage `protobuf:"bytes,1081,opt,name=notifyNewBlockTemplateRequest,proto3,oneof"`
 }
 
-type HarbidMessage_NotifyNewBlockTemplateResponse struct {
+type KobradMessage_NotifyNewBlockTemplateResponse struct {
 	NotifyNewBlockTemplateResponse *NotifyNewBlockTemplateResponseMessage `protobuf:"bytes,1082,opt,name=notifyNewBlockTemplateResponse,proto3,oneof"`
 }
 
-type HarbidMessage_NewBlockTemplateNotification struct {
+type KobradMessage_NewBlockTemplateNotification struct {
 	NewBlockTemplateNotification *NewBlockTemplateNotificationMessage `protobuf:"bytes,1083,opt,name=newBlockTemplateNotification,proto3,oneof"`
 }
 
-type HarbidMessage_GetMempoolEntriesByAddressesRequest struct {
+type KobradMessage_GetMempoolEntriesByAddressesRequest struct {
 	GetMempoolEntriesByAddressesRequest *GetMempoolEntriesByAddressesRequestMessage `protobuf:"bytes,1084,opt,name=getMempoolEntriesByAddressesRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetMempoolEntriesByAddressesResponse struct {
+type KobradMessage_GetMempoolEntriesByAddressesResponse struct {
 	GetMempoolEntriesByAddressesResponse *GetMempoolEntriesByAddressesResponseMessage `protobuf:"bytes,1085,opt,name=getMempoolEntriesByAddressesResponse,proto3,oneof"`
 }
 
-type HarbidMessage_GetCoinSupplyRequest struct {
+type KobradMessage_GetCoinSupplyRequest struct {
 	GetCoinSupplyRequest *GetCoinSupplyRequestMessage `protobuf:"bytes,1086,opt,name=getCoinSupplyRequest,proto3,oneof"`
 }
 
-type HarbidMessage_GetCoinSupplyResponse struct {
+type KobradMessage_GetCoinSupplyResponse struct {
 	GetCoinSupplyResponse *GetCoinSupplyResponseMessage `protobuf:"bytes,1087,opt,name=getCoinSupplyResponse,proto3,oneof"`
 }
 
-func (*HarbidMessage_Addresses) isHarbidMessage_Payload() {}
+func (*KobradMessage_Addresses) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_Block) isHarbidMessage_Payload() {}
+func (*KobradMessage_Block) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_Transaction) isHarbidMessage_Payload() {}
+func (*KobradMessage_Transaction) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_BlockLocator) isHarbidMessage_Payload() {}
+func (*KobradMessage_BlockLocator) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestAddresses) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestAddresses) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestRelayBlocks) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestRelayBlocks) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestTransactions) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestTransactions) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_IbdBlock) isHarbidMessage_Payload() {}
+func (*KobradMessage_IbdBlock) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_InvRelayBlock) isHarbidMessage_Payload() {}
+func (*KobradMessage_InvRelayBlock) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_InvTransactions) isHarbidMessage_Payload() {}
+func (*KobradMessage_InvTransactions) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_Ping) isHarbidMessage_Payload() {}
+func (*KobradMessage_Ping) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_Pong) isHarbidMessage_Payload() {}
+func (*KobradMessage_Pong) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_Verack) isHarbidMessage_Payload() {}
+func (*KobradMessage_Verack) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_Version) isHarbidMessage_Payload() {}
+func (*KobradMessage_Version) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_TransactionNotFound) isHarbidMessage_Payload() {}
+func (*KobradMessage_TransactionNotFound) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_Reject) isHarbidMessage_Payload() {}
+func (*KobradMessage_Reject) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_PruningPointUtxoSetChunk) isHarbidMessage_Payload() {}
+func (*KobradMessage_PruningPointUtxoSetChunk) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestIBDBlocks) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestIBDBlocks) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_UnexpectedPruningPoint) isHarbidMessage_Payload() {}
+func (*KobradMessage_UnexpectedPruningPoint) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_IbdBlockLocator) isHarbidMessage_Payload() {}
+func (*KobradMessage_IbdBlockLocator) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_IbdBlockLocatorHighestHash) isHarbidMessage_Payload() {}
+func (*KobradMessage_IbdBlockLocatorHighestHash) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestNextPruningPointUtxoSetChunk) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestNextPruningPointUtxoSetChunk) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_DonePruningPointUtxoSetChunks) isHarbidMessage_Payload() {}
+func (*KobradMessage_DonePruningPointUtxoSetChunks) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_IbdBlockLocatorHighestHashNotFound) isHarbidMessage_Payload() {}
+func (*KobradMessage_IbdBlockLocatorHighestHashNotFound) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_BlockWithTrustedData) isHarbidMessage_Payload() {}
+func (*KobradMessage_BlockWithTrustedData) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_DoneBlocksWithTrustedData) isHarbidMessage_Payload() {}
+func (*KobradMessage_DoneBlocksWithTrustedData) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestPruningPointAndItsAnticone) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestPruningPointAndItsAnticone) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_BlockHeaders) isHarbidMessage_Payload() {}
+func (*KobradMessage_BlockHeaders) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestNextHeaders) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestNextHeaders) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_DoneHeaders) isHarbidMessage_Payload() {}
+func (*KobradMessage_DoneHeaders) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestPruningPointUTXOSet) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestPruningPointUTXOSet) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestHeaders) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestHeaders) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestBlockLocator) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestBlockLocator) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_PruningPoints) isHarbidMessage_Payload() {}
+func (*KobradMessage_PruningPoints) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestPruningPointProof) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestPruningPointProof) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_PruningPointProof) isHarbidMessage_Payload() {}
+func (*KobradMessage_PruningPointProof) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_Ready) isHarbidMessage_Payload() {}
+func (*KobradMessage_Ready) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_BlockWithTrustedDataV4) isHarbidMessage_Payload() {}
+func (*KobradMessage_BlockWithTrustedDataV4) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_TrustedData) isHarbidMessage_Payload() {}
+func (*KobradMessage_TrustedData) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestIBDChainBlockLocator) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestIBDChainBlockLocator) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_IbdChainBlockLocator) isHarbidMessage_Payload() {}
+func (*KobradMessage_IbdChainBlockLocator) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestAnticone) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestAnticone) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_RequestNextPruningPointAndItsAnticoneBlocks) isHarbidMessage_Payload() {}
+func (*KobradMessage_RequestNextPruningPointAndItsAnticoneBlocks) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetCurrentNetworkRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetCurrentNetworkRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetCurrentNetworkResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetCurrentNetworkResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_SubmitBlockRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_SubmitBlockRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_SubmitBlockResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_SubmitBlockResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBlockTemplateRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBlockTemplateRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBlockTemplateResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBlockTemplateResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyBlockAddedRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyBlockAddedRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyBlockAddedResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyBlockAddedResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_BlockAddedNotification) isHarbidMessage_Payload() {}
+func (*KobradMessage_BlockAddedNotification) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetPeerAddressesRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetPeerAddressesRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetPeerAddressesResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetPeerAddressesResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetSelectedTipHashRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetSelectedTipHashRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetSelectedTipHashResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetSelectedTipHashResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetMempoolEntryRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetMempoolEntryRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetMempoolEntryResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetMempoolEntryResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetConnectedPeerInfoRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetConnectedPeerInfoRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetConnectedPeerInfoResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetConnectedPeerInfoResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_AddPeerRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_AddPeerRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_AddPeerResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_AddPeerResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_SubmitTransactionRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_SubmitTransactionRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_SubmitTransactionResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_SubmitTransactionResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyVirtualSelectedParentChainChangedRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyVirtualSelectedParentChainChangedRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyVirtualSelectedParentChainChangedResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyVirtualSelectedParentChainChangedResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_VirtualSelectedParentChainChangedNotification) isHarbidMessage_Payload() {}
+func (*KobradMessage_VirtualSelectedParentChainChangedNotification) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBlockRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBlockRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBlockResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBlockResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetSubnetworkRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetSubnetworkRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetSubnetworkResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetSubnetworkResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetVirtualSelectedParentChainFromBlockRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetVirtualSelectedParentChainFromBlockRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetVirtualSelectedParentChainFromBlockResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetVirtualSelectedParentChainFromBlockResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBlocksRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBlocksRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBlocksResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBlocksResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBlockCountRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBlockCountRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBlockCountResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBlockCountResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBlockDagInfoRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBlockDagInfoRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBlockDagInfoResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBlockDagInfoResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_ResolveFinalityConflictRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_ResolveFinalityConflictRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_ResolveFinalityConflictResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_ResolveFinalityConflictResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyFinalityConflictsRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyFinalityConflictsRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyFinalityConflictsResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyFinalityConflictsResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_FinalityConflictNotification) isHarbidMessage_Payload() {}
+func (*KobradMessage_FinalityConflictNotification) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_FinalityConflictResolvedNotification) isHarbidMessage_Payload() {}
+func (*KobradMessage_FinalityConflictResolvedNotification) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetMempoolEntriesRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetMempoolEntriesRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetMempoolEntriesResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetMempoolEntriesResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_ShutDownRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_ShutDownRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_ShutDownResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_ShutDownResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetHeadersRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetHeadersRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetHeadersResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetHeadersResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyUtxosChangedRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyUtxosChangedRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyUtxosChangedResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyUtxosChangedResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_UtxosChangedNotification) isHarbidMessage_Payload() {}
+func (*KobradMessage_UtxosChangedNotification) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetUtxosByAddressesRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetUtxosByAddressesRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetUtxosByAddressesResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetUtxosByAddressesResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetVirtualSelectedParentBlueScoreRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetVirtualSelectedParentBlueScoreRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetVirtualSelectedParentBlueScoreResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetVirtualSelectedParentBlueScoreResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_VirtualSelectedParentBlueScoreChangedNotification) isHarbidMessage_Payload() {}
+func (*KobradMessage_VirtualSelectedParentBlueScoreChangedNotification) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_BanRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_BanRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_BanResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_BanResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_UnbanRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_UnbanRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_UnbanResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_UnbanResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetInfoRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetInfoRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetInfoResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetInfoResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_StopNotifyingUtxosChangedRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_StopNotifyingUtxosChangedRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_StopNotifyingUtxosChangedResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_StopNotifyingUtxosChangedResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyPruningPointUTXOSetOverrideRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyPruningPointUTXOSetOverrideRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyPruningPointUTXOSetOverrideResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyPruningPointUTXOSetOverrideResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_PruningPointUTXOSetOverrideNotification) isHarbidMessage_Payload() {}
+func (*KobradMessage_PruningPointUTXOSetOverrideNotification) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_StopNotifyingPruningPointUTXOSetOverrideRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_StopNotifyingPruningPointUTXOSetOverrideResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_EstimateNetworkHashesPerSecondRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_EstimateNetworkHashesPerSecondRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_EstimateNetworkHashesPerSecondResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_EstimateNetworkHashesPerSecondResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyVirtualDaaScoreChangedRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyVirtualDaaScoreChangedRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyVirtualDaaScoreChangedResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyVirtualDaaScoreChangedResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_VirtualDaaScoreChangedNotification) isHarbidMessage_Payload() {}
+func (*KobradMessage_VirtualDaaScoreChangedNotification) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBalanceByAddressRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBalanceByAddressRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBalanceByAddressResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBalanceByAddressResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBalancesByAddressesRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBalancesByAddressesRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetBalancesByAddressesResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetBalancesByAddressesResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyNewBlockTemplateRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyNewBlockTemplateRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NotifyNewBlockTemplateResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_NotifyNewBlockTemplateResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_NewBlockTemplateNotification) isHarbidMessage_Payload() {}
+func (*KobradMessage_NewBlockTemplateNotification) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetMempoolEntriesByAddressesRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetMempoolEntriesByAddressesRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetMempoolEntriesByAddressesResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetMempoolEntriesByAddressesResponse) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetCoinSupplyRequest) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetCoinSupplyRequest) isKobradMessage_Payload() {}
 
-func (*HarbidMessage_GetCoinSupplyResponse) isHarbidMessage_Payload() {}
+func (*KobradMessage_GetCoinSupplyResponse) isKobradMessage_Payload() {}
 
 var File_messages_proto protoreflect.FileDescriptor
 
@@ -2805,7 +2805,7 @@ func file_messages_proto_rawDescGZIP() []byte {
 
 var file_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_messages_proto_goTypes = []interface{}{
-	(*HarbidMessage)(nil),                                              // 0: protowire.HarbidMessage
+	(*KobradMessage)(nil),                                              // 0: protowire.KobradMessage
 	(*AddressesMessage)(nil),                                           // 1: protowire.AddressesMessage
 	(*BlockMessage)(nil),                                               // 2: protowire.BlockMessage
 	(*TransactionMessage)(nil),                                         // 3: protowire.TransactionMessage
@@ -2937,140 +2937,140 @@ var file_messages_proto_goTypes = []interface{}{
 	(*GetCoinSupplyResponseMessage)(nil),                               // 129: protowire.GetCoinSupplyResponseMessage
 }
 var file_messages_proto_depIdxs = []int32{
-	1,   // 0: protowire.HarbidMessage.addresses:type_name -> protowire.AddressesMessage
-	2,   // 1: protowire.HarbidMessage.block:type_name -> protowire.BlockMessage
-	3,   // 2: protowire.HarbidMessage.transaction:type_name -> protowire.TransactionMessage
-	4,   // 3: protowire.HarbidMessage.blockLocator:type_name -> protowire.BlockLocatorMessage
-	5,   // 4: protowire.HarbidMessage.requestAddresses:type_name -> protowire.RequestAddressesMessage
-	6,   // 5: protowire.HarbidMessage.requestRelayBlocks:type_name -> protowire.RequestRelayBlocksMessage
-	7,   // 6: protowire.HarbidMessage.requestTransactions:type_name -> protowire.RequestTransactionsMessage
-	2,   // 7: protowire.HarbidMessage.ibdBlock:type_name -> protowire.BlockMessage
-	8,   // 8: protowire.HarbidMessage.invRelayBlock:type_name -> protowire.InvRelayBlockMessage
-	9,   // 9: protowire.HarbidMessage.invTransactions:type_name -> protowire.InvTransactionsMessage
-	10,  // 10: protowire.HarbidMessage.ping:type_name -> protowire.PingMessage
-	11,  // 11: protowire.HarbidMessage.pong:type_name -> protowire.PongMessage
-	12,  // 12: protowire.HarbidMessage.verack:type_name -> protowire.VerackMessage
-	13,  // 13: protowire.HarbidMessage.version:type_name -> protowire.VersionMessage
-	14,  // 14: protowire.HarbidMessage.transactionNotFound:type_name -> protowire.TransactionNotFoundMessage
-	15,  // 15: protowire.HarbidMessage.reject:type_name -> protowire.RejectMessage
-	16,  // 16: protowire.HarbidMessage.pruningPointUtxoSetChunk:type_name -> protowire.PruningPointUtxoSetChunkMessage
-	17,  // 17: protowire.HarbidMessage.requestIBDBlocks:type_name -> protowire.RequestIBDBlocksMessage
-	18,  // 18: protowire.HarbidMessage.unexpectedPruningPoint:type_name -> protowire.UnexpectedPruningPointMessage
-	19,  // 19: protowire.HarbidMessage.ibdBlockLocator:type_name -> protowire.IbdBlockLocatorMessage
-	20,  // 20: protowire.HarbidMessage.ibdBlockLocatorHighestHash:type_name -> protowire.IbdBlockLocatorHighestHashMessage
-	21,  // 21: protowire.HarbidMessage.requestNextPruningPointUtxoSetChunk:type_name -> protowire.RequestNextPruningPointUtxoSetChunkMessage
-	22,  // 22: protowire.HarbidMessage.donePruningPointUtxoSetChunks:type_name -> protowire.DonePruningPointUtxoSetChunksMessage
-	23,  // 23: protowire.HarbidMessage.ibdBlockLocatorHighestHashNotFound:type_name -> protowire.IbdBlockLocatorHighestHashNotFoundMessage
-	24,  // 24: protowire.HarbidMessage.blockWithTrustedData:type_name -> protowire.BlockWithTrustedDataMessage
-	25,  // 25: protowire.HarbidMessage.doneBlocksWithTrustedData:type_name -> protowire.DoneBlocksWithTrustedDataMessage
-	26,  // 26: protowire.HarbidMessage.requestPruningPointAndItsAnticone:type_name -> protowire.RequestPruningPointAndItsAnticoneMessage
-	27,  // 27: protowire.HarbidMessage.blockHeaders:type_name -> protowire.BlockHeadersMessage
-	28,  // 28: protowire.HarbidMessage.requestNextHeaders:type_name -> protowire.RequestNextHeadersMessage
-	29,  // 29: protowire.HarbidMessage.DoneHeaders:type_name -> protowire.DoneHeadersMessage
-	30,  // 30: protowire.HarbidMessage.requestPruningPointUTXOSet:type_name -> protowire.RequestPruningPointUTXOSetMessage
-	31,  // 31: protowire.HarbidMessage.requestHeaders:type_name -> protowire.RequestHeadersMessage
-	32,  // 32: protowire.HarbidMessage.requestBlockLocator:type_name -> protowire.RequestBlockLocatorMessage
-	33,  // 33: protowire.HarbidMessage.pruningPoints:type_name -> protowire.PruningPointsMessage
-	34,  // 34: protowire.HarbidMessage.requestPruningPointProof:type_name -> protowire.RequestPruningPointProofMessage
-	35,  // 35: protowire.HarbidMessage.pruningPointProof:type_name -> protowire.PruningPointProofMessage
-	36,  // 36: protowire.HarbidMessage.ready:type_name -> protowire.ReadyMessage
-	37,  // 37: protowire.HarbidMessage.blockWithTrustedDataV4:type_name -> protowire.BlockWithTrustedDataV4Message
-	38,  // 38: protowire.HarbidMessage.trustedData:type_name -> protowire.TrustedDataMessage
-	39,  // 39: protowire.HarbidMessage.requestIBDChainBlockLocator:type_name -> protowire.RequestIBDChainBlockLocatorMessage
-	40,  // 40: protowire.HarbidMessage.ibdChainBlockLocator:type_name -> protowire.IbdChainBlockLocatorMessage
-	41,  // 41: protowire.HarbidMessage.requestAnticone:type_name -> protowire.RequestAnticoneMessage
-	42,  // 42: protowire.HarbidMessage.requestNextPruningPointAndItsAnticoneBlocks:type_name -> protowire.RequestNextPruningPointAndItsAnticoneBlocksMessage
-	43,  // 43: protowire.HarbidMessage.getCurrentNetworkRequest:type_name -> protowire.GetCurrentNetworkRequestMessage
-	44,  // 44: protowire.HarbidMessage.getCurrentNetworkResponse:type_name -> protowire.GetCurrentNetworkResponseMessage
-	45,  // 45: protowire.HarbidMessage.submitBlockRequest:type_name -> protowire.SubmitBlockRequestMessage
-	46,  // 46: protowire.HarbidMessage.submitBlockResponse:type_name -> protowire.SubmitBlockResponseMessage
-	47,  // 47: protowire.HarbidMessage.getBlockTemplateRequest:type_name -> protowire.GetBlockTemplateRequestMessage
-	48,  // 48: protowire.HarbidMessage.getBlockTemplateResponse:type_name -> protowire.GetBlockTemplateResponseMessage
-	49,  // 49: protowire.HarbidMessage.notifyBlockAddedRequest:type_name -> protowire.NotifyBlockAddedRequestMessage
-	50,  // 50: protowire.HarbidMessage.notifyBlockAddedResponse:type_name -> protowire.NotifyBlockAddedResponseMessage
-	51,  // 51: protowire.HarbidMessage.blockAddedNotification:type_name -> protowire.BlockAddedNotificationMessage
-	52,  // 52: protowire.HarbidMessage.getPeerAddressesRequest:type_name -> protowire.GetPeerAddressesRequestMessage
-	53,  // 53: protowire.HarbidMessage.getPeerAddressesResponse:type_name -> protowire.GetPeerAddressesResponseMessage
-	54,  // 54: protowire.HarbidMessage.getSelectedTipHashRequest:type_name -> protowire.GetSelectedTipHashRequestMessage
-	55,  // 55: protowire.HarbidMessage.getSelectedTipHashResponse:type_name -> protowire.GetSelectedTipHashResponseMessage
-	56,  // 56: protowire.HarbidMessage.getMempoolEntryRequest:type_name -> protowire.GetMempoolEntryRequestMessage
-	57,  // 57: protowire.HarbidMessage.getMempoolEntryResponse:type_name -> protowire.GetMempoolEntryResponseMessage
-	58,  // 58: protowire.HarbidMessage.getConnectedPeerInfoRequest:type_name -> protowire.GetConnectedPeerInfoRequestMessage
-	59,  // 59: protowire.HarbidMessage.getConnectedPeerInfoResponse:type_name -> protowire.GetConnectedPeerInfoResponseMessage
-	60,  // 60: protowire.HarbidMessage.addPeerRequest:type_name -> protowire.AddPeerRequestMessage
-	61,  // 61: protowire.HarbidMessage.addPeerResponse:type_name -> protowire.AddPeerResponseMessage
-	62,  // 62: protowire.HarbidMessage.submitTransactionRequest:type_name -> protowire.SubmitTransactionRequestMessage
-	63,  // 63: protowire.HarbidMessage.submitTransactionResponse:type_name -> protowire.SubmitTransactionResponseMessage
-	64,  // 64: protowire.HarbidMessage.notifyVirtualSelectedParentChainChangedRequest:type_name -> protowire.NotifyVirtualSelectedParentChainChangedRequestMessage
-	65,  // 65: protowire.HarbidMessage.notifyVirtualSelectedParentChainChangedResponse:type_name -> protowire.NotifyVirtualSelectedParentChainChangedResponseMessage
-	66,  // 66: protowire.HarbidMessage.virtualSelectedParentChainChangedNotification:type_name -> protowire.VirtualSelectedParentChainChangedNotificationMessage
-	67,  // 67: protowire.HarbidMessage.getBlockRequest:type_name -> protowire.GetBlockRequestMessage
-	68,  // 68: protowire.HarbidMessage.getBlockResponse:type_name -> protowire.GetBlockResponseMessage
-	69,  // 69: protowire.HarbidMessage.getSubnetworkRequest:type_name -> protowire.GetSubnetworkRequestMessage
-	70,  // 70: protowire.HarbidMessage.getSubnetworkResponse:type_name -> protowire.GetSubnetworkResponseMessage
-	71,  // 71: protowire.HarbidMessage.getVirtualSelectedParentChainFromBlockRequest:type_name -> protowire.GetVirtualSelectedParentChainFromBlockRequestMessage
-	72,  // 72: protowire.HarbidMessage.getVirtualSelectedParentChainFromBlockResponse:type_name -> protowire.GetVirtualSelectedParentChainFromBlockResponseMessage
-	73,  // 73: protowire.HarbidMessage.getBlocksRequest:type_name -> protowire.GetBlocksRequestMessage
-	74,  // 74: protowire.HarbidMessage.getBlocksResponse:type_name -> protowire.GetBlocksResponseMessage
-	75,  // 75: protowire.HarbidMessage.getBlockCountRequest:type_name -> protowire.GetBlockCountRequestMessage
-	76,  // 76: protowire.HarbidMessage.getBlockCountResponse:type_name -> protowire.GetBlockCountResponseMessage
-	77,  // 77: protowire.HarbidMessage.getBlockDagInfoRequest:type_name -> protowire.GetBlockDagInfoRequestMessage
-	78,  // 78: protowire.HarbidMessage.getBlockDagInfoResponse:type_name -> protowire.GetBlockDagInfoResponseMessage
-	79,  // 79: protowire.HarbidMessage.resolveFinalityConflictRequest:type_name -> protowire.ResolveFinalityConflictRequestMessage
-	80,  // 80: protowire.HarbidMessage.resolveFinalityConflictResponse:type_name -> protowire.ResolveFinalityConflictResponseMessage
-	81,  // 81: protowire.HarbidMessage.notifyFinalityConflictsRequest:type_name -> protowire.NotifyFinalityConflictsRequestMessage
-	82,  // 82: protowire.HarbidMessage.notifyFinalityConflictsResponse:type_name -> protowire.NotifyFinalityConflictsResponseMessage
-	83,  // 83: protowire.HarbidMessage.finalityConflictNotification:type_name -> protowire.FinalityConflictNotificationMessage
-	84,  // 84: protowire.HarbidMessage.finalityConflictResolvedNotification:type_name -> protowire.FinalityConflictResolvedNotificationMessage
-	85,  // 85: protowire.HarbidMessage.getMempoolEntriesRequest:type_name -> protowire.GetMempoolEntriesRequestMessage
-	86,  // 86: protowire.HarbidMessage.getMempoolEntriesResponse:type_name -> protowire.GetMempoolEntriesResponseMessage
-	87,  // 87: protowire.HarbidMessage.shutDownRequest:type_name -> protowire.ShutDownRequestMessage
-	88,  // 88: protowire.HarbidMessage.shutDownResponse:type_name -> protowire.ShutDownResponseMessage
-	89,  // 89: protowire.HarbidMessage.getHeadersRequest:type_name -> protowire.GetHeadersRequestMessage
-	90,  // 90: protowire.HarbidMessage.getHeadersResponse:type_name -> protowire.GetHeadersResponseMessage
-	91,  // 91: protowire.HarbidMessage.notifyUtxosChangedRequest:type_name -> protowire.NotifyUtxosChangedRequestMessage
-	92,  // 92: protowire.HarbidMessage.notifyUtxosChangedResponse:type_name -> protowire.NotifyUtxosChangedResponseMessage
-	93,  // 93: protowire.HarbidMessage.utxosChangedNotification:type_name -> protowire.UtxosChangedNotificationMessage
-	94,  // 94: protowire.HarbidMessage.getUtxosByAddressesRequest:type_name -> protowire.GetUtxosByAddressesRequestMessage
-	95,  // 95: protowire.HarbidMessage.getUtxosByAddressesResponse:type_name -> protowire.GetUtxosByAddressesResponseMessage
-	96,  // 96: protowire.HarbidMessage.getVirtualSelectedParentBlueScoreRequest:type_name -> protowire.GetVirtualSelectedParentBlueScoreRequestMessage
-	97,  // 97: protowire.HarbidMessage.getVirtualSelectedParentBlueScoreResponse:type_name -> protowire.GetVirtualSelectedParentBlueScoreResponseMessage
-	98,  // 98: protowire.HarbidMessage.notifyVirtualSelectedParentBlueScoreChangedRequest:type_name -> protowire.NotifyVirtualSelectedParentBlueScoreChangedRequestMessage
-	99,  // 99: protowire.HarbidMessage.notifyVirtualSelectedParentBlueScoreChangedResponse:type_name -> protowire.NotifyVirtualSelectedParentBlueScoreChangedResponseMessage
-	100, // 100: protowire.HarbidMessage.virtualSelectedParentBlueScoreChangedNotification:type_name -> protowire.VirtualSelectedParentBlueScoreChangedNotificationMessage
-	101, // 101: protowire.HarbidMessage.banRequest:type_name -> protowire.BanRequestMessage
-	102, // 102: protowire.HarbidMessage.banResponse:type_name -> protowire.BanResponseMessage
-	103, // 103: protowire.HarbidMessage.unbanRequest:type_name -> protowire.UnbanRequestMessage
-	104, // 104: protowire.HarbidMessage.unbanResponse:type_name -> protowire.UnbanResponseMessage
-	105, // 105: protowire.HarbidMessage.getInfoRequest:type_name -> protowire.GetInfoRequestMessage
-	106, // 106: protowire.HarbidMessage.getInfoResponse:type_name -> protowire.GetInfoResponseMessage
-	107, // 107: protowire.HarbidMessage.stopNotifyingUtxosChangedRequest:type_name -> protowire.StopNotifyingUtxosChangedRequestMessage
-	108, // 108: protowire.HarbidMessage.stopNotifyingUtxosChangedResponse:type_name -> protowire.StopNotifyingUtxosChangedResponseMessage
-	109, // 109: protowire.HarbidMessage.notifyPruningPointUTXOSetOverrideRequest:type_name -> protowire.NotifyPruningPointUTXOSetOverrideRequestMessage
-	110, // 110: protowire.HarbidMessage.notifyPruningPointUTXOSetOverrideResponse:type_name -> protowire.NotifyPruningPointUTXOSetOverrideResponseMessage
-	111, // 111: protowire.HarbidMessage.pruningPointUTXOSetOverrideNotification:type_name -> protowire.PruningPointUTXOSetOverrideNotificationMessage
-	112, // 112: protowire.HarbidMessage.stopNotifyingPruningPointUTXOSetOverrideRequest:type_name -> protowire.StopNotifyingPruningPointUTXOSetOverrideRequestMessage
-	113, // 113: protowire.HarbidMessage.stopNotifyingPruningPointUTXOSetOverrideResponse:type_name -> protowire.StopNotifyingPruningPointUTXOSetOverrideResponseMessage
-	114, // 114: protowire.HarbidMessage.estimateNetworkHashesPerSecondRequest:type_name -> protowire.EstimateNetworkHashesPerSecondRequestMessage
-	115, // 115: protowire.HarbidMessage.estimateNetworkHashesPerSecondResponse:type_name -> protowire.EstimateNetworkHashesPerSecondResponseMessage
-	116, // 116: protowire.HarbidMessage.notifyVirtualDaaScoreChangedRequest:type_name -> protowire.NotifyVirtualDaaScoreChangedRequestMessage
-	117, // 117: protowire.HarbidMessage.notifyVirtualDaaScoreChangedResponse:type_name -> protowire.NotifyVirtualDaaScoreChangedResponseMessage
-	118, // 118: protowire.HarbidMessage.virtualDaaScoreChangedNotification:type_name -> protowire.VirtualDaaScoreChangedNotificationMessage
-	119, // 119: protowire.HarbidMessage.getBalanceByAddressRequest:type_name -> protowire.GetBalanceByAddressRequestMessage
-	120, // 120: protowire.HarbidMessage.getBalanceByAddressResponse:type_name -> protowire.GetBalanceByAddressResponseMessage
-	121, // 121: protowire.HarbidMessage.getBalancesByAddressesRequest:type_name -> protowire.GetBalancesByAddressesRequestMessage
-	122, // 122: protowire.HarbidMessage.getBalancesByAddressesResponse:type_name -> protowire.GetBalancesByAddressesResponseMessage
-	123, // 123: protowire.HarbidMessage.notifyNewBlockTemplateRequest:type_name -> protowire.NotifyNewBlockTemplateRequestMessage
-	124, // 124: protowire.HarbidMessage.notifyNewBlockTemplateResponse:type_name -> protowire.NotifyNewBlockTemplateResponseMessage
-	125, // 125: protowire.HarbidMessage.newBlockTemplateNotification:type_name -> protowire.NewBlockTemplateNotificationMessage
-	126, // 126: protowire.HarbidMessage.getMempoolEntriesByAddressesRequest:type_name -> protowire.GetMempoolEntriesByAddressesRequestMessage
-	127, // 127: protowire.HarbidMessage.getMempoolEntriesByAddressesResponse:type_name -> protowire.GetMempoolEntriesByAddressesResponseMessage
-	128, // 128: protowire.HarbidMessage.getCoinSupplyRequest:type_name -> protowire.GetCoinSupplyRequestMessage
-	129, // 129: protowire.HarbidMessage.getCoinSupplyResponse:type_name -> protowire.GetCoinSupplyResponseMessage
-	0,   // 130: protowire.P2P.MessageStream:input_type -> protowire.HarbidMessage
-	0,   // 131: protowire.RPC.MessageStream:input_type -> protowire.HarbidMessage
-	0,   // 132: protowire.P2P.MessageStream:output_type -> protowire.HarbidMessage
-	0,   // 133: protowire.RPC.MessageStream:output_type -> protowire.HarbidMessage
+	1,   // 0: protowire.KobradMessage.addresses:type_name -> protowire.AddressesMessage
+	2,   // 1: protowire.KobradMessage.block:type_name -> protowire.BlockMessage
+	3,   // 2: protowire.KobradMessage.transaction:type_name -> protowire.TransactionMessage
+	4,   // 3: protowire.KobradMessage.blockLocator:type_name -> protowire.BlockLocatorMessage
+	5,   // 4: protowire.KobradMessage.requestAddresses:type_name -> protowire.RequestAddressesMessage
+	6,   // 5: protowire.KobradMessage.requestRelayBlocks:type_name -> protowire.RequestRelayBlocksMessage
+	7,   // 6: protowire.KobradMessage.requestTransactions:type_name -> protowire.RequestTransactionsMessage
+	2,   // 7: protowire.KobradMessage.ibdBlock:type_name -> protowire.BlockMessage
+	8,   // 8: protowire.KobradMessage.invRelayBlock:type_name -> protowire.InvRelayBlockMessage
+	9,   // 9: protowire.KobradMessage.invTransactions:type_name -> protowire.InvTransactionsMessage
+	10,  // 10: protowire.KobradMessage.ping:type_name -> protowire.PingMessage
+	11,  // 11: protowire.KobradMessage.pong:type_name -> protowire.PongMessage
+	12,  // 12: protowire.KobradMessage.verack:type_name -> protowire.VerackMessage
+	13,  // 13: protowire.KobradMessage.version:type_name -> protowire.VersionMessage
+	14,  // 14: protowire.KobradMessage.transactionNotFound:type_name -> protowire.TransactionNotFoundMessage
+	15,  // 15: protowire.KobradMessage.reject:type_name -> protowire.RejectMessage
+	16,  // 16: protowire.KobradMessage.pruningPointUtxoSetChunk:type_name -> protowire.PruningPointUtxoSetChunkMessage
+	17,  // 17: protowire.KobradMessage.requestIBDBlocks:type_name -> protowire.RequestIBDBlocksMessage
+	18,  // 18: protowire.KobradMessage.unexpectedPruningPoint:type_name -> protowire.UnexpectedPruningPointMessage
+	19,  // 19: protowire.KobradMessage.ibdBlockLocator:type_name -> protowire.IbdBlockLocatorMessage
+	20,  // 20: protowire.KobradMessage.ibdBlockLocatorHighestHash:type_name -> protowire.IbdBlockLocatorHighestHashMessage
+	21,  // 21: protowire.KobradMessage.requestNextPruningPointUtxoSetChunk:type_name -> protowire.RequestNextPruningPointUtxoSetChunkMessage
+	22,  // 22: protowire.KobradMessage.donePruningPointUtxoSetChunks:type_name -> protowire.DonePruningPointUtxoSetChunksMessage
+	23,  // 23: protowire.KobradMessage.ibdBlockLocatorHighestHashNotFound:type_name -> protowire.IbdBlockLocatorHighestHashNotFoundMessage
+	24,  // 24: protowire.KobradMessage.blockWithTrustedData:type_name -> protowire.BlockWithTrustedDataMessage
+	25,  // 25: protowire.KobradMessage.doneBlocksWithTrustedData:type_name -> protowire.DoneBlocksWithTrustedDataMessage
+	26,  // 26: protowire.KobradMessage.requestPruningPointAndItsAnticone:type_name -> protowire.RequestPruningPointAndItsAnticoneMessage
+	27,  // 27: protowire.KobradMessage.blockHeaders:type_name -> protowire.BlockHeadersMessage
+	28,  // 28: protowire.KobradMessage.requestNextHeaders:type_name -> protowire.RequestNextHeadersMessage
+	29,  // 29: protowire.KobradMessage.DoneHeaders:type_name -> protowire.DoneHeadersMessage
+	30,  // 30: protowire.KobradMessage.requestPruningPointUTXOSet:type_name -> protowire.RequestPruningPointUTXOSetMessage
+	31,  // 31: protowire.KobradMessage.requestHeaders:type_name -> protowire.RequestHeadersMessage
+	32,  // 32: protowire.KobradMessage.requestBlockLocator:type_name -> protowire.RequestBlockLocatorMessage
+	33,  // 33: protowire.KobradMessage.pruningPoints:type_name -> protowire.PruningPointsMessage
+	34,  // 34: protowire.KobradMessage.requestPruningPointProof:type_name -> protowire.RequestPruningPointProofMessage
+	35,  // 35: protowire.KobradMessage.pruningPointProof:type_name -> protowire.PruningPointProofMessage
+	36,  // 36: protowire.KobradMessage.ready:type_name -> protowire.ReadyMessage
+	37,  // 37: protowire.KobradMessage.blockWithTrustedDataV4:type_name -> protowire.BlockWithTrustedDataV4Message
+	38,  // 38: protowire.KobradMessage.trustedData:type_name -> protowire.TrustedDataMessage
+	39,  // 39: protowire.KobradMessage.requestIBDChainBlockLocator:type_name -> protowire.RequestIBDChainBlockLocatorMessage
+	40,  // 40: protowire.KobradMessage.ibdChainBlockLocator:type_name -> protowire.IbdChainBlockLocatorMessage
+	41,  // 41: protowire.KobradMessage.requestAnticone:type_name -> protowire.RequestAnticoneMessage
+	42,  // 42: protowire.KobradMessage.requestNextPruningPointAndItsAnticoneBlocks:type_name -> protowire.RequestNextPruningPointAndItsAnticoneBlocksMessage
+	43,  // 43: protowire.KobradMessage.getCurrentNetworkRequest:type_name -> protowire.GetCurrentNetworkRequestMessage
+	44,  // 44: protowire.KobradMessage.getCurrentNetworkResponse:type_name -> protowire.GetCurrentNetworkResponseMessage
+	45,  // 45: protowire.KobradMessage.submitBlockRequest:type_name -> protowire.SubmitBlockRequestMessage
+	46,  // 46: protowire.KobradMessage.submitBlockResponse:type_name -> protowire.SubmitBlockResponseMessage
+	47,  // 47: protowire.KobradMessage.getBlockTemplateRequest:type_name -> protowire.GetBlockTemplateRequestMessage
+	48,  // 48: protowire.KobradMessage.getBlockTemplateResponse:type_name -> protowire.GetBlockTemplateResponseMessage
+	49,  // 49: protowire.KobradMessage.notifyBlockAddedRequest:type_name -> protowire.NotifyBlockAddedRequestMessage
+	50,  // 50: protowire.KobradMessage.notifyBlockAddedResponse:type_name -> protowire.NotifyBlockAddedResponseMessage
+	51,  // 51: protowire.KobradMessage.blockAddedNotification:type_name -> protowire.BlockAddedNotificationMessage
+	52,  // 52: protowire.KobradMessage.getPeerAddressesRequest:type_name -> protowire.GetPeerAddressesRequestMessage
+	53,  // 53: protowire.KobradMessage.getPeerAddressesResponse:type_name -> protowire.GetPeerAddressesResponseMessage
+	54,  // 54: protowire.KobradMessage.getSelectedTipHashRequest:type_name -> protowire.GetSelectedTipHashRequestMessage
+	55,  // 55: protowire.KobradMessage.getSelectedTipHashResponse:type_name -> protowire.GetSelectedTipHashResponseMessage
+	56,  // 56: protowire.KobradMessage.getMempoolEntryRequest:type_name -> protowire.GetMempoolEntryRequestMessage
+	57,  // 57: protowire.KobradMessage.getMempoolEntryResponse:type_name -> protowire.GetMempoolEntryResponseMessage
+	58,  // 58: protowire.KobradMessage.getConnectedPeerInfoRequest:type_name -> protowire.GetConnectedPeerInfoRequestMessage
+	59,  // 59: protowire.KobradMessage.getConnectedPeerInfoResponse:type_name -> protowire.GetConnectedPeerInfoResponseMessage
+	60,  // 60: protowire.KobradMessage.addPeerRequest:type_name -> protowire.AddPeerRequestMessage
+	61,  // 61: protowire.KobradMessage.addPeerResponse:type_name -> protowire.AddPeerResponseMessage
+	62,  // 62: protowire.KobradMessage.submitTransactionRequest:type_name -> protowire.SubmitTransactionRequestMessage
+	63,  // 63: protowire.KobradMessage.submitTransactionResponse:type_name -> protowire.SubmitTransactionResponseMessage
+	64,  // 64: protowire.KobradMessage.notifyVirtualSelectedParentChainChangedRequest:type_name -> protowire.NotifyVirtualSelectedParentChainChangedRequestMessage
+	65,  // 65: protowire.KobradMessage.notifyVirtualSelectedParentChainChangedResponse:type_name -> protowire.NotifyVirtualSelectedParentChainChangedResponseMessage
+	66,  // 66: protowire.KobradMessage.virtualSelectedParentChainChangedNotification:type_name -> protowire.VirtualSelectedParentChainChangedNotificationMessage
+	67,  // 67: protowire.KobradMessage.getBlockRequest:type_name -> protowire.GetBlockRequestMessage
+	68,  // 68: protowire.KobradMessage.getBlockResponse:type_name -> protowire.GetBlockResponseMessage
+	69,  // 69: protowire.KobradMessage.getSubnetworkRequest:type_name -> protowire.GetSubnetworkRequestMessage
+	70,  // 70: protowire.KobradMessage.getSubnetworkResponse:type_name -> protowire.GetSubnetworkResponseMessage
+	71,  // 71: protowire.KobradMessage.getVirtualSelectedParentChainFromBlockRequest:type_name -> protowire.GetVirtualSelectedParentChainFromBlockRequestMessage
+	72,  // 72: protowire.KobradMessage.getVirtualSelectedParentChainFromBlockResponse:type_name -> protowire.GetVirtualSelectedParentChainFromBlockResponseMessage
+	73,  // 73: protowire.KobradMessage.getBlocksRequest:type_name -> protowire.GetBlocksRequestMessage
+	74,  // 74: protowire.KobradMessage.getBlocksResponse:type_name -> protowire.GetBlocksResponseMessage
+	75,  // 75: protowire.KobradMessage.getBlockCountRequest:type_name -> protowire.GetBlockCountRequestMessage
+	76,  // 76: protowire.KobradMessage.getBlockCountResponse:type_name -> protowire.GetBlockCountResponseMessage
+	77,  // 77: protowire.KobradMessage.getBlockDagInfoRequest:type_name -> protowire.GetBlockDagInfoRequestMessage
+	78,  // 78: protowire.KobradMessage.getBlockDagInfoResponse:type_name -> protowire.GetBlockDagInfoResponseMessage
+	79,  // 79: protowire.KobradMessage.resolveFinalityConflictRequest:type_name -> protowire.ResolveFinalityConflictRequestMessage
+	80,  // 80: protowire.KobradMessage.resolveFinalityConflictResponse:type_name -> protowire.ResolveFinalityConflictResponseMessage
+	81,  // 81: protowire.KobradMessage.notifyFinalityConflictsRequest:type_name -> protowire.NotifyFinalityConflictsRequestMessage
+	82,  // 82: protowire.KobradMessage.notifyFinalityConflictsResponse:type_name -> protowire.NotifyFinalityConflictsResponseMessage
+	83,  // 83: protowire.KobradMessage.finalityConflictNotification:type_name -> protowire.FinalityConflictNotificationMessage
+	84,  // 84: protowire.KobradMessage.finalityConflictResolvedNotification:type_name -> protowire.FinalityConflictResolvedNotificationMessage
+	85,  // 85: protowire.KobradMessage.getMempoolEntriesRequest:type_name -> protowire.GetMempoolEntriesRequestMessage
+	86,  // 86: protowire.KobradMessage.getMempoolEntriesResponse:type_name -> protowire.GetMempoolEntriesResponseMessage
+	87,  // 87: protowire.KobradMessage.shutDownRequest:type_name -> protowire.ShutDownRequestMessage
+	88,  // 88: protowire.KobradMessage.shutDownResponse:type_name -> protowire.ShutDownResponseMessage
+	89,  // 89: protowire.KobradMessage.getHeadersRequest:type_name -> protowire.GetHeadersRequestMessage
+	90,  // 90: protowire.KobradMessage.getHeadersResponse:type_name -> protowire.GetHeadersResponseMessage
+	91,  // 91: protowire.KobradMessage.notifyUtxosChangedRequest:type_name -> protowire.NotifyUtxosChangedRequestMessage
+	92,  // 92: protowire.KobradMessage.notifyUtxosChangedResponse:type_name -> protowire.NotifyUtxosChangedResponseMessage
+	93,  // 93: protowire.KobradMessage.utxosChangedNotification:type_name -> protowire.UtxosChangedNotificationMessage
+	94,  // 94: protowire.KobradMessage.getUtxosByAddressesRequest:type_name -> protowire.GetUtxosByAddressesRequestMessage
+	95,  // 95: protowire.KobradMessage.getUtxosByAddressesResponse:type_name -> protowire.GetUtxosByAddressesResponseMessage
+	96,  // 96: protowire.KobradMessage.getVirtualSelectedParentBlueScoreRequest:type_name -> protowire.GetVirtualSelectedParentBlueScoreRequestMessage
+	97,  // 97: protowire.KobradMessage.getVirtualSelectedParentBlueScoreResponse:type_name -> protowire.GetVirtualSelectedParentBlueScoreResponseMessage
+	98,  // 98: protowire.KobradMessage.notifyVirtualSelectedParentBlueScoreChangedRequest:type_name -> protowire.NotifyVirtualSelectedParentBlueScoreChangedRequestMessage
+	99,  // 99: protowire.KobradMessage.notifyVirtualSelectedParentBlueScoreChangedResponse:type_name -> protowire.NotifyVirtualSelectedParentBlueScoreChangedResponseMessage
+	100, // 100: protowire.KobradMessage.virtualSelectedParentBlueScoreChangedNotification:type_name -> protowire.VirtualSelectedParentBlueScoreChangedNotificationMessage
+	101, // 101: protowire.KobradMessage.banRequest:type_name -> protowire.BanRequestMessage
+	102, // 102: protowire.KobradMessage.banResponse:type_name -> protowire.BanResponseMessage
+	103, // 103: protowire.KobradMessage.unbanRequest:type_name -> protowire.UnbanRequestMessage
+	104, // 104: protowire.KobradMessage.unbanResponse:type_name -> protowire.UnbanResponseMessage
+	105, // 105: protowire.KobradMessage.getInfoRequest:type_name -> protowire.GetInfoRequestMessage
+	106, // 106: protowire.KobradMessage.getInfoResponse:type_name -> protowire.GetInfoResponseMessage
+	107, // 107: protowire.KobradMessage.stopNotifyingUtxosChangedRequest:type_name -> protowire.StopNotifyingUtxosChangedRequestMessage
+	108, // 108: protowire.KobradMessage.stopNotifyingUtxosChangedResponse:type_name -> protowire.StopNotifyingUtxosChangedResponseMessage
+	109, // 109: protowire.KobradMessage.notifyPruningPointUTXOSetOverrideRequest:type_name -> protowire.NotifyPruningPointUTXOSetOverrideRequestMessage
+	110, // 110: protowire.KobradMessage.notifyPruningPointUTXOSetOverrideResponse:type_name -> protowire.NotifyPruningPointUTXOSetOverrideResponseMessage
+	111, // 111: protowire.KobradMessage.pruningPointUTXOSetOverrideNotification:type_name -> protowire.PruningPointUTXOSetOverrideNotificationMessage
+	112, // 112: protowire.KobradMessage.stopNotifyingPruningPointUTXOSetOverrideRequest:type_name -> protowire.StopNotifyingPruningPointUTXOSetOverrideRequestMessage
+	113, // 113: protowire.KobradMessage.stopNotifyingPruningPointUTXOSetOverrideResponse:type_name -> protowire.StopNotifyingPruningPointUTXOSetOverrideResponseMessage
+	114, // 114: protowire.KobradMessage.estimateNetworkHashesPerSecondRequest:type_name -> protowire.EstimateNetworkHashesPerSecondRequestMessage
+	115, // 115: protowire.KobradMessage.estimateNetworkHashesPerSecondResponse:type_name -> protowire.EstimateNetworkHashesPerSecondResponseMessage
+	116, // 116: protowire.KobradMessage.notifyVirtualDaaScoreChangedRequest:type_name -> protowire.NotifyVirtualDaaScoreChangedRequestMessage
+	117, // 117: protowire.KobradMessage.notifyVirtualDaaScoreChangedResponse:type_name -> protowire.NotifyVirtualDaaScoreChangedResponseMessage
+	118, // 118: protowire.KobradMessage.virtualDaaScoreChangedNotification:type_name -> protowire.VirtualDaaScoreChangedNotificationMessage
+	119, // 119: protowire.KobradMessage.getBalanceByAddressRequest:type_name -> protowire.GetBalanceByAddressRequestMessage
+	120, // 120: protowire.KobradMessage.getBalanceByAddressResponse:type_name -> protowire.GetBalanceByAddressResponseMessage
+	121, // 121: protowire.KobradMessage.getBalancesByAddressesRequest:type_name -> protowire.GetBalancesByAddressesRequestMessage
+	122, // 122: protowire.KobradMessage.getBalancesByAddressesResponse:type_name -> protowire.GetBalancesByAddressesResponseMessage
+	123, // 123: protowire.KobradMessage.notifyNewBlockTemplateRequest:type_name -> protowire.NotifyNewBlockTemplateRequestMessage
+	124, // 124: protowire.KobradMessage.notifyNewBlockTemplateResponse:type_name -> protowire.NotifyNewBlockTemplateResponseMessage
+	125, // 125: protowire.KobradMessage.newBlockTemplateNotification:type_name -> protowire.NewBlockTemplateNotificationMessage
+	126, // 126: protowire.KobradMessage.getMempoolEntriesByAddressesRequest:type_name -> protowire.GetMempoolEntriesByAddressesRequestMessage
+	127, // 127: protowire.KobradMessage.getMempoolEntriesByAddressesResponse:type_name -> protowire.GetMempoolEntriesByAddressesResponseMessage
+	128, // 128: protowire.KobradMessage.getCoinSupplyRequest:type_name -> protowire.GetCoinSupplyRequestMessage
+	129, // 129: protowire.KobradMessage.getCoinSupplyResponse:type_name -> protowire.GetCoinSupplyResponseMessage
+	0,   // 130: protowire.P2P.MessageStream:input_type -> protowire.KobradMessage
+	0,   // 131: protowire.RPC.MessageStream:input_type -> protowire.KobradMessage
+	0,   // 132: protowire.P2P.MessageStream:output_type -> protowire.KobradMessage
+	0,   // 133: protowire.RPC.MessageStream:output_type -> protowire.KobradMessage
 	132, // [132:134] is the sub-list for method output_type
 	130, // [130:132] is the sub-list for method input_type
 	130, // [130:130] is the sub-list for extension type_name
@@ -3087,7 +3087,7 @@ func file_messages_proto_init() {
 	file_rpc_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_messages_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*HarbidMessage); i {
+			switch v := v.(*KobradMessage); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3100,136 +3100,136 @@ func file_messages_proto_init() {
 		}
 	}
 	file_messages_proto_msgTypes[0].OneofWrappers = []interface{}{
-		(*HarbidMessage_Addresses)(nil),
-		(*HarbidMessage_Block)(nil),
-		(*HarbidMessage_Transaction)(nil),
-		(*HarbidMessage_BlockLocator)(nil),
-		(*HarbidMessage_RequestAddresses)(nil),
-		(*HarbidMessage_RequestRelayBlocks)(nil),
-		(*HarbidMessage_RequestTransactions)(nil),
-		(*HarbidMessage_IbdBlock)(nil),
-		(*HarbidMessage_InvRelayBlock)(nil),
-		(*HarbidMessage_InvTransactions)(nil),
-		(*HarbidMessage_Ping)(nil),
-		(*HarbidMessage_Pong)(nil),
-		(*HarbidMessage_Verack)(nil),
-		(*HarbidMessage_Version)(nil),
-		(*HarbidMessage_TransactionNotFound)(nil),
-		(*HarbidMessage_Reject)(nil),
-		(*HarbidMessage_PruningPointUtxoSetChunk)(nil),
-		(*HarbidMessage_RequestIBDBlocks)(nil),
-		(*HarbidMessage_UnexpectedPruningPoint)(nil),
-		(*HarbidMessage_IbdBlockLocator)(nil),
-		(*HarbidMessage_IbdBlockLocatorHighestHash)(nil),
-		(*HarbidMessage_RequestNextPruningPointUtxoSetChunk)(nil),
-		(*HarbidMessage_DonePruningPointUtxoSetChunks)(nil),
-		(*HarbidMessage_IbdBlockLocatorHighestHashNotFound)(nil),
-		(*HarbidMessage_BlockWithTrustedData)(nil),
-		(*HarbidMessage_DoneBlocksWithTrustedData)(nil),
-		(*HarbidMessage_RequestPruningPointAndItsAnticone)(nil),
-		(*HarbidMessage_BlockHeaders)(nil),
-		(*HarbidMessage_RequestNextHeaders)(nil),
-		(*HarbidMessage_DoneHeaders)(nil),
-		(*HarbidMessage_RequestPruningPointUTXOSet)(nil),
-		(*HarbidMessage_RequestHeaders)(nil),
-		(*HarbidMessage_RequestBlockLocator)(nil),
-		(*HarbidMessage_PruningPoints)(nil),
-		(*HarbidMessage_RequestPruningPointProof)(nil),
-		(*HarbidMessage_PruningPointProof)(nil),
-		(*HarbidMessage_Ready)(nil),
-		(*HarbidMessage_BlockWithTrustedDataV4)(nil),
-		(*HarbidMessage_TrustedData)(nil),
-		(*HarbidMessage_RequestIBDChainBlockLocator)(nil),
-		(*HarbidMessage_IbdChainBlockLocator)(nil),
-		(*HarbidMessage_RequestAnticone)(nil),
-		(*HarbidMessage_RequestNextPruningPointAndItsAnticoneBlocks)(nil),
-		(*HarbidMessage_GetCurrentNetworkRequest)(nil),
-		(*HarbidMessage_GetCurrentNetworkResponse)(nil),
-		(*HarbidMessage_SubmitBlockRequest)(nil),
-		(*HarbidMessage_SubmitBlockResponse)(nil),
-		(*HarbidMessage_GetBlockTemplateRequest)(nil),
-		(*HarbidMessage_GetBlockTemplateResponse)(nil),
-		(*HarbidMessage_NotifyBlockAddedRequest)(nil),
-		(*HarbidMessage_NotifyBlockAddedResponse)(nil),
-		(*HarbidMessage_BlockAddedNotification)(nil),
-		(*HarbidMessage_GetPeerAddressesRequest)(nil),
-		(*HarbidMessage_GetPeerAddressesResponse)(nil),
-		(*HarbidMessage_GetSelectedTipHashRequest)(nil),
-		(*HarbidMessage_GetSelectedTipHashResponse)(nil),
-		(*HarbidMessage_GetMempoolEntryRequest)(nil),
-		(*HarbidMessage_GetMempoolEntryResponse)(nil),
-		(*HarbidMessage_GetConnectedPeerInfoRequest)(nil),
-		(*HarbidMessage_GetConnectedPeerInfoResponse)(nil),
-		(*HarbidMessage_AddPeerRequest)(nil),
-		(*HarbidMessage_AddPeerResponse)(nil),
-		(*HarbidMessage_SubmitTransactionRequest)(nil),
-		(*HarbidMessage_SubmitTransactionResponse)(nil),
-		(*HarbidMessage_NotifyVirtualSelectedParentChainChangedRequest)(nil),
-		(*HarbidMessage_NotifyVirtualSelectedParentChainChangedResponse)(nil),
-		(*HarbidMessage_VirtualSelectedParentChainChangedNotification)(nil),
-		(*HarbidMessage_GetBlockRequest)(nil),
-		(*HarbidMessage_GetBlockResponse)(nil),
-		(*HarbidMessage_GetSubnetworkRequest)(nil),
-		(*HarbidMessage_GetSubnetworkResponse)(nil),
-		(*HarbidMessage_GetVirtualSelectedParentChainFromBlockRequest)(nil),
-		(*HarbidMessage_GetVirtualSelectedParentChainFromBlockResponse)(nil),
-		(*HarbidMessage_GetBlocksRequest)(nil),
-		(*HarbidMessage_GetBlocksResponse)(nil),
-		(*HarbidMessage_GetBlockCountRequest)(nil),
-		(*HarbidMessage_GetBlockCountResponse)(nil),
-		(*HarbidMessage_GetBlockDagInfoRequest)(nil),
-		(*HarbidMessage_GetBlockDagInfoResponse)(nil),
-		(*HarbidMessage_ResolveFinalityConflictRequest)(nil),
-		(*HarbidMessage_ResolveFinalityConflictResponse)(nil),
-		(*HarbidMessage_NotifyFinalityConflictsRequest)(nil),
-		(*HarbidMessage_NotifyFinalityConflictsResponse)(nil),
-		(*HarbidMessage_FinalityConflictNotification)(nil),
-		(*HarbidMessage_FinalityConflictResolvedNotification)(nil),
-		(*HarbidMessage_GetMempoolEntriesRequest)(nil),
-		(*HarbidMessage_GetMempoolEntriesResponse)(nil),
-		(*HarbidMessage_ShutDownRequest)(nil),
-		(*HarbidMessage_ShutDownResponse)(nil),
-		(*HarbidMessage_GetHeadersRequest)(nil),
-		(*HarbidMessage_GetHeadersResponse)(nil),
-		(*HarbidMessage_NotifyUtxosChangedRequest)(nil),
-		(*HarbidMessage_NotifyUtxosChangedResponse)(nil),
-		(*HarbidMessage_UtxosChangedNotification)(nil),
-		(*HarbidMessage_GetUtxosByAddressesRequest)(nil),
-		(*HarbidMessage_GetUtxosByAddressesResponse)(nil),
-		(*HarbidMessage_GetVirtualSelectedParentBlueScoreRequest)(nil),
-		(*HarbidMessage_GetVirtualSelectedParentBlueScoreResponse)(nil),
-		(*HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest)(nil),
-		(*HarbidMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse)(nil),
-		(*HarbidMessage_VirtualSelectedParentBlueScoreChangedNotification)(nil),
-		(*HarbidMessage_BanRequest)(nil),
-		(*HarbidMessage_BanResponse)(nil),
-		(*HarbidMessage_UnbanRequest)(nil),
-		(*HarbidMessage_UnbanResponse)(nil),
-		(*HarbidMessage_GetInfoRequest)(nil),
-		(*HarbidMessage_GetInfoResponse)(nil),
-		(*HarbidMessage_StopNotifyingUtxosChangedRequest)(nil),
-		(*HarbidMessage_StopNotifyingUtxosChangedResponse)(nil),
-		(*HarbidMessage_NotifyPruningPointUTXOSetOverrideRequest)(nil),
-		(*HarbidMessage_NotifyPruningPointUTXOSetOverrideResponse)(nil),
-		(*HarbidMessage_PruningPointUTXOSetOverrideNotification)(nil),
-		(*HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideRequest)(nil),
-		(*HarbidMessage_StopNotifyingPruningPointUTXOSetOverrideResponse)(nil),
-		(*HarbidMessage_EstimateNetworkHashesPerSecondRequest)(nil),
-		(*HarbidMessage_EstimateNetworkHashesPerSecondResponse)(nil),
-		(*HarbidMessage_NotifyVirtualDaaScoreChangedRequest)(nil),
-		(*HarbidMessage_NotifyVirtualDaaScoreChangedResponse)(nil),
-		(*HarbidMessage_VirtualDaaScoreChangedNotification)(nil),
-		(*HarbidMessage_GetBalanceByAddressRequest)(nil),
-		(*HarbidMessage_GetBalanceByAddressResponse)(nil),
-		(*HarbidMessage_GetBalancesByAddressesRequest)(nil),
-		(*HarbidMessage_GetBalancesByAddressesResponse)(nil),
-		(*HarbidMessage_NotifyNewBlockTemplateRequest)(nil),
-		(*HarbidMessage_NotifyNewBlockTemplateResponse)(nil),
-		(*HarbidMessage_NewBlockTemplateNotification)(nil),
-		(*HarbidMessage_GetMempoolEntriesByAddressesRequest)(nil),
-		(*HarbidMessage_GetMempoolEntriesByAddressesResponse)(nil),
-		(*HarbidMessage_GetCoinSupplyRequest)(nil),
-		(*HarbidMessage_GetCoinSupplyResponse)(nil),
+		(*KobradMessage_Addresses)(nil),
+		(*KobradMessage_Block)(nil),
+		(*KobradMessage_Transaction)(nil),
+		(*KobradMessage_BlockLocator)(nil),
+		(*KobradMessage_RequestAddresses)(nil),
+		(*KobradMessage_RequestRelayBlocks)(nil),
+		(*KobradMessage_RequestTransactions)(nil),
+		(*KobradMessage_IbdBlock)(nil),
+		(*KobradMessage_InvRelayBlock)(nil),
+		(*KobradMessage_InvTransactions)(nil),
+		(*KobradMessage_Ping)(nil),
+		(*KobradMessage_Pong)(nil),
+		(*KobradMessage_Verack)(nil),
+		(*KobradMessage_Version)(nil),
+		(*KobradMessage_TransactionNotFound)(nil),
+		(*KobradMessage_Reject)(nil),
+		(*KobradMessage_PruningPointUtxoSetChunk)(nil),
+		(*KobradMessage_RequestIBDBlocks)(nil),
+		(*KobradMessage_UnexpectedPruningPoint)(nil),
+		(*KobradMessage_IbdBlockLocator)(nil),
+		(*KobradMessage_IbdBlockLocatorHighestHash)(nil),
+		(*KobradMessage_RequestNextPruningPointUtxoSetChunk)(nil),
+		(*KobradMessage_DonePruningPointUtxoSetChunks)(nil),
+		(*KobradMessage_IbdBlockLocatorHighestHashNotFound)(nil),
+		(*KobradMessage_BlockWithTrustedData)(nil),
+		(*KobradMessage_DoneBlocksWithTrustedData)(nil),
+		(*KobradMessage_RequestPruningPointAndItsAnticone)(nil),
+		(*KobradMessage_BlockHeaders)(nil),
+		(*KobradMessage_RequestNextHeaders)(nil),
+		(*KobradMessage_DoneHeaders)(nil),
+		(*KobradMessage_RequestPruningPointUTXOSet)(nil),
+		(*KobradMessage_RequestHeaders)(nil),
+		(*KobradMessage_RequestBlockLocator)(nil),
+		(*KobradMessage_PruningPoints)(nil),
+		(*KobradMessage_RequestPruningPointProof)(nil),
+		(*KobradMessage_PruningPointProof)(nil),
+		(*KobradMessage_Ready)(nil),
+		(*KobradMessage_BlockWithTrustedDataV4)(nil),
+		(*KobradMessage_TrustedData)(nil),
+		(*KobradMessage_RequestIBDChainBlockLocator)(nil),
+		(*KobradMessage_IbdChainBlockLocator)(nil),
+		(*KobradMessage_RequestAnticone)(nil),
+		(*KobradMessage_RequestNextPruningPointAndItsAnticoneBlocks)(nil),
+		(*KobradMessage_GetCurrentNetworkRequest)(nil),
+		(*KobradMessage_GetCurrentNetworkResponse)(nil),
+		(*KobradMessage_SubmitBlockRequest)(nil),
+		(*KobradMessage_SubmitBlockResponse)(nil),
+		(*KobradMessage_GetBlockTemplateRequest)(nil),
+		(*KobradMessage_GetBlockTemplateResponse)(nil),
+		(*KobradMessage_NotifyBlockAddedRequest)(nil),
+		(*KobradMessage_NotifyBlockAddedResponse)(nil),
+		(*KobradMessage_BlockAddedNotification)(nil),
+		(*KobradMessage_GetPeerAddressesRequest)(nil),
+		(*KobradMessage_GetPeerAddressesResponse)(nil),
+		(*KobradMessage_GetSelectedTipHashRequest)(nil),
+		(*KobradMessage_GetSelectedTipHashResponse)(nil),
+		(*KobradMessage_GetMempoolEntryRequest)(nil),
+		(*KobradMessage_GetMempoolEntryResponse)(nil),
+		(*KobradMessage_GetConnectedPeerInfoRequest)(nil),
+		(*KobradMessage_GetConnectedPeerInfoResponse)(nil),
+		(*KobradMessage_AddPeerRequest)(nil),
+		(*KobradMessage_AddPeerResponse)(nil),
+		(*KobradMessage_SubmitTransactionRequest)(nil),
+		(*KobradMessage_SubmitTransactionResponse)(nil),
+		(*KobradMessage_NotifyVirtualSelectedParentChainChangedRequest)(nil),
+		(*KobradMessage_NotifyVirtualSelectedParentChainChangedResponse)(nil),
+		(*KobradMessage_VirtualSelectedParentChainChangedNotification)(nil),
+		(*KobradMessage_GetBlockRequest)(nil),
+		(*KobradMessage_GetBlockResponse)(nil),
+		(*KobradMessage_GetSubnetworkRequest)(nil),
+		(*KobradMessage_GetSubnetworkResponse)(nil),
+		(*KobradMessage_GetVirtualSelectedParentChainFromBlockRequest)(nil),
+		(*KobradMessage_GetVirtualSelectedParentChainFromBlockResponse)(nil),
+		(*KobradMessage_GetBlocksRequest)(nil),
+		(*KobradMessage_GetBlocksResponse)(nil),
+		(*KobradMessage_GetBlockCountRequest)(nil),
+		(*KobradMessage_GetBlockCountResponse)(nil),
+		(*KobradMessage_GetBlockDagInfoRequest)(nil),
+		(*KobradMessage_GetBlockDagInfoResponse)(nil),
+		(*KobradMessage_ResolveFinalityConflictRequest)(nil),
+		(*KobradMessage_ResolveFinalityConflictResponse)(nil),
+		(*KobradMessage_NotifyFinalityConflictsRequest)(nil),
+		(*KobradMessage_NotifyFinalityConflictsResponse)(nil),
+		(*KobradMessage_FinalityConflictNotification)(nil),
+		(*KobradMessage_FinalityConflictResolvedNotification)(nil),
+		(*KobradMessage_GetMempoolEntriesRequest)(nil),
+		(*KobradMessage_GetMempoolEntriesResponse)(nil),
+		(*KobradMessage_ShutDownRequest)(nil),
+		(*KobradMessage_ShutDownResponse)(nil),
+		(*KobradMessage_GetHeadersRequest)(nil),
+		(*KobradMessage_GetHeadersResponse)(nil),
+		(*KobradMessage_NotifyUtxosChangedRequest)(nil),
+		(*KobradMessage_NotifyUtxosChangedResponse)(nil),
+		(*KobradMessage_UtxosChangedNotification)(nil),
+		(*KobradMessage_GetUtxosByAddressesRequest)(nil),
+		(*KobradMessage_GetUtxosByAddressesResponse)(nil),
+		(*KobradMessage_GetVirtualSelectedParentBlueScoreRequest)(nil),
+		(*KobradMessage_GetVirtualSelectedParentBlueScoreResponse)(nil),
+		(*KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedRequest)(nil),
+		(*KobradMessage_NotifyVirtualSelectedParentBlueScoreChangedResponse)(nil),
+		(*KobradMessage_VirtualSelectedParentBlueScoreChangedNotification)(nil),
+		(*KobradMessage_BanRequest)(nil),
+		(*KobradMessage_BanResponse)(nil),
+		(*KobradMessage_UnbanRequest)(nil),
+		(*KobradMessage_UnbanResponse)(nil),
+		(*KobradMessage_GetInfoRequest)(nil),
+		(*KobradMessage_GetInfoResponse)(nil),
+		(*KobradMessage_StopNotifyingUtxosChangedRequest)(nil),
+		(*KobradMessage_StopNotifyingUtxosChangedResponse)(nil),
+		(*KobradMessage_NotifyPruningPointUTXOSetOverrideRequest)(nil),
+		(*KobradMessage_NotifyPruningPointUTXOSetOverrideResponse)(nil),
+		(*KobradMessage_PruningPointUTXOSetOverrideNotification)(nil),
+		(*KobradMessage_StopNotifyingPruningPointUTXOSetOverrideRequest)(nil),
+		(*KobradMessage_StopNotifyingPruningPointUTXOSetOverrideResponse)(nil),
+		(*KobradMessage_EstimateNetworkHashesPerSecondRequest)(nil),
+		(*KobradMessage_EstimateNetworkHashesPerSecondResponse)(nil),
+		(*KobradMessage_NotifyVirtualDaaScoreChangedRequest)(nil),
+		(*KobradMessage_NotifyVirtualDaaScoreChangedResponse)(nil),
+		(*KobradMessage_VirtualDaaScoreChangedNotification)(nil),
+		(*KobradMessage_GetBalanceByAddressRequest)(nil),
+		(*KobradMessage_GetBalanceByAddressResponse)(nil),
+		(*KobradMessage_GetBalancesByAddressesRequest)(nil),
+		(*KobradMessage_GetBalancesByAddressesResponse)(nil),
+		(*KobradMessage_NotifyNewBlockTemplateRequest)(nil),
+		(*KobradMessage_NotifyNewBlockTemplateResponse)(nil),
+		(*KobradMessage_NewBlockTemplateNotification)(nil),
+		(*KobradMessage_GetMempoolEntriesByAddressesRequest)(nil),
+		(*KobradMessage_GetMempoolEntriesByAddressesResponse)(nil),
+		(*KobradMessage_GetCoinSupplyRequest)(nil),
+		(*KobradMessage_GetCoinSupplyResponse)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

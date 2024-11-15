@@ -5,22 +5,22 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_GetConnectedPeerInfoRequest) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetConnectedPeerInfoRequest) toAppMessage() (appmessage.Message, error) {
 	return &appmessage.GetConnectedPeerInfoRequestMessage{}, nil
 }
 
-func (x *HarbidMessage_GetConnectedPeerInfoRequest) fromAppMessage(_ *appmessage.GetConnectedPeerInfoRequestMessage) error {
+func (x *KobradMessage_GetConnectedPeerInfoRequest) fromAppMessage(_ *appmessage.GetConnectedPeerInfoRequestMessage) error {
 	return nil
 }
 
-func (x *HarbidMessage_GetConnectedPeerInfoResponse) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_GetConnectedPeerInfoResponse) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_GetConnectedPeerInfoResponse is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_GetConnectedPeerInfoResponse is nil")
 	}
 	return x.GetConnectedPeerInfoResponse.toAppMessage()
 }
 
-func (x *HarbidMessage_GetConnectedPeerInfoResponse) fromAppMessage(message *appmessage.GetConnectedPeerInfoResponseMessage) error {
+func (x *KobradMessage_GetConnectedPeerInfoResponse) fromAppMessage(message *appmessage.GetConnectedPeerInfoResponseMessage) error {
 	var err *RPCError
 	if message.Error != nil {
 		err = &RPCError{Message: message.Error.Message}

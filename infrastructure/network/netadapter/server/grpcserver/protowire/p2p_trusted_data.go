@@ -5,9 +5,9 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (x *HarbidMessage_TrustedData) toAppMessage() (appmessage.Message, error) {
+func (x *KobradMessage_TrustedData) toAppMessage() (appmessage.Message, error) {
 	if x == nil {
-		return nil, errors.Wrapf(errorNil, "HarbidMessage_TrustedDataMessage is nil")
+		return nil, errors.Wrapf(errorNil, "KobradMessage_TrustedDataMessage is nil")
 	}
 
 	daaWindow := make([]*appmessage.TrustedDataDAAHeader, len(x.TrustedData.DaaWindow))
@@ -43,7 +43,7 @@ func (x *HarbidMessage_TrustedData) toAppMessage() (appmessage.Message, error) {
 	}, nil
 }
 
-func (x *HarbidMessage_TrustedData) fromAppMessage(msgTrustedData *appmessage.MsgTrustedData) error {
+func (x *KobradMessage_TrustedData) fromAppMessage(msgTrustedData *appmessage.MsgTrustedData) error {
 	x.TrustedData = &TrustedDataMessage{
 		DaaWindow:    make([]*DaaBlockV4, len(msgTrustedData.DAAWindow)),
 		GhostdagData: make([]*BlockGhostdagDataHashPair, len(msgTrustedData.GHOSTDAGData)),
