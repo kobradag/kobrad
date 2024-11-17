@@ -29,7 +29,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.19
+          go-version: 1.21
 
       - name: Build on Linux
         if: runner.os == 'Linux'
@@ -44,16 +44,16 @@ jobs:
           echo "archive=${archive}" >> $GITHUB_ENV
           echo "asset_name=${asset_name}" >> $GITHUB_ENV
 
-     - name: Build on Windows
-       if: runner.os == 'Windows'
-       run: |
-         go build -v -ldflags="-s -w" -o bin/ . ./cmd/...
-         archive="bin/kobrad-${{ github.event.release.tag_name }}-win64.zip"
-         asset_name="kobrad-${{ github.event.release.tag_name }}-win64.zip"
-         powershell "Compress-Archive bin/* \"${archive}\""
-         echo "archive=${archive}" >> $GITHUB_ENV
-         echo "asset_name=${asset_name}" >> $GITHUB_ENV
-
+      - name: Build on Windows
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          go build -v -ldflags="-s -w" -o bin/ . ./cmd/...
+          archive="bin/kobrad-${{ github.event.release.tag_name }}-win64.zip"
+          asset_name="kobrad-${{ github.event.release.tag_name }}-win64.zip"
+          powershell "Compress-Archive bin/* \"${archive}\""
+          echo "archive=${archive}" >> $GITHUB_ENV
+          echo "asset_name=${asset_name}" >> $GITHUB_ENV
 
       - name: Build on MacOS
         if: runner.os == 'macOS'
