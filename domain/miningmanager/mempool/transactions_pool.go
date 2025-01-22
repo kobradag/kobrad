@@ -83,7 +83,7 @@ func (tp *transactionsPool) removeTransaction(transaction *model.MempoolTransact
 	err := tp.transactionsOrderedByFeeRate.Remove(transaction)
 	if err != nil {
 		if errors.Is(err, model.ErrTransactionNotFound) {
-			log.Errorf("Transaction %s not found in tp.transactionsOrderedByFeeRate. This should never happen but sometime does",
+			log.Errorf("Transaction %s not found in tp.transactionsOrderedByFeeRate.",
 				transaction.TransactionID())
 		} else {
 			return err
