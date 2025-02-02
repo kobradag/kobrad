@@ -23,7 +23,7 @@ const (
 	LeorPerKobra = 100_000_000
 
 	// MaxLeor is the maximum transaction amount allowed in leor.
-	MaxLeor = uint64(1_000_000_000 * LeorPerKobra)
+	MaxLeor = uint64(500_000_000 * LeorPerKobra)
 
 	// MaxTxInSequenceNum is the maximum sequence number the sequence field
 	// of a transaction input can be.
