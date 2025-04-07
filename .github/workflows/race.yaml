@@ -2,7 +2,7 @@ name: Race
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * *"  
   workflow_dispatch:
 
 jobs:
@@ -13,34 +13,44 @@ jobs:
       matrix:
         branch: [ master, latest ]
     name: Race detection on ${{ matrix.branch }}
+
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
-          go-version: 1.21
+          go-version: "1.21"
 
-      - name: Set branch to test
+      - name: Determine branch to test
         id: set_branch
+        shell: bash
         run: |
+          git fetch --all
+
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "run_on=${{ github.ref_name }}" >> $GITHUB_ENV
+
           elif [[ "${{ matrix.branch }}" == "master" ]]; then
             echo "run_on=master" >> $GITHUB_ENV
+
           elif [[ "${{ matrix.branch }}" == "latest" ]]; then
             branch=$(git branch -r | grep -E 'origin/v[0-9]+\.[0-9]+\.[0-9]+-dev' | sed 's|origin/||' | sort -Vr | head -1)
+            if [[ -z "$branch" ]]; then
+              echo "❌ No dev branches found matching vX.Y.Z-dev pattern"
+              exit 1
+            fi
             echo "run_on=$branch" >> $GITHUB_ENV
           fi
 
-      - name: Checkout correct branch
+      - name: Checkout target branch
         run: |
           git fetch origin $run_on
           git checkout $run_on
-          echo "Checked out $run_on"
+          echo "✅ Checked out branch: $run_on"
 
       - name: Run race tests
         run: go test -timeout 20m -race ./...
