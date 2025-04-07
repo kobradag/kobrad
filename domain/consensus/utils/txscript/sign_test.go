@@ -12,7 +12,7 @@ import (
 
 	"github.com/kobradag/kobrad/domain/consensus/utils/consensushashing"
 
-	"github.com/kaspanet/go-secp256k1"
+	"github.com/kobradag/go-secp256k1"
 	"github.com/kobradag/kobrad/domain/consensus/model/externalapi"
 	"github.com/pkg/errors"
 

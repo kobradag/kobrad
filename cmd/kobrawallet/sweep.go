@@ -5,7 +5,7 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/kaspanet/go-secp256k1"
+	"github.com/kobradag/go-secp256k1"
 	"github.com/kobradag/kobrad/cmd/kobrawallet/daemon/client"
 	"github.com/kobradag/kobrad/cmd/kobrawallet/daemon/pb"
 	"github.com/kobradag/kobrad/cmd/kobrawallet/libkobrawallet"

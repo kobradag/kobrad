@@ -7,7 +7,7 @@ package dagconfig
 import (
 	"math/big"
 
-	"github.com/kaspanet/go-muhash"
+	"github.com/kobradag/go-muhash"
 	"github.com/kobradag/kobrad/domain/consensus/model/externalapi"
 	"github.com/kobradag/kobrad/domain/consensus/utils/blockheader"
 	"github.com/kobradag/kobrad/domain/consensus/utils/subnetworks"

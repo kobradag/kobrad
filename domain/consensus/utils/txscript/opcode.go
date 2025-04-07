@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"hash"
 
-	"github.com/kaspanet/go-secp256k1"
+	"github.com/kobradag/go-secp256k1"
 	"lukechampine.com/blake3"
 
 	"github.com/kobradag/kobrad/domain/consensus/utils/consensushashing"

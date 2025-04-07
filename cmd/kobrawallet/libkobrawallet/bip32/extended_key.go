@@ -1,7 +1,7 @@
 package bip32
 
 import (
-	"github.com/kaspanet/go-secp256k1"
+	"github.com/kobradag/go-secp256k1"
 	"github.com/btcsuite/btcutil/base58"
 	"github.com/pkg/errors"
 )

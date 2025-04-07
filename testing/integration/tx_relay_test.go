@@ -10,7 +10,7 @@ import (
 
 	"github.com/kobradag/kobrad/domain/consensus/utils/utxo"
 
-	"github.com/kaspanet/go-secp256k1"
+	"github.com/kobradag/go-secp256k1"
 	"github.com/kobradag/kobrad/app/appmessage"
 	"github.com/kobradag/kobrad/domain/consensus/model/externalapi"
 	"github.com/kobradag/kobrad/domain/consensus/utils/consensushashing"

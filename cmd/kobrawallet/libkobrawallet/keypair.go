@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/kaspanet/go-secp256k1"
+	"github.com/kobradag/go-secp256k1"
 	"github.com/kobradag/kobrad/cmd/kobrawallet/libkobrawallet/bip32"
 	"github.com/kobradag/kobrad/domain/dagconfig"
 	"github.com/kobradag/kobrad/util"

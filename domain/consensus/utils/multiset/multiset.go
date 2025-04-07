@@ -1,7 +1,7 @@
 package multiset
 
 import (
-	"github.com/kaspanet/go-muhash"
+	"github.com/kobradag/go-muhash"
 	"github.com/kobradag/kobrad/domain/consensus/model"
 	"github.com/kobradag/kobrad/domain/consensus/model/externalapi"
 	"github.com/pkg/errors"

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/kaspanet/go-secp256k1"
+	"github.com/kobradag/go-secp256k1"
 	"github.com/kobradag/kobrad/app/appmessage"
 	"github.com/kobradag/kobrad/domain/consensus/utils/mining"
 	"github.com/kobradag/kobrad/util"

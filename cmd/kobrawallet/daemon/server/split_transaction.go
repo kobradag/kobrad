@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/kaspanet/go-secp256k1"
+	"github.com/kobradag/go-secp256k1"
 	"github.com/pkg/errors"
 
 	"github.com/kobradag/kobrad/cmd/kobrawallet/libkobrawallet"

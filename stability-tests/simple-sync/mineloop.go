@@ -3,7 +3,7 @@ package main
 import (
 	"time"
 
-	"github.com/kaspanet/go-secp256k1"
+	"github.com/kobradag/go-secp256k1"
 	"github.com/kobradag/kobrad/app/appmessage"
 	"github.com/kobradag/kobrad/stability-tests/common"
 	"github.com/kobradag/kobrad/stability-tests/common/rpc"
