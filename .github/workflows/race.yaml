@@ -3,7 +3,7 @@ name: Race
 on:
   schedule:
     - cron: "0 0 * * *"  
-  workflow_dispatch:
+  workflow_dispatch:     
 
 jobs:
   race_test:
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 0  
 
       - name: Setup Go
         uses: actions/setup-go@v4
@@ -31,22 +31,24 @@ jobs:
         run: |
           git fetch --all
 
+          echo "📌 Event type: ${{ github.event_name }}"
+          echo "📌 Matrix branch: ${{ matrix.branch }}"
+
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "🔁 Manual dispatch: using ${{ github.ref_name }}"
+            echo "🟢 Manual trigger detected"
             echo "run_on=${{ github.ref_name }}" >> $GITHUB_ENV
 
           elif [[ "${{ matrix.branch }}" == "master" ]]; then
-            echo "📌 Using 'master' branch"
+            echo "🟢 Scheduled run on 'master'"
             echo "run_on=master" >> $GITHUB_ENV
 
           elif [[ "${{ matrix.branch }}" == "latest" ]]; then
             echo "🔍 Looking for latest 'vX.Y.Z-dev' branch..."
-
             branch=$(git branch -r | grep -E 'origin/v[0-9]+\.[0-9]+\.[0-9]+-dev' | sed 's|origin/||' | sort -Vr | head -1)
 
             if [[ -z "$branch" ]]; then
-              echo "❌ No matching dev branches found."
-              echo "🧵 Available branches:"
+              echo "❌ No dev branches found matching 'vX.Y.Z-dev'"
+              echo "🧵 Available remote branches:"
               git branch -r
               exit 1
             fi
@@ -58,10 +60,10 @@ jobs:
       - name: Checkout selected branch
         run: |
           echo "🚀 Checking out branch: $run_on"
-          git fetch origin $run_on
-          git checkout $run_on
+          git fetch origin "$run_on"
+          git checkout "$run_on"
 
       - name: Run race condition tests
         run: |
-          echo "🧪 Running go test -race ./..."
+          echo "🧪 Running go test -race on $run_on"
           go test -timeout 20m -race ./...
