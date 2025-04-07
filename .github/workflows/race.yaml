@@ -3,7 +3,7 @@ name: Race
 on:
   schedule:
     - cron: "0 0 * * *"  
-  workflow_dispatch:    
+  workflow_dispatch:
 
 jobs:
   race_test:
@@ -12,21 +12,20 @@ jobs:
       fail-fast: false
       matrix:
         branch: [ master, latest ]
-
     name: Race detection on ${{ matrix.branch }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  
+          fetch-depth: 0
 
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
           go-version: "1.21"
 
-      - name: Determine target branch
+      - name: Determine branch to test
         id: set_branch
         shell: bash
         run: |
@@ -37,16 +36,17 @@ jobs:
             echo "run_on=${{ github.ref_name }}" >> $GITHUB_ENV
 
           elif [[ "${{ matrix.branch }}" == "master" ]]; then
-            echo "🏷 Using master"
+            echo "📌 Using 'master' branch"
             echo "run_on=master" >> $GITHUB_ENV
 
           elif [[ "${{ matrix.branch }}" == "latest" ]]; then
-            echo "🔍 Searching for latest dev branch..."
+            echo "🔍 Looking for latest 'vX.Y.Z-dev' branch..."
+
             branch=$(git branch -r | grep -E 'origin/v[0-9]+\.[0-9]+\.[0-9]+-dev' | sed 's|origin/||' | sort -Vr | head -1)
 
             if [[ -z "$branch" ]]; then
-              echo "❌ No dev branches found matching pattern 'vX.Y.Z-dev'"
-              echo "Available branches:"
+              echo "❌ No matching dev branches found."
+              echo "🧵 Available branches:"
               git branch -r
               exit 1
             fi
@@ -55,13 +55,13 @@ jobs:
             echo "run_on=$branch" >> $GITHUB_ENV
           fi
 
-      - name: Checkout target branch
+      - name: Checkout selected branch
         run: |
-          echo "Checking out branch: $run_on"
+          echo "🚀 Checking out branch: $run_on"
           git fetch origin $run_on
           git checkout $run_on
 
-      - name: Run race tests
+      - name: Run race condition tests
         run: |
-          echo "🧪 Running go test -race on $run_on"
+          echo "🧪 Running go test -race ./..."
           go test -timeout 20m -race ./...
