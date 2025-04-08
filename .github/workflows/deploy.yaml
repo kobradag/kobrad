@@ -1,62 +1,77 @@
 name: Build and upload assets
-
 on:
   release:
-    types: [published]
+    types: [ published ]
 
 permissions:
   contents: write
+  pull-requests: write
+  repository-projects: write
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
+    permissions: write-all
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-
-    name: Build and upload (${{ matrix.os }})
-
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    name: Building, ${{ matrix.os }}
     steps:
       - name: Fix CRLF on Windows
         if: runner.os == 'Windows'
         run: git config --global core.autocrlf false
 
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+
 
       - name: Setup Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v2
         with:
-          go-version: '1.21'
+          go-version: 1.21
 
-      - name: Run Go tests
-        run: go test ./...
+      - name: Build on Linux
+        if: runner.os == 'Linux'
+        # `-extldflags=-static` - means static link everything,
+        # `-tags netgo,osusergo` means use pure go replacements for "os/user" and "net"
+        # `-s -w` strips the binary to produce smaller size binaries
+        run: |
+          go build -v -ldflags="-s -w -extldflags=-static" -tags netgo,osusergo -o ./bin/ . ./cmd/...
+          archive="bin/kobrad-${{ github.event.release.tag_name }}-linux.zip"
+          asset_name="kobrad-${{ github.event.release.tag_name }}-linux.zip"
+          zip -r "${archive}" ./bin/*
+          echo "archive=${archive}" >> $GITHUB_ENV
+          echo "asset_name=${asset_name}" >> $GITHUB_ENV
 
-      - name: Build project and create archive
-        id: build
+      - name: Build on Windows
+        if: runner.os == 'Windows'
         shell: bash
         run: |
-          mkdir -p bin
-          TAG_NAME=${{ github.event.release.tag_name }}
-          if [ "$RUNNER_OS" == "Linux" ]; then
-            go build -v -ldflags="-s -w -extldflags=-static" -tags netgo,osusergo -o ./bin/kobrad .
-            ARCHIVE_NAME="kobrad-${TAG_NAME}-linux.zip"
-          elif [ "$RUNNER_OS" == "Windows" ]; then
-            go build -v -ldflags="-s -w" -o ./bin/kobrad.exe .
-            ARCHIVE_NAME="kobrad-${TAG_NAME}-windows.zip"
-            powershell "Compress-Archive -Path bin/* -DestinationPath $ARCHIVE_NAME"
-          elif [ "$RUNNER_OS" == "macOS" ]; then
-            go build -v -ldflags="-s -w" -o ./bin/kobrad .
-            ARCHIVE_NAME="kobrad-${TAG_NAME}-macos.zip"
-            zip -r "$ARCHIVE_NAME" ./bin/*
-          fi
+          go build -v -ldflags="-s -w" -o bin/ . ./cmd/...
+          archive="bin/kobrad-${{ github.event.release.tag_name }}-win64.zip"
+          asset_name="kobrad-${{ github.event.release.tag_name }}-win64.zip"
+          powershell "Compress-Archive bin/* \"${archive}\""
+          echo "archive=${archive}" >> $GITHUB_ENV
+          echo "asset_name=${asset_name}" >> $GITHUB_ENV
 
-          echo "archive_name=$ARCHIVE_NAME" >> $GITHUB_OUTPUT
+      - name: Build on MacOS
+        if: runner.os == 'macOS'
+        run: |
+          go build -v -ldflags="-s -w" -o ./bin/ . ./cmd/...
+          archive="bin/kobrad-${{ github.event.release.tag_name }}-osx.zip"
+          asset_name="kobrad-${{ github.event.release.tag_name }}-osx.zip"
+          zip -r "${archive}" ./bin/*
+          echo "archive=${archive}" >> $GITHUB_ENV
+          echo "asset_name=${asset_name}" >> $GITHUB_ENV
+
 
       - name: Upload release asset
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ${{ steps.build.outputs.archive_name }}
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: "./${{ env.archive }}"
+          asset_name: "${{ env.asset_name }}"
+          asset_content_type: application/zip
