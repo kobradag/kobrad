@@ -25,28 +25,40 @@ jobs:
         with:
           go-version: '1.21'
 
-      - name: Build binary
+      - name: Build binary and generate checksum
+        id: build
         shell: bash
         run: |
           mkdir -p bin
           TAG=${{ github.event.release.tag_name }}
+          
           if [[ "$RUNNER_OS" == "Linux" ]]; then
             go build -ldflags="-s -w -extldflags=-static" -tags netgo,osusergo -o bin/kobrad .
-            ARCHIVE="kobrad-${TAG}-linux.zip"
+            ZIP_NAME="kobrad-${TAG}-linux.zip"
           elif [[ "$RUNNER_OS" == "Windows" ]]; then
             go build -ldflags="-s -w" -o bin/kobrad.exe .
-            ARCHIVE="kobrad-${TAG}-windows.zip"
-            powershell "Compress-Archive -Path bin\\* -DestinationPath $ARCHIVE"
+            ZIP_NAME="kobrad-${TAG}-windows.zip"
+            powershell "Compress-Archive -Path bin\\* -DestinationPath $ZIP_NAME"
           elif [[ "$RUNNER_OS" == "macOS" ]]; then
             go build -ldflags="-s -w" -o bin/kobrad .
-            ARCHIVE="kobrad-${TAG}-macos.zip"
-            zip -r "$ARCHIVE" bin/
+            ZIP_NAME="kobrad-${TAG}-macos.zip"
           fi
-          echo "ARCHIVE=$ARCHIVE" >> $GITHUB_ENV
+
+          if [[ "$RUNNER_OS" != "Windows" ]]; then
+            zip -r "$ZIP_NAME" bin/
+          fi
+
+          CHECKSUM_FILE="${ZIP_NAME}.sha256"
+          if command -v shasum &> /dev/null; then
+            shasum -a 256 "$ZIP_NAME" > "$CHECKSUM_FILE"
+          else
+            sha256sum "$ZIP_NAME" > "$CHECKSUM_FILE"
+          fi
+
+          echo "artifacts=$ZIP_NAME,$CHECKSUM_FILE" >> $GITHUB_OUTPUT
 
       - name: Upload release asset
         uses: softprops/action-gh-release@v1
         with:
-          files: ${{ env.ARCHIVE }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            ${{ steps.build.outputs.artifacts }}
