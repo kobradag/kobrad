@@ -33,31 +33,30 @@ jobs:
       - name: Run Go tests
         run: go test ./...
 
-      - name: Build project
+      - name: Build project and create archive
+        id: build
         shell: bash
         run: |
           mkdir -p bin
+          TAG_NAME=${{ github.event.release.tag_name }}
           if [ "$RUNNER_OS" == "Linux" ]; then
             go build -v -ldflags="-s -w -extldflags=-static" -tags netgo,osusergo -o ./bin/kobrad .
-            archive="kobrad-${{ github.event.release.tag_name }}-linux.zip"
+            ARCHIVE_NAME="kobrad-${TAG_NAME}-linux.zip"
           elif [ "$RUNNER_OS" == "Windows" ]; then
             go build -v -ldflags="-s -w" -o ./bin/kobrad.exe .
-            archive="kobrad-${{ github.event.release.tag_name }}-windows.zip"
-            powershell "Compress-Archive -Path bin/* -DestinationPath $archive"
+            ARCHIVE_NAME="kobrad-${TAG_NAME}-windows.zip"
+            powershell "Compress-Archive -Path bin/* -DestinationPath $ARCHIVE_NAME"
           elif [ "$RUNNER_OS" == "macOS" ]; then
             go build -v -ldflags="-s -w" -o ./bin/kobrad .
-            archive="kobrad-${{ github.event.release.tag_name }}-macos.zip"
+            ARCHIVE_NAME="kobrad-${TAG_NAME}-macos.zip"
+            zip -r "$ARCHIVE_NAME" ./bin/*
           fi
 
-          if [ "$RUNNER_OS" != "Windows" ]; then
-            zip -r "$archive" ./bin/*
-          fi
-
-          echo "ASSET_NAME=$archive" >> $GITHUB_ENV
+          echo "archive_name=$ARCHIVE_NAME" >> $GITHUB_OUTPUT
 
       - name: Upload release asset
         uses: softprops/action-gh-release@v1
         with:
-          files: ${{ env.ASSET_NAME }}
+          files: ${{ steps.build.outputs.archive_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
