@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir -p bin
           TAG=${{ github.event.release.tag_name }}
-          
+
           if [[ "$RUNNER_OS" == "Linux" ]]; then
             go build -ldflags="-s -w -extldflags=-static" -tags netgo,osusergo -o bin/kobrad .
             ZIP_NAME="kobrad-${TAG}-linux.zip"
@@ -44,10 +44,12 @@ jobs:
             ZIP_NAME="kobrad-${TAG}-macos.zip"
           fi
 
+          # ZIP for macOS/Linux
           if [[ "$RUNNER_OS" != "Windows" ]]; then
             zip -r "$ZIP_NAME" bin/
           fi
 
+          # Create SHA256 checksum
           CHECKSUM_FILE="${ZIP_NAME}.sha256"
           if command -v shasum &> /dev/null; then
             shasum -a 256 "$ZIP_NAME" > "$CHECKSUM_FILE"
@@ -57,7 +59,7 @@ jobs:
 
           echo "artifacts=$ZIP_NAME,$CHECKSUM_FILE" >> $GITHUB_OUTPUT
 
-      - name: Upload release asset
+      - name: Upload release assets
         uses: softprops/action-gh-release@v1
         with:
           files: |
