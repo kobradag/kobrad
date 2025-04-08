@@ -1,0 +1,52 @@
+name: Build and Upload Release Assets
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Build binary
+        shell: bash
+        run: |
+          mkdir -p bin
+          TAG=${{ github.event.release.tag_name }}
+          if [[ "$RUNNER_OS" == "Linux" ]]; then
+            go build -ldflags="-s -w -extldflags=-static" -tags netgo,osusergo -o bin/kobrad .
+            ARCHIVE="kobrad-${TAG}-linux.zip"
+          elif [[ "$RUNNER_OS" == "Windows" ]]; then
+            go build -ldflags="-s -w" -o bin/kobrad.exe .
+            ARCHIVE="kobrad-${TAG}-windows.zip"
+            powershell "Compress-Archive -Path bin\\* -DestinationPath $ARCHIVE"
+          elif [[ "$RUNNER_OS" == "macOS" ]]; then
+            go build -ldflags="-s -w" -o bin/kobrad .
+            ARCHIVE="kobrad-${TAG}-macos.zip"
+            zip -r "$ARCHIVE" bin/
+          fi
+          echo "ARCHIVE=$ARCHIVE" >> $GITHUB_ENV
+
+      - name: Upload release asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ env.ARCHIVE }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
