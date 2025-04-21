@@ -343,10 +343,7 @@ func (flow *handleRelayInvsFlow) processBlock(block *externalapi.DomainBlock) ([
 	err := flow.Domain().Consensus().ValidateAndInsertBlock(block, true)
 	if err != nil {
 		if !errors.As(err, &ruleerrors.RuleError{}) {
-			err = flow.processOrphan(block)
-			if err == nil {
-				return nil, nil
-			}
+
 			return nil, errors.Wrapf(err, "failed to process block %s", blockHash)
 		}
 		missingParentsError := &ruleerrors.ErrMissingParents{}
