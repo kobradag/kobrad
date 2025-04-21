@@ -81,9 +81,9 @@ func (tp *transactionsPool) addMempoolTransaction(transaction *model.MempoolTran
 func (tp *transactionsPool) removeTransaction(transaction *model.MempoolTransaction) error {
 	delete(tp.allTransactions, *transaction.TransactionID())
 
-	// Remove the transaction from the fee rate list without logging errors
-	_ = tp.transactionsOrderedByFeeRate.Remove(transaction)
 
+        if err := tp.transactionsOrderedByFeeRate.Remove(transaction); err != nil {
+        }
 	delete(tp.highPriorityTransactions, *transaction.TransactionID())
 
 	delete(tp.chainedTransactionsByParentID, *transaction.TransactionID())
