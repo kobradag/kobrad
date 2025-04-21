@@ -77,20 +77,25 @@ func (tp *transactionsPool) addMempoolTransaction(transaction *model.MempoolTran
 	return nil
 }
 
-
 func (tp *transactionsPool) removeTransaction(transaction *model.MempoolTransaction) error {
 	delete(tp.allTransactions, *transaction.TransactionID())
 
+	err := tp.transactionsOrderedByFeeRate.Remove(transaction)
+	if err != nil {
+		if errors.Is(err, model.ErrTransactionNotFound) {
+			log.Errorf("Transaction %s not found in tp.transactionsOrderedByFeeRate. This should never happen but sometime does",
+				transaction.TransactionID())
+		} else {
+			return err
+		}
+	}
 
-        if err := tp.transactionsOrderedByFeeRate.Remove(transaction); err != nil {
-        }
 	delete(tp.highPriorityTransactions, *transaction.TransactionID())
 
 	delete(tp.chainedTransactionsByParentID, *transaction.TransactionID())
 
 	return nil
 }
-
 
 func (tp *transactionsPool) expireOldTransactions() error {
 	virtualDAAScore, err := tp.mempool.consensusReference.Consensus().GetVirtualDAAScore()
