@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	minRetryDuration = 30 * time.Second
+	minRetryDuration = 60 * time.Second
 	maxRetryDuration = 10 * time.Minute
 )
 
