@@ -38,7 +38,7 @@ const (
 	defaultBanDuration         = time.Hour * 24
 	defaultBanThreshold        = 100
 	//DefaultConnectTimeout is the default connection timeout when dialing
-	DefaultConnectTimeout = time.Second * 30
+	DefaultConnectTimeout = time.Second * 3000
 	//DefaultMaxRPCClients is the default max number of RPC clients
 	DefaultMaxRPCClients         = 128
 	defaultMaxRPCWebsockets      = 25
