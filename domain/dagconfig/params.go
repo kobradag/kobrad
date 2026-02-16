@@ -214,10 +214,10 @@ var MainnetParams = Params{
 	K:           defaultGHOSTDAGK,
 	Name:        "kobra-mainnet",
 	Net:         appmessage.Mainnet,
-	RPCPort:     "44448",
-	DefaultPort: "44447",
+	RPCPort:     "44888",
+	DefaultPort: "44777",
 	DNSSeeds: []string{
-		"mainnet-seeds.k0bradag.com",
+		"seeds.k0bradag.com",
 		
 	},
 	
